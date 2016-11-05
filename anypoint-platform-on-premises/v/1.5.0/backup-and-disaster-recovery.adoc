@@ -31,7 +31,9 @@ scp your_username@remotehost.edu:to-restore.tar.gz /var/lib/planet/share
 sudo gravity planet enter -- --notty /usr/bin/gravity -- system restore gravitational.io/anypoint:0.0.0+latest /ext/share/to-restore.tar.gz
 ----
 +
-This command will restore your entire cluster from one of your backups.
+This command will restore your entire cluster from one of your backups. 
+
+Finally, restart the all the cluster nodes one at the time.
 
 == Applying Updates
 
