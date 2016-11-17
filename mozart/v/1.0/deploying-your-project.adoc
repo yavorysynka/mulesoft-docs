@@ -1,0 +1,24 @@
+= Deploying Your Project
+:keywords: mozart
+
+
+deployment pannel
+
+
+what happens automatically
+
+URL
+
+logs
+
+
+you select where to deploy when creating project
+
+can you move from env to another? how?
+
+play arrow
+
+warning that says "if this is live, don't fuck up"
+
+
+link to CH

@@ -1,0 +1,26 @@
+= Using DataWeave in Mozart
+:keywords:
+
+
+
+What is mapping
+
+
+Input and output metadata
+
+how to populate it
+
+Drag and Dorp
+
+preview
+
+
+
+Stuff in stuff
+
+
+Reader / writer properties?
+
+
+Write DW Code?
+link to DW
