@@ -3,6 +3,8 @@
 * link:getting-started[Anypoint Platform Overview]
 * link:mule-user-guide[Mule Runtime User Guide]
 * link:anypoint-studio[Anypoint Studio]
+* link:mozart[Mozart]
+// ⌃⌃ Should we have a `Anypoint design Center` section ?
 * link:api-manager[API Manager]
 * link:runtime-manager[Runtime Manager]
 * link:access-management[Access Management]
