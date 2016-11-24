@@ -1,0 +1,35 @@
+= Design Center
+:keywords: mozart
+
+The Design Center in the Anypoint platform groups two editors that allow you to easily create tailored connectivity solutions. Both editors are designed to keep you focused on a high-level view of what you're creating, leaving the complexity of back-end considerations for dealing with only once the whole big picture is established.
+
+image:[listed apps]
+
+
+== API Designer
+
+API Designer lets you create API definition files described in link:raml.org[RAML]. This light-weight YAML-like language lets you specify the API's resources, methods, properties and more, together with samples and schemas.
+
+Once this definition is established, you can import it into Anypoint Studio to automatically create a scaffolding structure upon which you can build out your API's backend, having a clear understanding of the expected inputs and outputs of each operation.
+
+From the RAML definition you can also automatically generate interactive documentation for users of your API, which can be easily exposed on your API's Portal.
+
+== Mozart (beta)
+
+Mozart lets you create fully functional Mule applications, functioning as an on-line simplified alternative to link:/anypoint-studio[Anypoint Studio].
+
+Mozart offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into Anypoint Studio.
+
+== Create New
+
+To create a new project, wether with Mozart of API Designer, just click the *Create* button:
+
+image[create]
+
+Then name your project and select the type of your project from the dropdown menu in *Project Type*:
+
+image[project type]
+
+You must also select the link:/access-managemnet/environments[target environment] for your application. Through using multiple environments, you can keep your works-in-progress safely away from the public eye until they're ready to be pushed into production.
+
+API Definitions are only assignable to APIs that are created in the same environment as they are created. Likewise, the Mozart UI only allows you to deploy projects to run in the environment in which you created the project.
