@@ -44,6 +44,8 @@ After deploying, you can go to the Runtime Manager console and see your applicat
 The Mozart UI only allows you to deploy projects to run in the environment in which you created the project.
 
 
-== Deploy To Other Places
+== Deploy To Other Servers
 
-By first importing your project to Anypoint Studio, you can build it up
+For deploying to customer-managed Mule runtimes (all except CloudHub), you must first export your project to Anypoint Studio, and then export a .zip deployable archive from there.  (link)
+
+image[export icon]
