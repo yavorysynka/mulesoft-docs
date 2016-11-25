@@ -73,6 +73,9 @@ Through the *Transform* element you can powerfully convert data types and data s
 
 image
 
+== Deploy Your Project
+
+You can easily deploy your app to CloudHub by simply clicking the play button on the top nav bar. See link:/design-center/deploying-your-project[Deploying Your Project].
 
 == Export to Studio
 
@@ -84,23 +87,3 @@ image:[studio]
 Then?
 
 Link your studio instance to the platform?
-
-
-== Deploy to Runtime Manager
-
-Mozart offers a simple shortcut to deploy your application on link:/runtime-manager/cloudhub[CloudHub], without needing to go through the link:/runtime-manager[Runtime Manager console].
-
-Simply click the play button on the top nav bar
-
-image[]
-
-As the application is deployed, its status is indicated next to it as it changes from *Undeployed* to *Deploying* to *Deployed* or indicates any errors.
-
-image[]
-
-Your application is deployed to CloudHub, registering it through the same name with which you created the Mozart project. It becomes reachable through a URL that follows the structure *appName.cloudhub.io*  (????)
-
-After deploying, you can go to the Runtime Manager console and see your application there and link:/runtime-manager/managing-deployed-applciations[manage your application] just like any other application deployed through the console.
-
-[NOTE]
-The Mozart UI only allows you to deploy projects to run in the environment in which you created the project.
