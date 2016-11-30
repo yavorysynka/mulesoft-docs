@@ -1,9 +1,11 @@
 = Mozart
 :keywords: mozart
 
-Mozart is a simplified online editor that allows you to create and deploy integration applications very easily. It can be though of as a subset of link:/anypoint-studio[Anypoint Studio] that requires minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into any of the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
+Mozart is a simplified online editor that allows you to create and deploy Mule applications very easily. It can be though of as a subset of link:/anypoint-studio[Anypoint Studio] that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
 
-The Mozart editor also allows you to directly deploy your applications to CloudHub without leaving the screen. Applications built in Mozart can also be exported to Anypoint Studio for configuring advanced settings. You could set up a workflow where the desired overall functionality is drafted by line-of-business users through Mozart, and then additional details that bring robustness to the application are implemented by more technical developers in Anypoint Studio.
+The Mozart editor also allows you to directly deploy your applications to CloudHub without ever leaving the screen. Applications built in Mozart can also be exported to Anypoint Studio for configuring advanced settings.
+
+Through Mozart, you could then set up a workflow where you periodically deploy your project to a Dev environment while building and debugging it, and then simply change the deployment target to the Production environment to ship it, all without ever leaving the editor. Alternatively, you could implement a workflow where the desired overall functionality is drafted by line-of-business users on Mozart, and then the project is exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by more technical developers.
 
 == Build Basic Mule Applications
 
@@ -11,10 +13,9 @@ In spite of being simple, Mozart is still quite powerful, you can build Mule app
 
 * Send and receive requests via HTTP, FTP, create entries in Data Bases, create files.
 * Run tasks at regular intervals.
-* Connect to Salesforce, Twitter, Facebook, GitHub, Zendesk, etc.
+* Connect to Salesforce, Twitter, Facebook, GitHub, Zendesk, and many more services.
 * Send automatic emails.
-* Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] to make virtually anything
-
+* Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] to make virtually any two data formats compatible
 
 Just like applications created through link:/anypoint-studio[Anypoint Studio], the resulting application of editing in Mozart is built for running in a Mule Runtime, either in CloudHub or in an on-premises server.
 
@@ -25,36 +26,43 @@ Just like applications created through link:/anypoint-studio[Anypoint Studio], t
 Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an overview of basic Mule Runtime concepts.
 
 
-Mule applications are based on components that are arranged into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows]. When you create a new Mozart project, you're immediately prompted to select the triggering component of the first flow.
+The building blocks of Mule applications are called modules, each receives an input, carries out its function and then passes out an output to the next module. These are arranged into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows], that determine the order in which each is executed.
 
 image:
 
 
-Every flow has a trigger that sets it into action, this can either be an endpoint that externally calls the flow, or a poll which actions your flow at a given time or interval.
+Every flow has a trigger that sets it into action, this can either be an endpoint module that is externally called, or a poll which actions your flow at a given time or interval.
 
+When you create a new Mozart project, you're immediately prompted to select the triggering of the first flow.
 
-You can then build up your flow from there, by adding more components that are executed after it's triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-mozart[handling metadata in Mozart].
+image:
 
-image
-
-You add new items by licking the plus icons that exist in between elements (hover over the arrows in between them to reveal plus icons).
-
-image
-
-You can also create a new separate flow by clicking the plus sign at the top:
+You can then build up your flow from there, by adding more modules that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-mozart[handling metadata in Mozart].
 
 image
 
-Each flow is triggered and executed independently of each other (unless you add a flow reference ???  can you?)
+You add modules to your flow by licking the plus icons that exist in between the existing ones (hover over the arrows in between them to reveal plus icons).
+
+image
+
+You can also create a new flow by clicking the plus sign at the top:
+
+image
+
+Every flow is triggered and executed independently of each other.
 
 
 == Global Configurations
 
-By design, Mule applications keep the reusable configurations of connectors separate from the definition of individual instances of them. In this way, when creating a project that utilizes several identical instances, these parameters only need to be provided once and can easily be globally changed.
-
-This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which live outside Mule flows, but that can be referenced by elements in them.
+By design, Mule applications keep the reusable configurations of connector modules separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which live outside Mule flows, but that can be referenced by elements in them.
 
 image
+
+
+In this way, when creating a project that utilizes several instances of a same module, these parameters only need to be provided once and can easily be globally changed. This also allows you to deploy a same project to different environments, as you can assign a different set of values for these global elements for every environment.
+
+image:
+
 
 For example, you could have multiple HTTP connectors in your project, all of them relying on the same host and port and implementing the same SSL certificates, but each triggering a different flow via a different subpath. These would each reference a single global element in the following way:
 
@@ -64,11 +72,11 @@ image
 
 == View Metadata
 
-As your data passes through your flows, you can inspect the expected structure of the data at each given point through ... the UI
+As your data passes through your flows, you can inspect the expected structure of the data at each given point. This data can be of great help in understanding what your application is doing.
 
-This data can be of great help in understanding what your application is doing, and it also leads to intelligent autocomplete suggestions, as well as mapping stuff
+See link:/design-center/handling-metadata-in-mozart[Handling Metadata in Mozart] for more on this topic.
 
-see link:/design-center/handling-metadata-in-mozart[Handling Metadata in Mozart].
+image
 
 
 == Transform
@@ -81,8 +89,10 @@ image
 
 You can easily deploy your app straight to CloudHub without leaving the editor. Simply click the *Play* button on the top nav bar. See link:/design-center/deploying-your-project[Deploying Your Project] for more details.
 
+image
+
 [NOTE]
-For deploying to customer-managed Mule runtimes (all except CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
+For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
 
 
 == Export to Studio
@@ -92,6 +102,7 @@ If you need to set up more advanced configurations on your Mule project, you can
 To do so, simply click the *Export to Studio* icon on the top nav bar
 image:[studio]
 
-Then?
+Then? import how?
 
-Link your studio instance to the platform?
+[NOTE]
+Make sure you configure Anypoint Studio in your machine to be linked to your Anypoint Platform organization    ...do you have to?
