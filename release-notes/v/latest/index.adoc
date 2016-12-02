@@ -1,22 +1,43 @@
-= Release Notes
+= Release Notes Directory
 :keywords: release notes
+:toc: macro
 
-[%header,cols="40a,60a"]
+toc::[]
+
+== Anypoint Analytics
+
+Gathers analytics data for each API that is managed by API Manager, and displays data visually in the API’s dashboard.
+
+[%header%autowidth.spread]
 |===
-|Release Notes |Description
+|Release Notes Homepage |Documentation Homepage
 |link:/release-notes/anypoint-analytics-release-notes[Anypoint Analytics Release Notes]
-|Gathers analytics data for each API that is managed by API Manager, and displays data visually in the API’s dashboard.
 
-*Documentation*: link:/analytics[Anypoint Analytics]
+|link:/analytics[Anypoint Analytics Documentation]
+|===
 
-|link:/release-notes/anypoint-b2b-release-notes[Anypoint B2B Release Notes]
-|Connect to trading partners using EDI over AS/2, FTP, and other protocols using Mule.
+== Anypoint B2B
+
+Connect to trading partners using EDI over AS/2, FTP, and other protocols using Mule.
 
 Release Notes for: Anypoint Partner Manager, AS2 Connector, FTPS Connector, EDI Module, and
 X12/EDIFACT EDI Modules
 
-*Documentation*: link:/anypoint-b2b/[Anypoint B2B]
+[%header,cols="40a,60a"]
+|===
+|Release Notes |Description
+|link:/release-notes/anypoint-b2b-release-notes[Anypoint B2B Release Notes]
+|
 
+*Documentation*: link:/anypoint-b2b/[Anypoint B2B]
+|===
+
+
+...
+
+[%header,cols="40a,60a"]
+|===
+|Release Notes |Description
 |link:/release-notes/anypoint-connector-release-notes[Anypoint Connector Release Notes] |Individual release notes for different versions of the most important connectors that can be used in Mule Projects.
 
 *Documentation*: link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors]
