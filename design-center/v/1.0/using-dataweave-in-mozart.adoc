@@ -2,6 +2,8 @@
 :keywords:
 
 
+In the *Transform* card, you can dynamically generate mappings through DataWeave. This card offers a simple drag and drop interface that automatically generates the corresponding mapping code
+
 
 What is mapping
 
@@ -13,6 +15,14 @@ how to populate it
 Drag and Dorp
 
 preview
+
+
+
+you can double click on a field and write a function for it, without needing to dig into the full source code. This experience relates to that of using a spreadsheet, where each field can have a function behind it.
+
+Fields that have functions then have a little f(x) icon next to them
+
+
 
 
 

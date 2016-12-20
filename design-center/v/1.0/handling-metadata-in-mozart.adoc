@@ -7,6 +7,10 @@ how to populate
 
 Thanks to the metadata that you make available, Mozart can also give you intelligent autocomplete suggestions, as well as mapping stuff
 
+
+You can view metadata displayed directly on the different cards. This display says what each card is doing to the Mule message (link)
+
+
 how to view
 
 data type explorer
