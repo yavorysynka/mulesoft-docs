@@ -1,7 +1,7 @@
 = Design Center
 :keywords: mozart
 
-The Design Center groups two editors that allow you to easily create tailored connectivity solutions. Both editors are designed to keep you focused on a high-level view of what you're creating, leaving the complexity of back-end considerations for dealing with only once the whole big picture is established.
+The Design Center groups two editors that allow you to easily create tailored connectivity solutions. Both editors are designed to keep you focused on a high-level view of what you're creating, leveraging custom reusable components or leaving backend complexities for a later step.
 
 The Design Center is part of the Anypoint Platform, in order to access this tool you need to own an Anypoint Platform account that has permissions that allow you to create and manage APIs and/or applications.
 
@@ -20,7 +20,7 @@ From the RAML definition you can also automatically generate interactive documen
 
 Mozart lets you create fully functional Mule applications, functioning as an on-line simplified alternative to link:/anypoint-studio[Anypoint Studio].
 
-Mozart offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into Anypoint Studio.
+Mozart offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into link:/anypoint-studio[Anypoint Studio], the desktop IDE.
 
 == Create New
 
@@ -32,4 +32,4 @@ Then name your project and select the type of your project from the dropdown men
 
 image[project type]
 
-You must also select the link:/access-managemnet/environments[target environment] for your application (ie: Development, QA, Production). Through the use of multiple environments, you can keep your works-in-progress safely away from the public eye until they're ready to be pushed into production.
+You must also select the link:/access-managemnet/environments[target environment] for your application (ie: Development, QA, Production). Through the use of multiple environments, you can keep your works-in-progress safely away from the public eye until they're ready to be promoted to production.

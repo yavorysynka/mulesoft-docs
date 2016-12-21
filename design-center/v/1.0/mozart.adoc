@@ -1,14 +1,13 @@
 = Mozart
 :keywords: mozart
 
-Mozart is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be though of as a subset of link:/anypoint-studio[Anypoint Studio] that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
+Mozart is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be though of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
 
-The Mozart editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. Applications built in Mozart can also be exported to Anypoint Studio for configuring advanced settings.
+Mozart allows you to build upon reusable assets, enabling anyone who needs to put together an integration to compose applications in a self-serve manner. They can combine both out-of-the-box components and those that have been created by integration specialists in your organization.
 
-Mozart also allows you to build upon reusable assets, enabling ad hoc integrators to compose their applications in a self-serve manner by combining general use assets that have been created by integration specialists.
+The Mozart editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. You might want to periodically deploy your project to a Dev environment while building and debugging, and then – when ready – simply change the deployment target to the Production environment, all without ever leaving the editor.
 
-
-You can have a workflow where you periodically deploy your project to a Dev environment while building and debugging, and then – when ready – you can simply change the deployment target to the Production environment, all without ever leaving the editor. Alternatively, you could have a workflow where the desired overall functionality is drafted by line-of-business users on Mozart, and then the project is exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by specialized integration developers.
+Applications built in Mozart can also be exported to Anypoint Studio (the desktop IDE) for configuring advanced settings. You can have a workflow where the desired overall functionality is drafted by line-of-business users on Mozart, and then the project is exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by specialized integration developers.
 
 == Build Basic Mule Applications
 
@@ -18,21 +17,21 @@ In spite of being simple, Mozart is still quite powerful, you can build Mule app
 * Run tasks at regular intervals.
 * Orchestrate processes across APIs, such as Salesforce, Twitter, Facebook, GitHub, Zendesk, and many more.
 * Send automatic emails.
-* Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] to make virtually any two data formats compatible
+* Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] transformations to make virtually any two data formats compatible
 
-Just like applications created through link:/anypoint-studio[Anypoint Studio], the resulting application of editing in Mozart is built for running in a Mule Runtime, either in CloudHub or in an on-premises server.
+Just like with link:/anypoint-studio[Anypoint Studio], the resulting application of editing in Mozart is built for running in a Mule Runtime, either in link:/runtime-manager/deploying-to-cloudhub[CloudHub] or in a link:/runtime-manager/deploying-to-your-own-servers[customer-managed server].
 
 [NOTE]
 ====
 With Mozart, you currently can't:
 
 * Automatically build out an API backend based on a RAML API definition file _(coming soon)_
-* Deploy directly to a customer-owed server (ie: any server on-premises) _(coming soon)_
+* Deploy directly to a customer-managed server (ie: a runtime outside CloudHub) _(coming soon)_
 * Write custom code
 * Used advanced functionality such as Spring or Maven
 * Create Mule projects that run on a runtime version prior to 4.0.0
 
-All of these things can be accomplished with link:/anypoint-studio[Anypoint Studio], our more advanced eclipse-based IDE.
+All of these things can be accomplished with link:/anypoint-studio[Anypoint Studio], our more advanced desktop eclipse-based IDE.
 ====
 
 == Mule Flows
@@ -41,14 +40,12 @@ All of these things can be accomplished with link:/anypoint-studio[Anypoint Stud
 Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an overview of basic Mule Runtime concepts.
 
 
-In Mozart, the building blocks of Mule applications are called cards. Each card receives an input, carries out its function and then passes out an output to the next card. These are arranged into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows], that determine the order in which each is executed.
+In Mozart, the building blocks that compose Mule applications are called _cards_. Each card receives an input, carries out a specific function and then passes out an output to the next card. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
 
 image:
 
 
-Every flow has a trigger that sets it into action, this can either be an endpoint card that is externally called, or a poll which actions your flow at a given time or interval.
-
-When you create a new Mozart project, you're immediately prompted to select the triggering card of the first flow.
+Every flow has a trigger that sets it into action, this can either be an endpoint card that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Mozart project, you're immediately prompted to select the card that will trigger your first flow.
 
 image:
 
@@ -60,10 +57,10 @@ You add steps to your flow by licking the plus icons that exist in between two e
 
 image
 
-You can then pick what element to add to your flow from a list. This list includes all the basic connectors and components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization, making it self-serve for anyone who needs to put together an integration.
+You can then pick what element to add to your flow from a list. This list includes all the basic connectors and components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
 
 [TIP]
-Advanced users can define what assets are made available on Mozart via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to use it through the regular Salesforce connector, you can restrict its use.
+Advanced users can define what assets are made available on Mozart via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
 
 You can also create a new flow by clicking the plus sign at the top:
 
@@ -71,30 +68,40 @@ image
 
 Every flow is triggered and executed independently of each other.
 
+== Card Configuration
 
+You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately). Many cards also have <<Global Configurations>>, these do allow you to set up all cards of the same type together.
 
 
 == Global Configurations
 
-By design, Mule applications keep the reusable configurations of connector cards separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which live outside Mule flows, but that can be referenced by elements in them.
+By design, Mule applications keep the reusable configurations of connector cards separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which exist outside any flow, but that can be referenced by elements in them.
 
 image
 
 
-In this way, when creating a project that utilizes several instances of a same card, these parameters only need to be provided once and can easily be globally changed. This also allows you to deploy a same project to different environments, as you can assign a different set of values for these global elements for every environment.
-
-image:
-
+In this way, when creating a project that utilizes several instances of a same card, these parameters only need to be provided once and can easily be globally changed.
 
 For example, you could have multiple HTTP connectors in your project, all of them relying on the same host and port and implementing the same SSL certificates, but each triggering a different flow via a different subpath. These would each reference a single global element in the following way:
 
 image
 
 
+This comes in specially handy when you want to deploy a same project to different environments. When deploying to a different environment, you are prompted to assign a different set of values for these global elements. In this way, you can for example easily point your production deployment to the production database, and your QA deployment to the mock QA database.
+
+image:
+
+
+== Transform
+
+Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-mozart[Using DataWeave in Mozart].
+
+image
+
 
 == View Metadata
 
-Each card displays key information about what it does to your metada
+Each card displays key information about what it does to the data transitioning through it.
 
 
 
@@ -105,11 +112,6 @@ See link:/design-center/handling-metadata-in-mozart[Handling Metadata in Mozart]
 image
 
 
-== Transform
-
-Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-mozart[Using DataWeave in Mozart].
-
-image
 
 == Deploy Your Project
 
