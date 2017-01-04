@@ -105,14 +105,20 @@ image:DeployAppFirstScreen.png[DeployAppFirstScreen] 
 For an example of deploying to CloudHub directly from Anypoint Studio, see link:/runtime-manager/hello-world-on-cloudhub[Hello World on CloudHub].
 
 
-////
+
 === From the Design Center
 
-link to Mozart
+You can also deploy Mule applications to CloudHub directly from the web-based editor in the design center. This is specially useful if you want to deploy to sandbox environments while still developing your application, you can then also push it to production without ever leaving the editor screen.
 
 
-////
 
+link to Mozart  /design-center/v/1.0/
+
+
+When deploying to a different environment, you can set up different global variables for each by directly filling them in on the deployment menu. This is a very convenient feature when passing a deployment from a sandbox environment to production.
+
+[NOTE]
+Keep in mind that your user account must have permissions that allow it to deploy to the selected environment.
 
 
 == Creating an Application Name
