@@ -1,7 +1,7 @@
 = Using Policies
 :keywords: policy, endpoint
 
-A policy is a mechanism for enforcing filters on traffic. These filters generally control authentication, access, allotted consumption, and SLAs. API Manager offers a number of pre-built policies, listed in link:/api-manager/available-policies["Available Policies"]. You can also build link:/api-manager/creating-a-policy-walkthrough[custom policies] to extend policy capabilities beyond those of the pre-built policies. You deploy a proxy API application and apply one or more policies to control how and when a received request is forwarded to its implementation endpoint.
+A policy is a mechanism for enforcing filters on traffic. These filters generally control authentication, access, allotted consumption, and service level access (SLA). API Manager offers a number of pre-built policies, listed in link:/api-manager/available-policies["Available Policies"]. You can also build link:/api-manager/creating-a-policy-walkthrough[custom policies] to extend policy capabilities beyond those of the pre-built policies. You deploy a proxy API application and apply one or more policies to control how and when a received request is forwarded to its implementation endpoint. You can set an link:/api-manager/using-api-alerts[API alert] to notify you when an API request violates a policy for SLA.
 
 == Client ID Enforcement
 
@@ -164,6 +164,16 @@ INFO  2015-09-28 15:37:54,214 [[leagues-rest].httpListenerConfig.worker.01] org.
 == Policy-Related Notifications
 
 When an Organization Owner defines the order of policy enforcement, conflicts can occur if existing API Owners have set policies on their APIs. The API Manager notifies both parties in the event of a conflict. An API Owner needs to update policies and resolve any conflicts.
+
+== Configuring the Policy Polling Time
+
+The default policy polling time has been lengthened to 60 seconds as part of a global initiative to improve the performance and scalability of Anypoint Platform. MuleSoft based this change on careful examination of actual customer experiences. A minimum 60-second delay now occurs between the time you apply a policy from the UI and the time the policy goes into effect. The same delay occurs when you disable or edit a policy. You can [configure the length of the delay] using the following system property: 
+
+`anypoint.platform.poll_policies_freq`
+
+Configure a new value in seconds by changing the wrapper.conf file. For example:
+
+`wrapper.java.additional.30=-Danypoint.platform.poll_policies_freq=45”`
 
 == Configuring the APIkit Console for Policies
 

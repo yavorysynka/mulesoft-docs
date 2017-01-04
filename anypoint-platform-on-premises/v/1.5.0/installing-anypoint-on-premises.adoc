@@ -116,7 +116,7 @@ image:installing-anypoint-on-premises-user.png[]
 [NOTE]
 All of the users of your platform will log into accounts that belong to the organization name that you provide here, or a business group within it. See link:/access-management/organization[Organizations] for an overview on how these work.
 
-. After installation is completed, the ops center password has to be reset. Please refer to link:/anypoint-platform-on-premises/v/1.5.0/installing-anypoint-on-premises#reset-ops-center-password[reset-ops-center-password] for more details.
+. After installation is completed, the ops center password has to be reset. Please refer to link:/anypoint-platform-on-premises/v/1.5.0/managing-via-the-ops-center#reset-password[reset password] for more details.
 
 == Create a Load Balancer
 
@@ -164,18 +164,9 @@ To configure SSL credentials, you don't need to set them up in your load balance
 This section refers to forwarding log data from Anypoint Platform itself. For instructions on how to forward log data from the Mule servers and applications that run on the platform, see link:/runtime-manager/sending-data-from-arm-to-external-monitoring-software[Sending data from Runtime Manager to External Monitoring Software].
 
 
-Anypoint Platform uses rsyslog to handle logging. To forward these logs to remote hosts you must do the following:
+Anypoint Platform uses rsyslog to handle logging. To forward these logs to remote hosts you must configure this in the Ops Center.
 
-. Enter the Anypoint Platform Ops center. You enter it through port `9500`, so in a browser you can type `{platform-host}:9500`
-
-. Log in using the email and password of the *admin* user that you set up in the final screen of the installation wizard
-
-. Go to *Logs* > *Settings*
-+
-image:installing-anypoint-on-premises-logs1.png[logs]
-. If you are forwarding logs to external software such as Splunk, set the destination and TCP/IP protocol
-+
-image:installing-anypoint-on-premises-logs3.png[logs]
+See link:/anypoint-platform-on-premises/v/1.5.0/managing-via-the-ops-center#configure-log-forwarding[Configure Log Forwarding] for detailed steps on how to do this on the Ops Center.
 
 
 [NOTE]
@@ -187,86 +178,51 @@ It's assumed that you're forwarding your logs to an on-premises log solution, li
 
 In order to handle e-mail alerts, you must have an SMTP server configured on your network.
 
-You must direct your local installation of Anypoint Platform to this server. Currently, setting up SMTP for alert e-mails for link:/api-manager[API Manager] is handled via the link:/access-management/on-prem-features#smtp[Access Management panel], and the SMTP settings for alert e-mails for link:/runtime-manager[Runtime Manager] must be set up manually as explained in link:/anypoint-platform-on-premises/v/1.5.0/setting-smtp-manually[Setting SMTP Manually]. If you intend to use both tools, make sure you set up both.
+You must direct your local installation of Anypoint Platform to this server. Currently, setting up SMTP for alert e-mails for link:/api-manager[API Manager] is handled via the link:/access-management/on-premises-features#smtp[Access Management panel], and the SMTP settings for alert e-mails for link:/runtime-manager[Runtime Manager] must be set up manually as explained in link:/anypoint-platform-on-premises/v/1.5.0/setting-smtp-manually[Setting SMTP Manually]. If you intend to use both tools, make sure you set up both.
 
 == SSL Certificate
 
-In order to use Anypoint Platform, you must provide SSL credentials. You can upload a certificate through the Anypoint Platform UI, see link:/access-management//access-management/on-prem-features#security[on-prem features]. This certificate must be trusted by every machine that’s connected to the platform.
+In order to use Anypoint Platform, you must provide SSL credentials. You can upload a certificate through the Anypoint Platform UI, see link:/access-management/on-premises-features#security[on-prem features]. This certificate must be trusted by every machine that’s connected to the platform.
 
 
 == Handling Third Party Authentication
 
-You can have your users log in to Anypoint Platform via various third party authentication tools. See link:/access-management/external-identity[External Identity] for how to configure this on each of the available options. You can use LDAP, ping federate or Open AM. On this version of the platform, all of your users must be registered in the platform via external identity (except the admin you register via the installation wizard).
+You can have your users log in to Anypoint Platform via various third party authentication tools. See link:/access-management/external-identity[External Identity] for how to configure this on each of the available options. You can use link:/access-management/managing-users#configure-ldap[LDAP], link:https:/access-management/managing-api-clients#ping-federate[ping federate], link:/access-management/managing-users#instructions-for-saml-configuration[SAML] or link:/access-management/managing-api-clients#openam[Open AM]. On this version of the platform, all of your users must be registered in the platform via external identity (except the admin you register via the installation wizard).
 
 == Adding a Custom Disclaimer Message
 
-You can add a custom message to your login page, that all users in your organization will see every time you log in. To set this custom message, see link:/access-management//access-management/on-prem-features#disclaimer[on-prem features].
+You can add a custom message to your login page, that all users in your organization will see every time you log in. To set this custom message, see link:/access-management/on-premises-features#disclaimer[on-prem features].
 
 == Next Steps
 
 Now that your installation is complete, your platform is ready for being used. Users registered in your external identity service should have access to your Anypoint platform link:/access-management/organization[organization]. As an admin you can now add link:/runtime-manager/roles[roles] to these users. You can also start link:/runtime-manager/managing-servers[registering servers] so that you can then link:/runtime-manager/deploying-to-your-own-servers[deploy to them], etc.
 
-== Ops Center Usage
+The developers of your organization that create Mule apps through the link:/anypoint-studio/v/6/index[Anypoint Studio] IDE should set up their editors so that these interface with your locally installed Anypoint Platform (instead of the default cloud Anypoint Platform). See link:/anypoint-studio/v/6/setting-up-your-development-environment#enable-on-premises-setup[Enable on-premises Setup].
 
-Through the Ops center, you can monitor and manage several aspects of your platform.
+See link:/anypoint-platform-on-premises/v/1.5.0/managing-via-the-ops-center[Managing via the Ops Center] for instructions on how to add or remove servers from the platform cluster and other changes you may want to carry out after installation.
 
-=== Reaching the Ops Center
+== Uninstall and reinstall
 
+If you encounter any difficulties during the setup process, you may choose to attempt reinstallation. Before beginning a new install, you should ensure that all remenants of the original install have been removed. You can do that with the following commands on all nodes:
 
-The Ops center is reached through port `9500`, so in a browser you can type `{platform-host}:9500`
-
-You must then log in using the email and password of the *admin* user that you set up in the final screen of the installation wizard
-
-=== Add Additional Servers
-
-You can add more servers to your platform installation to scale up your cluster, even after the installation is complete.
-
-. Go to the *Servers* tab
-+
-image:installing-anypoint-on-premises-4e182.png[]
-. Click the *Add Existing* Button
-+
-image:installing-anypoint-on-premises-e2892.png[]
-. Select the only option: General Purpose Node and then hit *Continue*
-. This will give you a command that you must paste on a console on this new server
-+
 ----
-curl -s --tlsv1.2 --insecure "https://172.31.48.9:3009/t/8402020736a8a04dda29bc81dfcd5211/node" | sudo bash
-----
-+
-[NOTE]
-====
-Note that you must run this command from an account that has root access.
-Also note that you can perform this installation on only one server at a time.
-====
+# remove installed system components
+sudo gravity system uninstall --confirm
 
-. Once you do, your server should show up as listed on the UI. As in the original installation steps, your server has a set of fields to configure: an IP address and two devices to reference. For your devices, you can either leave the default references, or you can set up your own, see link:/anypoint-platform-on-premises/v/1.5.0/prerequisites-platform-on-premises#device-requirements[Device Requirements] for details.
+# remount and clear platform data
+sudo mount /var/lib/gravity
+sudo rm -rf /var/lib/gravity/*
 
-. Select your server and then click *Start Installation* to begin the installation on this new server.
+# remount and clear platform data
+sudo mount /var/lib/gravity/planet/etcd
+sudo rm -rf /var/lib/gravity/planet/etcd/*
 
-
-
-=== Reset Ops Center password
-
-You can change the password required to log into the Ops center via a command line utility.
-
-. Enter the gravity utility (which comes bundled with the platform installation):
-+
-----
-sudo gravity enter
+# remount and clear application data
+sudo mount /var/lib/data
+sudo rm -rf /var/lib/data/*
 ----
 
-. Reset the password using the following command:
-+
-----
-gravity site --insecure reset-password
-----
-
-. This command will return the admin email and new password, e.g.
-+
-----
-password for admin@example.com has been reset to: 5a8b24f74f16f15ed34b
-----
+Depending on the state of the full or partial install that you are replacing, the above steps may not completely return the system to an installable state. Before beginning reinstall, you should ensure that your system is still setup correctly and meets the minimim disk and resource requirements just as you did intially.
 
 
 [NOTE]

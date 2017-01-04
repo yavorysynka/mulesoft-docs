@@ -320,6 +320,14 @@ The version of JDK that CloudHub implements for all apps built with Mule runtime
 
 For apps deployed on-premises, see the link:/release-notes/mule-esb[runtime release notes] of the specific runtimes you're using to know the minimum JDK supported version.
 
+== Automatic Security Updates
+
+Certain updates are automatically applied to applications deployed to CloudHub. Once deployed and running, if any security patches, OS updates, or critical bug fixes are released for the selected runtime version, then you will be prompted about this change. You will be able to control exactly when each update is applied. If you take no action, updates will be applied automatically for you after 30 days to ensure your applications run with the latest security patches.
+
+
+For applications that are deployed elsewhere, you must carry out these Runtime updates manually.
+
+
 == Other Components
 
 There are some components for which CloudHub has limited support for currently:
@@ -333,6 +341,14 @@ There are some components for which CloudHub has limited support for currently:
 If you want to deploy a same Mule application via various different deployment strategies – such as to an <<Cloud Console On-Premises Deployment, on-premises server>> and  <<Cloud Console CloudHub Deployment, CloudHub>>  – you should abstract some parameters of the application to link:/mule-user-guide/v/3.8/mule-application-deployment-descriptor[application properties] that you can set with different values in each use case, without needing to alter the actual application.
 
 Create an application properties file named *mule-app.properties* in the `src/main/app` folder of your project. When using the properties tab on CloudHub or PCF, these properties are overriden. See <<Managing Properties>> to see how these are loaded with values in each case.
+
+== Using Different Environments
+
+The Anypoint Platform enables you to handle separate link:/access-management/environments[Environments], such as production, QA, Dev, or any other custom one you may want to create. You can set some of these to be _sandbox_ environments, which allows you the freedom to test and experiment away from the public eye.
+
+Regarless of the deployment strategy used, deployments are always done onto a specific environment. Each manages a different set of deployments, and accessing each requires a different set of link:/access-management/managing-permissions[permissions], allowing you to divide roles clearly between the different teams of your organization.
+
+Once an application has been tested in a sandbox environment and is ready for production, it can be directly promoted to a production environment, without needing to upload the application again. See  link:/runtime-manager/deploying-to-your-own-servers#from-sandbox[deploying to your own servers] or link:/runtime-manager/deploying-to-cloudhub#from-sandbox[deploying to cloudhub] to see how to do this.
 
 
 

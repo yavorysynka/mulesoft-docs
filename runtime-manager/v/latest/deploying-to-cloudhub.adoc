@@ -29,7 +29,7 @@ Deploying to CloudHub is not possible via the Anypoint Platform On-Premises Edit
 If you’re still interested in requesting the Anypoint Platform on-Premises Edition, please contact your sales representative.
 ====
 
-== Accessing the Deploy Application Screen
+== Deploying an Application
 
 === From Anypoint Platform
 
@@ -49,22 +49,38 @@ image::deploying-to-cloudhub-3dcbb.png[deploying-to-cloudhub-3dcbb]
 image::deploying-to-cloudhub-8524f.png[deploying-to-cloudhub-8524f]
 
 
-[NOTE]
---
+=== From SandBox
+
+
 If you created an application in a sandbox environment and tested it, you would eventually want to migrate it to production.
 
-To do so, create a new app in your production environment, then when picking the application file, instead of choosing a file, click *Get from sandbox*.
+To do so:
 
+. Logged into your Anypoint Platform account, go to your production environment
+. In the *Applications* tab, click the *Deploy Application* button
++
+image:deploying-to-your-own-servers-d84f7.png[]
+
+. Then when picking the application file, instead of uploading a new file, click *Get from sandbox*.
++
 image::deploying-to-cloudhub-d6f7a.png[]
 
-You can then choose between your sandbox environments, and select an application to deploy in production.
---
+. You can then choose between your sandbox environments, and select an application to deploy in production. Select an application and click *Apply*
+
+. Continue setting up your deployment as you would with any normal deployment
+
 
 ==== Limitations
 
 * Only a *CloudHub* Administrator can move applications between environments. 
 * To avoid domain name conflict, an application cannot exist in two environments at the same time. Alter the application's name slightly to deploy it to another environment.
-* You cannot move the same application into the same environment. CloudHub prevents you from duplicating applications in a single environment. If you wish to have the same, or similar applications in a single environment, modify one application's file to distinguish it from the original.
+* You cannot move an application into the same environment it's in already. Runtime Manager prevents you from duplicating applications in a single environment. If you wish to have the same, or similar applications in a single environment, modify one application's file to distinguish it from the original.
+
+
+
+
+
+
 
 
 === From Anypoint Studio
@@ -88,11 +104,22 @@ image:DeployAppFirstScreen.png[DeployAppFirstScreen] 
 [TIP]
 For an example of deploying to CloudHub directly from Anypoint Studio, see link:/runtime-manager/hello-world-on-cloudhub[Hello World on CloudHub].
 
+
+////
+=== From the Design Center
+
+link to Mozart
+
+
+////
+
+
+
 == Creating an Application Name
 
-Every application requires a unique application domain name. The application domain identifies your application in the Runtime Manager and also provides you with a public URL, `http://myapplicationdomain.cloudhub.io`, for accessing the application if it exposes any inbound endpoints.
+Every application requires a unique application domain name. The application domain identifies your application in the Runtime Manager and also provides you with a public URL, `+http://myapplicationdomain.cloudhub.io+`, for accessing the application if it exposes any inbound endpoints.
 
-In the *Deploy Application* dialog, enter a unique application name. The Application Name also becomes the `cloudhub.io` domain name that you use to access your application; for example the Application Name, `abcde` is accessible at `http://abcde.cloudhub.io`. Valid names contain alphanumeric characters and dashes, and contain at most 42 characters. If the name is valid, the Runtime Manager alerts you whether it is available or already reserved by another user.
+In the *Deploy Application* dialog, enter a unique application name. The Application Name also becomes the `cloudhub.io` domain name that you use to access your application; for example the Application Name, `abcde` is accessible at `+http://abcde.cloudhub.io+`. Valid names contain alphanumeric characters and dashes, and contain at most 42 characters. If the name is valid, the Runtime Manager alerts you whether it is available or already reserved by another user.
 
 image:DeployAppName.png[DeployAppName]
 
@@ -132,9 +159,21 @@ image:RuntimeVersion2.png[RuntimeVersion2]
 * To see what runtime version you set when you deployed your application, click the *Applications* tab and click your application. In the expansion view on the right, click *Manage Application*. Click *Settings* to see the deployment values.
 ====
 
+
+Once deployed and running, if any security patches, OS updates, or critical bug fixes are released for the selected runtime version, then you will be prompted about this change. You will be able to control exactly when each update is applied. If you take no action, updates will be applied automatically for you after 30 days to ensure your applications run with the latest security patches.
+
+image:deploying-to-cloudhub-update.png[]
+
+
 === Worker Sizing
 
 After you deploy your application, you can allocate an amount and a size for the *Worker size* of your application. On each application, workers are responsible for executing your application logic. 
+
+[TIP]
+--
+Only running applications count for workers usage. +
+`Stopped` applications do not consume vCore availability.
+--
 
 There are 5 different worker sizes to choose from, with the compute and memory capacities described in the following table:
 
@@ -171,8 +210,8 @@ When deploying an application with more than one worker, CloudHub automatically 
 
 If you have global deployment enabled on your account, you can change the *Region* to which your application deploys using the drop-down menu. Administrators can link:/runtime-manager/managing-cloudhub-specific-settings[set the default region] on the Organization tab in Account Settings, but that region can be adjusted here when the application is deployed, if necessary.
 
-* Note that applications deployed to Europe automatically have their domain updated to  `http://myapplicationdomain.eu.cloudhub.io`. 
-* Note that applications deployed to Asia / Pacific automatically have their domain updated to `http://myapplicationdomain.au.cloudhub.io.`
+* Note that applications deployed to Europe automatically have their domain updated to  `+http://myapplicationdomain.eu.cloudhub.io+`. 
+* Note that applications deployed to Asia / Pacific automatically have their domain updated to `+http://myapplicationdomain.au.cloudhub.io+`.
 
 
 === Automatic Restart
