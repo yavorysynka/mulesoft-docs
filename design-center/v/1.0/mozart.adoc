@@ -1,7 +1,7 @@
 = Mozart
 :keywords: mozart
 
-Mozart is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be though of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
+Mozart is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be thought of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
 
 Mozart allows you to build upon reusable assets, enabling anyone who needs to put together an integration to compose applications in a self-serve manner. They can combine both out-of-the-box components and those that have been created by integration specialists in your organization.
 
