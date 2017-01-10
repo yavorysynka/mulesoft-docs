@@ -1,11 +1,142 @@
 = Deploying
 :keywords: deploy, deploying, cloudhub, on premises, on premise
+:toc:
+:toc-title: Page Contents
 
-Mule standalone can run multiple applications. This means you can include the same name spaces within different applications and they neither collide nor share information.
 
-In effect, Mule is an app server. Mule checks for new apps (in the apps directory) and starts them.
+toc::[]
 
-Mule also restarts apps if it detects that the apps have changed, meaning you can drop a revised version of an existing, running application into the /apps directory, Mule stops the existing app and restarts using the new files. 
+In effect, Mule is an app server. A Mule standalone runtime instance (Mule server) can run multiple applications. This means you can include the same namespaces within different applications and they neither collide nor share information.
+
+Mule checks for new apps (in the `/apps` directory) and starts them.
+
+Mule also restarts apps if it detects that the apps have changed, meaning you can drop a revised version of an existing, running application into the `/apps` directory, Mule stops the existing app and restarts using the new files.
+
+
+== Application Deployment Strategies
+
+After you develop an integration application for use with Mule runtime, you should test and run it on an instance of Mule runtime. This Mule server is a runtime instance that could be on premises or in the cloud, managed through your Anypoint Platform's link:/runtime-manager[Runtime Manager] or by another MuleSoft tool, like the Mule Management Console.
+
+Your applications will work reliably on the version of the Mule runtime they were designed for, no matter the target deployment environment.
+
+There are several deployment options:
+
+* link:#deploy-standalone[Deploy to Standalone Mule Server]
+* link:#deploy-mule-server[Deploy to Mule Server using Runtime Manager]
+* link:#deploy-cloudhub[Deploy to CloudHub]
+* link:#anypoint-platform-on-prem[Deploy On-Prem]
+* link:#mule-server-mmc[Deploy to Mule Server using Mule Management Console (MMC)]
+
+
+[TIP]
+====
+Anypoint Studio includes an link:/getting-started/build-a-hello-world-application#deploying-the-project[embedded server] for convenient testing and debugging in the IDE. This option is a convenient means to troubleshoot your nascent application. When you specify *Run As* > *Mule Application*, Studio automatically builds and deploys your application to an embedded virtual Mule server running on your machine.
+
+Note that this is not intended to be a production server, as certain restrictions on uptime apply.
+====
+
+[[deploy-standalone]]
+=== Deploy to Standalone Mule Server
+
+//image:logo-server-active.png[mule-server]
+
+Deploy to a link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[standalone Mule server] – available as an _Enterprise_ or _Community_ product.
+
+The most direct method to launch and interact with a Mule runtime instance is the link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[command line] of the server you run Mule on.
+
+//image:infrastructure-standalone.png[standalone]
+
+Deploying a Studio-built Mule application in production on an Mule Enterprise server involves three steps:
+
+* link:/anypoint-studio/v/6/importing-and-exporting-in-studio#exporting-projects-from-studio[Export the application] from Studio.
+* link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[Launch] the Enterprise server.
+* link:/mule-user-guide/v/3.8/application-deployment[Deploy] the application onto the Enterprise server.
+
+[[deploy-mule-server]]
+=== Deploy to Mule Server using Runtime Manager
+
+//image:logo-hybrid-active.png[CloudHubLogo133high]
+
+Deploy an application using the link:/runtime-manager/[Runtime Manager] to a Mule link:/runtime-manager/managing-servers[server], or to several servers arranged as a "server group" or "cluster".
+
+The link:/runtime-manager/deploying-to-your-own-servers[Runtime Manager console] is a powerful alternative to the command line for deploying apps to your Mule runtime instances. The Runtime Manager enables grouping Mule servers into link:/runtime-manager/managing-servers#create-a-cluster[clusters] or link:/runtime-manager/managing-servers#create-a-server-group[server groups], to ensure improved stability for your deployments. After you deploy an application, Runtime Manager lets you monitor and <<Runtime Manager, manage>> your running applications and servers.
+
+[NOTE]
+To make a server visible to the Runtime Manager, you must first link:/runtime-manager/managing-servers#add-a-server[register it].
+
+//image:infrastructure-hybrid.png[hybrid]
+
+[[anypoint-platform-on-prem]]
+==== Deploy through Anypoint Platform On-Premises Edition
+
+
+//image:logo-server-active.png[mule-server]
+
+You can host an instance of the entire Anypoint Platform on your own local system, and manage your locally deployed applications through its Runtime Manager without ever exposing any of your information outside your datacenter.
+
+For instructions on how to install the necessary infrastructure, contact your sales representative.
+
+//image:infrastructure-onprem.png[onprem]
+
+////
+[TIP]
+If your IT infrastructure is built around the Pivotal Cloud Foundry model, you might be interested in   (...)
+////
+
+[[deploy-cloudhub]]
+=== Deploy to CloudHub using Runtime Manager
+
+//image:logo-cloud-active.png[CloudHubLogo133high]
+
+Deploy to link:/runtime-manager/cloudhub[CloudHub] via the link:/runtime-manager/[Runtime Manager], our integration Platform as a Service (iPaaS).
+
+When deploying your apps to the cloud, you can select different amounts and sizes of workers to scale up their processing capacity. You can also select the link:/runtime-manager/deploying-to-cloudhub#region[physical location] of your virtual machines.
+
+[NOTE]
+Virtual machines in the cloud are referred to as workers.
+
+////
+something about autoscaling when it comes out
+////
+
+//image:infrastructure-simple-cloud.png[cloud]
+
+Applications can be deployed to different link:/access-management/environments[environments] (such as _production_ or _QA_) to keep in line with your workflow.
+
+[TIP]
+You can also deploy applications you have developed in Anypoint Studio directly to CloudHub link:/runtime-manager/deploying-to-cloudhub#from-anypoint-studio[without leaving the Studio IDE].
+
+Additionally, you can use the link:/runtime-manager/anypoint-platform-cli[Anypoint Platform Command Line Interface] to manage your CloudHub infrastructure components such as:
+
+* Private networks where your workers are hosted (link:/runtime-manager/virtual-private-cloud[VPC])
+* Load balancer for the network
+* Firewall mapping rules to manage custom domains
+* Two-way SSL authentication with the option of using your own custom certificates
+
+
+
+[[mule-server-mmc]]
+=== Deploy to Mule Server using Mule Management Console
+
+//image:mmc.png[mmc,width=26]
+
+The link:/mule-management-console/v/3.8[Mule Management Console (MMC)] is a legacy tool for deployment and management of Mule runtime instances running locally.
+
+Using MMC you can group your Mule servers into clusters or server groups, ensuring greater stability for your deployments.
+
+[NOTE]
+MMC is pending full replacement by Runtime Manager, and hence will eventually be deprecated. There is a migration tool for moving your MMC deployments to Runtime Manager.
+
+//image:infrastructure-mmc.png[mmc]
+
+
+////
+link to MMC migrator missing, but it will be out soon, before this content is published
+////
+
+To learn about Mule runtime deployment scenarios using WebLogic, Tomcat, WebSphere, or JBoss see link:/mule-user-guide/v/3.8/deployment-scenarios[Deployment Scenarios] in the link:/mule-user-guide/v/3.8/deploying[Deploying] section.
+
+
 
 If Mule is embedded in another container, the link:/mule-management-console/v/3.7[Mule Management Console] cannot perform auto-discovery or server restarts.
 

@@ -8,56 +8,65 @@
 
 toc::[]
 
-== About Anypoint Platform
+[[what-is]]
+== What is Anypoint Platform?
 
-*Anypoint Platform* comprises a complete application and API development suite that you can use to create, integrate, model, build, and deploy services, applications and APIs. Use Anypoint Platform as a vehicle for continuous improvement for your applications and API ecosystem. Become familiar with the platform to build and transform any digital resource to meet your organizational goals quickly.
+*Anypoint Platform* comprises a complete application and API development suite that you can use to create, integrate, model, build, and deploy services, applications and APIs. Deploy your Mule integration applications and APIs to Anypoint Platform. The Anypoint Plaform is an end-to-end resource for digital connectivity, and allows you to iteratively improve on your strategy by exposing interfaces that allow you to modify assets and redeploy them. Become familiar with the platform to build and transform any digital resource to meet your organizational goals quickly.
 
 
-[NOTE]
-====
-The best way to learn is to dive in. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account] in order to access various platform tools on your local machine and from within your browser:
+== How to Get Started
 
-* link:/api-manager/[API Manager] - design, publish and manage APIs
+
+The best way to learn is to dive in. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account] online or use link:https://docs.mulesoft.com/anypoint-platform-on-premises/v/1.5.0/[Anypoint Platform On-Prem] to deploy to your own systems.
+
+If you are going to develop APIs or Mule applications to connect your digital assets, set up your workstation according to the link:/#dev-checklist[Anypoint Platform Developer Checklist].
+
+////
+
 * link:/runtime-manager/[Runtime Manager] - to manage Mule runtime instances, or link:/runtime-manager/cloudhub[Cloudhub] to deploy to MuleSoft's cloud
-* link:/getting-started/anypoint-exchange[Anypoint Exchange] - to find templates, resources and publish private repositories
 * link:/access-management/[Access Management] - manage access to Anypoint Platform for your organization
 * link:/anypoint-data-gateway/[Data Gateway] - quickly load data from systems such as Salesforce
 * link:/anypoint-mq/[Anypoint MQ] - messaging service to handle advanced scenarios
 * link:/anypoint-b2b/anypoint-partner-manager[Partner Manager] - to manage B2B transactions and tracking data
-
-Design integration applications, and deploy them anywhere. Find out how to work with link:/mule-user-guide/v/3.8/downloading-and-starting-mule-esb[Mule runtime] and link:/anypoint-studio/v/6/download-and-launch-anypoint-studio[Anypoint Studio] .
-====
+////
 
 
 //image:anypoint-platform-screen.png[anypoint-platform-screen]
 
 [[getting-started-dev]]
-== Getting Started Checklist for Development
+=== Getting Started Checklist for Development
 
+After obtaining access to the Anypoint Platform, set up your workstation for Mule application development using Studio to develop Mule apps or APIs. Once you create an integration application on Studio, test and run it on an embedded Mule runtime server.
 
-Set up a workstation for development of Mule applications or APIs.
-
-. Sign up for the Anypoint Platform
-. Install Anypoint Studio
-. link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb#referencing-mulesoft-s-enterprise-repositories[Configure Maven repository].
-. Try the application design and development quickstarts in the link:/getting-started[Getting Started] section, or dig into some the tools right away with link:/api-manager/designing-your-api#accessing-api-designer[API Designer], accessed from link:/api-manager/[API Manager] after logging into Anypoint Platform.
+. Install Anypoint Studio, which comes with Mule runtime.
++
+[NOTE]
+link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb[Configure Maven] to properly manage dependencies used in your Mule apps.
++
+. If you are an API developer, ensure you access link:/api-manager/[API Manager] from your platform instance to design, publish and manage APIs
+. Check out available resources to use in your organization from link:/getting-started/anypoint-exchange[Anypoint Exchange], where you can find templates, resources and publish private repositories.
 
 [NOTE]
-With our programming language-agnostic platform, you can develop iteratively and quickly sync projects shared between teams.
+With the platform, you can sync Mule projects, APIs and assets between teams.
+
 
 [[getting-started-deploy]]
-== Getting Started Checklist for Deployment
+=== Getting Started Checklist for Deployment
 
-Deploy and manage Mule applications and APIs according to the available deployment models:
+After you perform tests on Mule applications and APIs, deploy them locally or to a cloud server.
 
-* Anypoint Platform On-Prem with MMC
-* Anypoint Platform On-Prem Docker-ized
-* Hybrid Model (Mule runtime on-prem, managed with ARM, deployed to CloudHub
+. Choose a deployment model:
+- Mule runtime on-prem (installed in the company's datacenter)
+- Mule runtime in MuleSoft's cloud: CloudHub.
+- Mule runtime in other cloud products, e.g. AWS, Digital Ocean, etc
+- Mixed ("hybrid" scenario)
+. Choose a management tool for your apps and APIs
+- Mule runtime managed through the Runtime Manager, which is part of the Anypoint Platform
+- Mule runtime managed with Mule Management Console, a legacy deployment product
+- Mule runtime managed and/or monitored by third party applications (for example: Nagios, Zabbix)
 
-. Sign up for the Anypoint Platform or download the on-prem edition via the Support portal.
-. Configure MMC or Runtime Manager
-. link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb#referencing-mulesoft-s-enterprise-repositories[Configure Maven repository].
-
+[NOTE]
+Use Runtime Manager to deploy a Mule app to CloudHub.
 
 
 [[design-develop-apis]]
@@ -65,7 +74,7 @@ Deploy and manage Mule applications and APIs according to the available deployme
 
 To elaborate on what design and development means for business transformation, consider the data you want to provide, govern, transform, and expose at various levels of your organization, both internally and for customers.
 
-After planning your development strategy, you are ready to begin designing APIs to support each piece of the connectivity puzzle for your organization. We recommend using link:http://raml.org/[RAML], the API-modeling language, to describe your APIs. RAML allows you to define the methods and resources of a REST-ful API in a syntax similar to that of *YAML*. The Anypoint Platform even uses RAML to auto-generate interactive API documentation for each API via its own API Portal, and Anypoint Studio uses RAML scaffolded Mule flows.
+After planning your development strategy, you are ready to begin designing APIs to support each piece of the connectivity puzzle for your organization. We recommend using link:http://raml.org/[RAML], the API-modeling language, to describe your APIs. RAML allows you to define the methods and resources of a REST-ful API in a syntax similar to that of *YAML*. The Anypoint Platform even uses RAML to auto-generate interactive API documentation for each API via its own API Portal, and Anypoint Studio uses RAML scaffolded Mule flows to implement APIs.
 
 Use link:/api-manager/designing-your-api#accessing-api-designer[API Designer] from within your browser for design tasks, or link:/apikit/[APIkit] from Studio, which is commonly leveraged to implement an API in a Mule application. You can manage APIs defined in any format, by proxy for example. We promote API development following an API model where APIs are segmented into three logical layers of your organization:
 
@@ -78,9 +87,7 @@ See how API architecture goes hand in hand with link:#app-network[Building an Ap
 
 == Developing Mule Applications
 
-To ramp up quickly with link:https://www.mulesoft.com/resources/esb/what-mule-esb[Mule runtime], a flexible ESB that lets developers connect services or applications together quickly, start reading the link:/mule-user-guide/v/3.8[Mule Runtime documentation], and familiarize yourself with link:/anypoint-studio/v/6/[Anypoint Studio], an IDE for integration applications. Use Studio to add or switch out modular configurable building blocks in your application, then debug and test. Studio is mainly a visual design tool, and does not require in-depth knowledge of Mule runtime, though you can configure many app and runtime attributes from within the IDE.
-
-Mule applications comprise one or more user-defined *flows* whose building blocks each represent an *event* in the flow, defining how the Mule message is processed for the next stage in the flow. The building blocks of these flows have configurable fields that define how information is received, transformed and returned, like most software program functions would. However, you don’t have to code these elements yourself - they are accessible from a palette, and you can configure them from the user interface, which offers resources and tooltips to help you design how to route and process data.
+To ramp up quickly with link:https://www.mulesoft.com/resources/esb/what-mule-esb[Mule runtime], a flexible ESB to connect services or applications together quickly, read the link:/mule-user-guide/v/3.8[Mule runtime documentation]. Familiarize yourself with link:/anypoint-studio/v/6/[Anypoint Studio], an IDE. Studio is mainly a visual design tool, and does not require in-depth knowledge of Mule runtime. However, you can configure many Mule app and runtime attributes from within the IDE.
 
 [NOTE]
 Start setting up your link:/anypoint-studio/v/6/setting-up-your-development-environment[Anypoint Studio Development Environment].
@@ -119,127 +126,6 @@ Developing an application network is a process that involves redefining interact
 MuleSoft provides the tools needed to create the APIs and applications, which are the nodes in this network that mediate between your systems and SaaS applications. Read the link:https://www.mulesoft.com/lp/whitepaper/api/application-network[Application Network whitepaper].
 
 The Anypoint Platform offers you a rich set of tools to deploy, manage, and operate your integration applications you have developed to run on Mule runtime. The platform enables you to cover many use cases for businesses. You can run your apps on servers in the *cloud*, *on-premises*, or some *hybridized* version. You can manage and monitor legacy or platform APIs and manage API consumption via auto-generated proxy.
-
-== Application Deployment Strategies
-
-After you design and develop an integration application for use with Mule runtime, then what? How and where do you make the application come to life so you can see it in action?
-
-Anypoint Platform offers you the flexibility to deploy an application to a cloud environment, server or group of servers. These servers could be on premises or in the cloud, managed by your instance of Anypoint Platform or a Mule runtime management tool like Runtime Manager. Your applications will work reliably on the version of the Mule runtime they were designed for, no matter the target deployment environment.
-
-The Anypoint Platform offers several deployment options:
-
-* link:#deploy-standalone[Deploy to Standalone Mule Server]
-* link:#deploy-mule-server[Deploy to Mule Server using Runtime Manager]
-* link:#deploy-cloudhub[Deploy to CloudHub]
-* link:#anypoint-platform-on-prem[Deploy On-Prem]
-* link:#mule-server-mmc[Deploy to Mule Server using Mule Management Console (MMC)]
-
-
-[TIP]
-====
-Anypoint Studio includes an link:/getting-started/build-a-hello-world-application#deploying-the-project[embedded server] for convenient testing and debugging in the IDE. This option is a convenient means to troubleshoot your nascent application. When you specify *Run As* > *Mule Application*, Studio automatically builds and deploys your application to an embedded virtual Mule server running on your machine.
-
-Note that this is not intended to be a production server, as certain restrictions on uptime apply.
-====
-
-[[deploy-standalone]]
-=== Deploy to Standalone Mule Server
-
-//image:logo-server-active.png[mule-server]
-
-Deploy to a link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[standalone Mule server] – available as an _Enterprise_ or _Community_ product.
-
-The most direct method to launch and interact with a Mule runtime instance is the link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[command line] of the server you run Mule on.
-
-//image:infrastructure-standalone.png[standalone]
-
-Deploying a Studio-built Mule application in production on an Mule Enterprise server involves three steps:
-
-* link:/anypoint-studio/v/6/importing-and-exporting-in-studio#exporting-projects-from-studio[Export the application] from Studio.
-* link:/mule-user-guide/v/3.8/starting-and-stopping-mule-esb[Launch] the Enterprise server.
-* link:/mule-user-guide/v/3.8/application-deployment[Deploy] the application onto the Enterprise server.
-
-[[deploy-mule-server]]
-=== Deploy to Mule Server using Runtime Manager
-
-//image:logo-hybrid-active.png[CloudHubLogo133high]
-
-Deploy an application using the link:/runtime-manager/[Runtime Manager] to a Mule link:/runtime-manager/managing-servers[server], or to several servers arranged as a "server group" or "cluster".
-
-The link:/runtime-manager/deploying-to-your-own-servers[Runtime Manager console] is a powerful alternative to the command line for deploying apps to your Mule runtime instances. The Runtime Manager enables grouping Mule servers into link:/runtime-manager/managing-servers#create-a-cluster[clusters] or link:/runtime-manager/managing-servers#create-a-server-group[server groups], to ensure improved stability for your deployments. After you deploy an application, Runtime Manager lets you monitor and <<Runtime Manager, manage>> your running applications and servers.
-
-[NOTE]
-To make a server visible to the Runtime Manager, you must first link:/runtime-manager/managing-servers#add-a-server[register it].
-
-//image:infrastructure-hybrid.png[hybrid]
-
-[[deploy-cloudhub]]
-=== Deploy to CloudHub using Runtime Manager
-
-//image:logo-cloud-active.png[CloudHubLogo133high]
-
-Deploy to link:/runtime-manager/cloudhub[CloudHub] via the link:/runtime-manager/[Runtime Manager], our integration Platform as a Service (iPaaS).
-
-When deploying your apps to the cloud, you can select different amounts and sizes of workers to scale up their processing capacity. You can also select the link:/runtime-manager/deploying-to-cloudhub#region[physical location] of your virtual machines.
-
-[NOTE]
-Virtual machines in the cloud are referred to as workers.
-
-////
-something about autoscaling when it comes out
-////
-
-//image:infrastructure-simple-cloud.png[cloud]
-
-Applications can be deployed to different link:/access-management/environments[environments] (such as _production_ or _QA_) to keep in line with your workflow.
-
-[TIP]
-You can also deploy applications you have developed in Anypoint Studio directly to CloudHub link:/runtime-manager/deploying-to-cloudhub#from-anypoint-studio[without leaving the Studio IDE].
-
-Additionally, you can use the link:/runtime-manager/anypoint-platform-cli[Anypoint Platform Command Line Interface] to manage your CloudHub infrastructure components such as:
-
-* Private networks where your workers are hosted (link:/runtime-manager/virtual-private-cloud[VPC])
-* Load balancer for the network
-* Firewall mapping rules to manage custom domains
-* Two-way SSL authentication with the option of using your own custom certificates
-
-[[anypoint-platform-on-prem]]
-=== Anypoint Platform On-Premises Edition
-
-[NOTE]
-This alternative is currently in *Limited Access*.
-
-//image:logo-server-active.png[mule-server]
-
-You can host an instance of the entire Anypoint Platform on your own local system, and manage your locally deployed applications through it without ever exposing any of your information outside your datacenter.
-
-For instructions on how to install the necessary infrastructure, contact your sales representative.
-
-//image:infrastructure-onprem.png[onprem]
-
-////
-[TIP]
-If your IT infrastructure is built around the Pivotal Cloud Foundry model, you might be interested in   (...)
-////
-
-[[mule-server-mmc]]
-=== Deploy to Mule Server using Mule Management Console
-
-//image:mmc.png[mmc,width=26]
-
-The link:/mule-management-console/v/3.8[Mule Management Console (MMC)] is another tool for deployment and management of Mule runtime instances running on local servers.
-
-Using MMC you can group your Mule servers into clusters or server groups, ensuring greater stability for your deployments.
-
-[NOTE]
-MMC is pending full replacement by Runtime Manager, and hence will eventually be deprecated. There is a migration tool for moving your MMC deployments to Runtime Manager.
-
-//image:infrastructure-mmc.png[mmc]
-
-
-////
-link to MMC migrator missing, but it will be out soon, before this content is published
-////
 
 
 
@@ -325,9 +211,9 @@ link:/mule-management-console/v/3.8/[MMC] provides robust runtime management cap
 [NOTE]
 MMC is pending full replacement by Runtime Manager, and hence will eventually be deprecated. There is a migration tool for migrating your MMC deployments to Runtime Manager.
 
-== Engaging Users and Developer Communities
+== Engage User and Developer Communities
 
-After your application or API has been designed, deployed, and managed to guarantee best performance, it is time for you to _engage_ developers and users by making your content available to them, to amplify the utility of your application or API.
+After your application or API has been designed, deployed, and managed to guarantee best performance, it is time for you to _engage_ your developers and users by making your content available to them, to amplify the utility of your application or API in your organization.
 
 === Anypoint Exchange
 
