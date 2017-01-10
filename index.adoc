@@ -31,13 +31,34 @@ Design integration applications, and deploy them anywhere. Find out how to work 
 
 //image:anypoint-platform-screen.png[anypoint-platform-screen]
 
-[[getting-started]]
-== Getting Started
+[[getting-started-dev]]
+== Getting Started Checklist for Development
 
-Try the application design and development quickstarts in the link:/getting-started[Getting Started] section, or dig into some the tools right away with link:/api-manager/designing-your-api#accessing-api-designer[API Designer], accessed from link:/api-manager/[API Manager].
+
+Set up a workstation for development of Mule applications or APIs.
+
+. Sign up for the Anypoint Platform
+. Install Anypoint Studio
+. link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb#referencing-mulesoft-s-enterprise-repositories[Configure Maven repository].
+. Try the application design and development quickstarts in the link:/getting-started[Getting Started] section, or dig into some the tools right away with link:/api-manager/designing-your-api#accessing-api-designer[API Designer], accessed from link:/api-manager/[API Manager] after logging into Anypoint Platform.
 
 [NOTE]
 With our programming language-agnostic platform, you can develop iteratively and quickly sync projects shared between teams.
+
+[[getting-started-deploy]]
+== Getting Started Checklist for Deployment
+
+Deploy and manage Mule applications and APIs according to the available deployment models:
+
+* Anypoint Platform On-Prem with MMC
+* Anypoint Platform On-Prem Docker-ized
+* Hybrid Model (Mule runtime on-prem, managed with ARM, deployed to CloudHub
+
+. Sign up for the Anypoint Platform or download the on-prem edition via the Support portal.
+. Configure MMC or Runtime Manager
+. link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb#referencing-mulesoft-s-enterprise-repositories[Configure Maven repository].
+
+
 
 [[design-develop-apis]]
 == Designing and Developing APIs
