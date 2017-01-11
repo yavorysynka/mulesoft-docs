@@ -137,7 +137,7 @@ You can run your application and test suite from within the IDE using the embedd
 
 
 
-== Management and Monitoring Strategies
+== Management and Monitoring Tools
 
 After deploying your integration application, you can manage it, depending on how your application is deployed.
 
@@ -199,7 +199,7 @@ Alternatively, you may want to use Anypoint Platform to manage an API that was n
 
 // this sub section might be redundant, as it's sort of explained already
 
-=== Access Management
+=== Anypoint Platform Access Management
 
 //image:settings-logo.png[access management,width=26]
 
@@ -240,7 +240,7 @@ This allows users to explore and test examples for the resources in your API, ex
 You can make the API Notebook available to everyone and even save it as a "gist" in your GitHub account, making it versionable, forkable, shareable, and embeddable anywhere as markdown text.
 
 
-== Make a Contribution to the Documentation
+== Contribute to the Documentation
 
 MuleSoft welcomes contributions to our documentation from the community. To make a contribution:
 
