@@ -2,7 +2,7 @@
 :keywords: platform, arm, rest, soa, saas, api, proxy, design, develop, anypoint platform, studio, mule, devkit, studio, connectors, auth, exchange, api design, apikit, raml, application network, anypoint, arm, rest, soa, saas, api, proxy
 :toc: macro
 :toc-title:
-:toclevels: 2
+:toclevels: 3
 
 
 
@@ -22,13 +22,16 @@ Consider API-led connectivity when connecting assets. APIs allow the developer t
 == How to Get Started
 
 
-The best way to learn is to access the cloud version of Anypoint Platform.
+The best way to learn is to access the cloud version of Anypoint Platform and walk through the tutorials in the link:/getting-started[Getting Started] section.
 
-link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account] online or use link:https://docs.mulesoft.com/anypoint-platform-on-premises/v/1.5.0/[Anypoint Platform On-Prem] to deploy the platform to your infrastructure on-premises.
+. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account].
+. If you are going to work with Mule applications and APIs to connect your digital assets, set up your workstation according to the link:/#dev-checklist[Getting Started Checklist for Developers].
+. If you are going to manage deployments see the link:/#getting-started-deploy[Getting Started Checklist for Deployment]
+. To set up platform permissions or monitor deployed assets see the link:#getting-started-manage[Getting Started Checklist for Administration].
 
-If you are going to develop APIs or Mule applications to connect your digital assets, set up your workstation according to the link:/#dev-checklist[Getting Started Developer Checklist].
 
-If you are going to manage deployments and administration, go through the link:/#getting-started-deploy[Getting Started Deployment Checklist]
+[NOTE]
+link:https://docs.mulesoft.com/anypoint-platform-on-premises/v/1.5.0/[Anypoint Platform On-Prem] is available if you want to deploy the platform to your infrastructure on-premises.
 
 ////
 
@@ -43,11 +46,11 @@ If you are going to manage deployments and administration, go through the link:/
 //image:anypoint-platform-screen.png[anypoint-platform-screen]
 
 [[getting-started-dev]]
-=== Getting Started Checklist for Development
+=== Getting Started Checklist for Developers
 
 After obtaining access to the Anypoint Platform, set up your workstation for Mule application development using Studio to develop Mule apps or APIs. Once you create an integration application on Studio, test and run it on an embedded Mule runtime server.
 
-. Install Anypoint Studio, which comes with Mule runtime.
+. Install Anypoint Studio, which comes with Mule runtime. If you only want to work with APIs, but not Mule apps, you do not need Studio.
 +
 [NOTE]
 link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb[Configure Maven] to properly manage dependencies used in your Mule apps.
@@ -56,40 +59,56 @@ link:https://docs.mulesoft.com/mule-user-guide/v/3.8/configuring-maven-to-work-w
 . Check out available resources to use in your organization from link:/getting-started/anypoint-exchange[Anypoint Exchange], where you can find templates, resources and publish private repositories.
 
 [NOTE]
-With the platform, you can sync Mule projects, APIs and assets between teams.
+You can use a variety of tools to sync Mule projects, APIs and assets between teams.
 
 
 [[getting-started-deploy]]
 === Getting Started Checklist for Deployment
 
-After you perform tests on Mule applications and APIs, deploy them locally or to a cloud server.
+After Mule applications and APIs have been tested, deploy them locally or to a cloud server.
 
 . Choose a deployment model:
-- Mule runtime on-prem (installed in the company's datacenter)
-- Mule runtime in MuleSoft's cloud: CloudHub.
-- Mule runtime in other cloud products, e.g. AWS, Digital Ocean, etc
-- Mixed ("hybrid" scenario)
-. Choose a management tool for your apps and APIs
-- Mule runtime managed through the Runtime Manager, which is part of the Anypoint Platform
-- Mule runtime managed with Mule Management Console, a legacy deployment product
+- *Mule runtime on-prem* (installed in the company's datacenter)
+- *CloudHub* - Mule runtime in MuleSoft's cloud
+- *Other Cloud system* - Mule runtime can be managed through other cloud products, e.g. AWS, Digital Ocean, etc
+- *Mixed* ("hybrid" scenario)
+
+[[getting-started-manage]]
+=== Getting Started Checklist for Administration
+
+. Choose a management tool for your apps
+- link:/runtime-manager[Runtime Manager], which is part of the Anypoint Platform
+[NOTE]
+Also use Runtime Manager to deploy a Mule app to CloudHub.
+- link:/mule-management-console/v/3.8[Mule Management Console], a legacy deployment product
 - Mule runtime managed and/or monitored by third party applications (for example: Nagios, Zabbix)
+. Manage APIs with link:/api-manager[API Manager]
+. Configure access to Anypoint Platform through the link:/access-management[Access Management UI]
 
 [NOTE]
-Use Runtime Manager to deploy a Mule app to CloudHub.
+link:/access-management/external-identity[Set up external identities] to manage users and clients using your organization's external federated identity system.
 
 [[app-network]]
-== Building an Application Network
+== How to Build an Application Network
 
-Developing an application network is a process that involves redefining interactions with existing digital resources by creating APIs at different levels of the enterprise, from the backend systems to the user experience, as explained in link:#design-develop-apis[Desiging and Developing APIs], allowing you to abstract away complexity at different organizational tiers. These APIs can be recomposed or changed out as business demands change.
+APIs and applications are the nodes in a network that mediates between your backend/cloud systems and SaaS applications. Read the link:https://www.mulesoft.com/lp/whitepaper/api/application-network[Application Network whitepaper].
 
-MuleSoft provides the tools needed to create the APIs and applications, which are the nodes in this network that mediate between your systems and SaaS applications. Read the link:https://www.mulesoft.com/lp/whitepaper/api/application-network[Application Network whitepaper].
+Building an application network is a process that involves:
 
-The Anypoint Platform offers you a rich set of tools to deploy, manage, and operate your integration applications you have developed to run on Mule runtime. The platform enables you to cover many use cases for businesses. You can run your apps on servers in the *cloud*, *on-premises*, or some *hybridized* version. You can manage and monitor legacy or platform APIs and manage API consumption via auto-generated proxy.
+. *Redefining interactions* with existing digital resources
+. *Creating APIs* at different levels of the enterprise to proxy and secure access to the resources, from the backend systems to the user experience, allowing you to abstract complexity at different organizational tiers.
+. *Composing Mule applications* to consume the APIs
+. *Manage your network* of connected assets using Anypoint Platform
+
+[NOTE]
+APIs and apps can be recomposed or changed out as business demands change.
+
+You can run your apps on servers in the *cloud*, *on-premises*, or some *hybridized* version. Manage and monitor legacy or platform APIs. Manage API consumption via auto-generated proxy.
 
 [[design-develop-apis]]
-=== Designing and Developing APIs
+=== Design, Deploy and Implement APIs
 
-To elaborate on what design and development means for business transformation, consider the data you want to provide, govern, transform, and expose at various levels of your organization, both internally and for customers.
+Consider the action word that defines the interaction between two systems or applications. Define these different actions in APIs. Use a proxy application to control access to it.
 
 After planning your development strategy, you are ready to begin designing APIs to support each piece of the connectivity puzzle for your organization. We recommend using link:http://raml.org/[RAML], the API-modeling language, to describe your APIs. RAML allows you to define the methods and resources of a REST-ful API in a syntax similar to that of *YAML*. The Anypoint Platform even uses RAML to auto-generate interactive API documentation for each API via its own API Portal, and Anypoint Studio uses RAML scaffolded Mule flows to implement APIs.
 
@@ -99,10 +118,43 @@ Use link:/api-manager/designing-your-api#accessing-api-designer[API Designer] fr
 * *Process APIs* - decouple data transformation from backend systems and other processes
 * *Experience APIs* - collates data to provide the presentation layer for end user, internal or external to your organization
 
-[TIP]
-See how API architecture goes hand in hand with link:#app-network[Building an Application Network]
 
-=== Developing Mule Applications
+=== Publish an API in an API Portal
+
+After deploying an API, use API Portals to publicize the API and attract a user community. Create a multi-page portal for users to consume your public APIs and find assets, such as examples and policies, and set up users to access your private APIs. From the portal editing environment, include an API Notebook to convey technical workflows, for example, how to make an authenticated call to your RAML-based API. Include images, attachments, and an API Console for simulating calls to your RAML-based API. Engage the community through interaction with the API to solicit feedback and contributions. 
+
+The best way to present your API to users is through the link:/api-manager/creating-an-api-notebook[API Notebook], a web-based, persistent, JavaScript-supported workspace that can generate an API client from a RAML API definition.
+
+This allows users to explore and test examples for the resources in your API, executing authenticated live calls to an API on a real server or on an empty API interface.
+
+You can make the API Notebook available to everyone and even save it as a "gist" in your GitHub account, making it versionable, forkable, shareable, and embeddable anywhere as markdown text.
+
+
+=== Manage APIs with API Manager
+
+//image:api-logo.png[AnypointAPI_manager,width=26]
+
+link:/api-manager[API Manager], formerly known as *Anypoint Platform for APIs*, is an API and service registry and governance platform. Built from the ground up to support cloud and hybrid use cases, the platform governs all of your service and API assets, whether internal or external, behind a firewall or in the cloud, all via one platform. Place a proxy in front of your application to apply traffic policies, view usage metrics and more.
+
+You can either register a Mule application by imbuing it with link:/api-manager/api-auto-discovery[auto-discovery parameters], or taking an existing legacy API and triggering creation of a Mule proxy to govern and monitor the API. Either case results in registration of your API with your API Manager.
+
+Once an API is registered, you can easily link:/api-manager/applying-custom-policies[apply governance policies] to it via the web UI, such as *throttling* or *API whitelisting*. Apply such policies after providing parameter values, and then simply by clicking the *Activate* button. You can also generate your own custom policies if you require something that isn't covered by the lengthy list of pre-built policies.
+
+With your API registered, Anypoint Platform will start link:/analytics/analytics-chart[tracking analytics] about API usage and performance.
+
+At that point you could create an link:/api-manager/engaging-users-of-your-api[API Portal], where users of your API can browse interactive API documentation that is automatically generated from your API's RAML definition file. You can expose other content from this API Portal as well.
+
+*Manage a Legacy API*
+
+Alternatively, you may want to use Anypoint Platform to manage an API that was not developed using MuleSoft software. In that case, you can use the API Manager to deploy an auto-generated proxy. Through this proxy, Anypoint Platform can apply policies and obtain analytics information.
+
+[TIP]
+The platform supports maintenance of multiple versions of an API, each with its independent set of policies, analytics and portal.
+
+
+
+
+=== Develop Mule Applications
 
 To ramp up quickly with link:https://www.mulesoft.com/resources/esb/what-mule-esb[Mule runtime], a flexible ESB to connect services or applications together quickly, read the link:/mule-user-guide/v/3.8[Mule runtime documentation]. Familiarize yourself with link:/anypoint-studio/v/6/[Anypoint Studio], an IDE. Studio is mainly a visual design tool, and does not require in-depth knowledge of Mule runtime. However, you can configure many Mule app and runtime attributes from within the IDE.
 
@@ -136,25 +188,17 @@ Get quality metrics for your development by running link:/munit/v/1.2.0/munit-ma
 You can run your application and test suite from within the IDE using the embedded *Mule runtime*, or deploy your application to production (or a development environment) in the cloud on *CloudHub*, also without having to leave the IDE.
 
 
-
-== Management and Monitoring Tools
-
-After deploying your integration application, you can manage it, depending on how your application is deployed.
-
-Several tools are available for you to monitor your application's performance, and subsequently debug any issues that arise. These include link:/runtime-manager/alerts-on-runtime-manager[automated alerts], interactive dashboards with data at the server and application level, and link:/runtime-manager/viewing-log-data[event logs].
-
-
-=== Runtime Manager
+=== Deploy and Manage Mule Apps
 
 //image:runtime-manager-logo.png[CloudHubLogo133high,width=26]
 
-link:/runtime-manager/[Runtime Manager] provides multiple tools to link:/runtime-manager/managing-deployed-applications[Manage] and link:/runtime-manager/monitoring-applications[Monitor] your applications and, for those running on-prem, the servers they run on. Runtime Manager provides a single "glass pane" through which you can view all activity relevant to your running Mule applications, regardless of deployment scenario (cloud/on-prem).
+link:/runtime-manager/[Runtime Manager] provides multiple tools to link:/runtime-manager/managing-deployed-applications[Manage] and link:/runtime-manager/monitoring-applications[Monitor] your running applications. Runtime Manager provides a single "glass pane" through which you can view all activity relevant to your running Mule applications, regardless of deployment scenario (cloud/on-prem).
 
-Built on top of Mule, Runtime Manager allows you to integrate and orchestrate application activity, data sources, and services across on-prem systems and the cloud.
+Runtime Manager allows you to integrate and orchestrate application activity, data sources, and services on-prem and in the cloud.
 
-Runtime Manager exposes important information about your live applications and the servers they are deployed to in real time using:
+Runtime Manager exposes important information about your live applications:
 
-* link:/runtime-manager/alerts-on-runtime-manager[E-mail alerts] triggered by customizable events
+* link:/runtime-manager/alerts-on-runtime-manager[E-mail alerts]
 * link:/runtime-manager/notifications-on-runtime-manager[In-platform event notifications]
 * link:/runtime-manager/monitoring-dashboards[Monitoring dashboards] that display performance metrics of both applications and servers
 * Transaction-level detail through the link:/runtime-manager/insight[Insights page]
@@ -170,45 +214,13 @@ Additionally, if your application is deployed to the cloud, you can link:/runtim
 * link:/runtime-manager/virtual-private-cloud[Virtual Private Cloud]
 
 
-
-
 [TIP]
 To better understand how options differ between applications deployed to CloudHub and those deployed on-premises, see link:/runtime-manager/cloudhub-and-mule[CloudHub and Mule].
 
 
-=== API Manager
-
-//image:api-logo.png[AnypointAPI_manager,width=26]
-
-link:/api-manager[API Manager], formerly known as *Anypoint Platform for APIs*, is an API and service registry and governance platform. Built from the ground up to support cloud and hybrid use cases, the platform governs all of your service and API assets, whether internal or external, behind a firewall or in the cloud, all via one platform. Place a proxy in front of your application to apply traffic policies, view usage metrics and more.
-
-You can either register a Mule application by imbuing it with link:/api-manager/api-auto-discovery[auto-discovery parameters], or taking an existing legacy API and triggering creation of a Mule proxy to govern and monitor the API. Either case results in registration of your API with your API Manager.
-
-Once an API is registered, you can easily link:/api-manager/applying-custom-policies[apply governance policies] to it via the web UI, such as *throttling* or *API whitelisting*. Apply such policies after providing parameter values, and then simply by clicking the *Activate* button. You can also generate your own custom policies if you require something that isn't covered by the lengthy list of pre-built policies.
-
-With your API registered, Anypoint Platform will start link:/analytics/analytics-chart[tracking analytics] about API usage and performance.
-
-At that point you could create an link:/api-manager/engaging-users-of-your-api[API Portal], where users of your API can browse interactive API documentation that is automatically generated from your API's RAML definition file. You can expose other content from this API Portal as well.
-
-[TIP]
-The platform supports maintenance of multiple versions of an API, each with its independent set of policies, analytics and portal.
-
-==== Managing a Legacy API
-
-Alternatively, you may want to use Anypoint Platform to manage an API that was not developed using MuleSoft software. In that case, you can use the <<API Manager>> to deploy an auto-generated proxy. Through this proxy, Anypoint Platform can apply policies and obtain analytics information.
-
 // this sub section might be redundant, as it's sort of explained already
 
-=== Anypoint Platform Access Management
-
-//image:settings-logo.png[access management,width=26]
-
-As an administrator of your organization using the *Access Management* tool, you can manage user access and clearance level for your organization, its business groups, as well as access to the rest of its Anypoint Platform tools.
-//wasn't totally clear on the above, esp access to AP Platform
-
-Create custom roles for users of Runtime Manager and grant custom permissions to control activities among teams that otherwise share the same access privileges. link:/access-management/external-identity[Set up external identities] to manage users and clients using your organization's external federated identity system.
-
-
+////
 === Mule Management Console (MMC)
 
 //image:mmc.png[mmc,width=26]
@@ -218,26 +230,12 @@ link:/mule-management-console/v/3.8/[MMC] provides robust runtime management cap
 
 [NOTE]
 MMC is pending full replacement by Runtime Manager, and hence will eventually be deprecated. There is a migration tool for migrating your MMC deployments to Runtime Manager.
+////
 
-== Tools for User and Developer Communities
 
-After your application or API has been designed, deployed, and managed to guarantee best performance, it is time for you to _engage_ your developers and users by making this content available to them, to amplify the utility of your application or API in your organization.
+== How to Use Anypoint Exchange
 
-=== Anypoint Exchange
-
-link:/getting-started/anypoint-exchange[Anypoint Exchange] lets you create organization-specific repositories called _private exchanges_ where you can share templates, connectors, examples, RAMLs, and WSDLs throughout your organization. You can also find  artifacts published by MuleSoft on the public link:https://www.mulesoft.com/exchange#!/[Exchange] site. Whether private or public, Exchange lets you create pages for each item with explanation text, videos of how to use the artifact, and links to documentation.
-
-=== API Portals
-
-After deploying an API, use API Portals to publicize the API and attract a user community. Create a multi-page portal for users to consume your public APIs and find assets, such as examples and policies, and set up users to access your private APIs. From the portal editing environment, include an API Notebook to convey technical workflows, for example, how to make an authenticated call to your RAML-based API. Include images, attachments, and an API Console for simulating calls to your RAML-based API. Engage the community through interaction with the API to solicit feedback and contributions. 
-
-=== API Notebook
-
-The best way to present your API to users is through the link:/api-manager/creating-an-api-notebook[API Notebook], a web-based, persistent, JavaScript-supported workspace that can generate an API client from a RAML API definition.
-
-This allows users to explore and test examples for the resources in your API, executing authenticated live calls to an API on a real server or on an empty API interface.
-
-You can make the API Notebook available to everyone and even save it as a "gist" in your GitHub account, making it versionable, forkable, shareable, and embeddable anywhere as markdown text.
+link:/getting-started/anypoint-exchange[Anypoint Exchange] is a public repository of Anypoint Platform resources but you can create organization-specific repositories called _private exchanges_ to share templates, connectors, examples, RAMLs, and WSDLs throughout your organization.  Whether private or public, Exchange lets you create pages for each item with explanation text, videos of how to use the artifact, and links to documentation. Share these resources to engage your developer community and catalyze innovation.
 
 
 == Contribute to the Documentation
