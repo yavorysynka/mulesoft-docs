@@ -1,17 +1,18 @@
-= Mozart
+= Flow Designer
 :keywords: mozart
 
-Mozart is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be thought of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, Mozart allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
+The flow designer is one of the tools in the link:/design-center[Design Center]. It is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be thought of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, the flow designer allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
 
-Mozart allows you to build upon reusable assets, enabling anyone who needs to put together an integration to compose applications in a self-serve manner. They can combine both out-of-the-box components and those that have been created by integration specialists in your organization.
+The flow designer allows you to build upon reusable assets, enabling anyone who needs to put together an integration to compose applications in a self-serve manner. They can combine both out-of-the-box components and those that have been created by integration specialists in your organization.
 
-The Mozart editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. You might want to periodically deploy your project to a Dev environment while building and debugging, and then – when ready – simply change the deployment target to the Production environment, all without ever leaving the editor.
+The flow designer's editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. You might want to periodically deploy your project to a Dev environment while building and debugging, and then – when ready – simply change the deployment target to the Production environment, all without ever leaving the editor.
 
-Applications built in Mozart can also be exported to Anypoint Studio (the desktop IDE) for configuring advanced settings. You can have a workflow where the desired overall functionality is drafted by line-of-business users on Mozart, and then the project is exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by specialized integration developers.
+[TIP]
+In future releases, applications built in the flow designer will also be exportable to Anypoint Studio (the desktop IDE) for configuring advanced settings. With that feature, you could have a workflow where the desired overall functionality is drafted by line-of-business users on Design Center, and then the project can be exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by specialized integration developers.
 
 == Build Basic Mule Applications
 
-In spite of being simple, Mozart is still quite powerful, you can build Mule applications that:
+In spite of being simple, the flow designer is still quite powerful, you can build Mule applications that:
 
 * Send and receive requests via HTTP, FTP, create entries in Data Bases, create files.
 * Run tasks at regular intervals.
@@ -19,11 +20,11 @@ In spite of being simple, Mozart is still quite powerful, you can build Mule app
 * Send automatic emails.
 * Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] transformations to make virtually any two data formats compatible
 
-Just like with link:/anypoint-studio[Anypoint Studio], the resulting application of editing in Mozart is built for running in a Mule Runtime, either in link:/runtime-manager/deploying-to-cloudhub[CloudHub] or in a link:/runtime-manager/deploying-to-your-own-servers[customer-managed server].
+Just like with link:/anypoint-studio[Anypoint Studio], the resulting application of editing in the flow designer is built for running in a Mule Runtime, either in link:/runtime-manager/deploying-to-cloudhub[CloudHub] or in a link:/runtime-manager/deploying-to-your-own-servers[customer-managed server].
 
 [NOTE]
 ====
-With Mozart, you currently can't:
+With the flow designer, you currently can't:
 
 * Automatically build out an API backend based on a RAML API definition file _(coming soon)_
 * Deploy directly to a customer-managed server (ie: a runtime outside CloudHub) _(coming soon)_
@@ -40,16 +41,16 @@ All of these things can be accomplished with link:/anypoint-studio[Anypoint Stud
 Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an overview of basic Mule Runtime concepts.
 
 
-In Mozart, the building blocks that compose Mule applications are called _cards_. Each card receives an input, carries out a specific function and then passes out an output to the next card. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
+In the flow designer, the building blocks that compose Mule applications are called _cards_. Each card receives an input, carries out a specific function and then passes out an output to the next card. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
 
 image:
 
 
-Every flow has a trigger that sets it into action, this can either be an endpoint card that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Mozart project, you're immediately prompted to select the card that will trigger your first flow.
+Every flow has a trigger that sets it into action, this can either be an endpoint card that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Design Center app project, you're immediately prompted to select the card that will trigger your first flow.
 
 image:
 
-You can then build up your flow from there, by adding more cards that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-mozart[handling metadata in Mozart].
+You can then build up your flow from there, by adding more cards that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
 
 image
 
@@ -60,7 +61,7 @@ image
 You can then pick what element to add to your flow from a list. This list includes all the basic connectors and components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
 
 [TIP]
-Advanced users can define what assets are made available on Mozart via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
+Advanced users can define what assets are made available on the flow designer via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
 
 You can also create a new flow by clicking the plus sign at the top:
 
@@ -94,7 +95,7 @@ image:
 
 == Transform
 
-Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-mozart[Using DataWeave in Mozart].
+Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-flow-designer[Using DataWeave in the Flow Designer].
 
 image
 
@@ -107,7 +108,7 @@ Each card displays key information about what it does to the data transitioning 
 
 As your data passes through your flows, you can inspect the expected structure of the data at each given point. This data can be of great help in understanding what your application is doing.
 
-See link:/design-center/handling-metadata-in-mozart[Handling Metadata in Mozart] for more on this topic.
+See link:/design-center/handling-metadata-in-flow-designer[Handling Metadata in flow designer] for more on this topic.
 
 image
 

@@ -8,23 +8,23 @@ The Design Center is part of the Anypoint Platform, in order to access this tool
 image:[listed apps]
 
 
-== API Designer
+== API Designer (beta)
 
-API Designer lets you create API definition files described in link:raml.org[RAML]. This light-weight YAML-like language lets you specify the API's resources, methods, properties and more, together with samples and schemas.
+The API designer lets you create API definition files described in link:raml.org[RAML]. This light-weight YAML-like language lets you specify the API's resources, methods, properties and more, together with samples and schemas.
 
 Once this definition is established, you can import it into Anypoint Studio to automatically create a scaffolding structure upon which you can build out your API's backend, having a clear understanding of the expected inputs and outputs of each operation.
 
 From the RAML definition you can also automatically generate interactive documentation for users of your API, which can be easily exposed on your API's Portal.
 
-== Mozart (beta)
+== Flow Designer (beta)
 
-Mozart lets you create fully functional Mule applications, functioning as an on-line simplified alternative to link:/anypoint-studio[Anypoint Studio].
+The flow designer lets you create fully functional Mule applications, functioning as an on-line simplified alternative to link:/anypoint-studio[Anypoint Studio].
 
-Mozart offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into link:/anypoint-studio[Anypoint Studio], the desktop IDE.
+the flow designer offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into link:/anypoint-studio[Anypoint Studio], the desktop IDE.
 
 == Create New
 
-To create a new project, both for Mozart or API Designer, just click the *Create* button:
+To create a new project, both with the flow or the API designer, just click the *Create* button:
 
 image[create]
 

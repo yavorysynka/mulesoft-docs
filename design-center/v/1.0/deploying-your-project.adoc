@@ -1,18 +1,18 @@
 = Deploying Your Project
-:keywords: mozart
+:keywords: mozart, flow designer, deploy, environments
 
-Mozart allows you to easily deploy applications straight from the editor, without needing to leave the editing screen. You can use this as a way to test and debug your application as you develop it, periodically deploying it to check that it works as expected. When your application is finished, you can also use this feature to deploy your application to a production environment.
+The flow designer allows you to easily deploy applications straight from the editor, without needing to leave the editing screen. You can use this as a way to test and debug your application as you develop it, periodically deploying it to check that it works as expected. When your application is finished, you can also use this feature to deploy your application to a production environment.
 
 
 == Deploy to CloudHub
 
-Mozart offers a simple shortcut to deploy your application on link:/runtime-manager/cloudhub[CloudHub], without needing to go through the the link:/runtime-manager[Runtime Manager console].
+The flow designer offers a simple shortcut to deploy your application on link:/runtime-manager/cloudhub[CloudHub], without needing to go through the the link:/runtime-manager[Runtime Manager console].
 
 Simply click the play button on the top nav bar
 
 image[]
 
-Your application is then deployed to CloudHub. Each application that you develop in Mozart is linked to a CloudHub worker, which is by default registered with the same name with which your Mozart project. Once deployed it becomes reachable through a URL that follows the structure *appName-environment.cloudhub.io*  (????)
+Your application is then deployed to CloudHub. Each application that you develop in Design Center is linked to a CloudHub worker, which is by default registered with the same name with which your Design Center project. Once deployed it becomes reachable through a URL that follows the structure *appName-environment.cloudhub.io*  (????)
 
 You can change this default name by opening <<The Deployment Pannel>>, this also changes the deployment URL.
 
@@ -41,7 +41,7 @@ Click the *Promote Application* button to deploy it
 This creates a copy of your application and passes it to Runtime Manager
 
 
-This will display a window where you can select a name with which to deploy your application and the CloudHub link:/access-management/environments[environment] to which to deploy. When selecting a different environment, you can configure the link:/design-center/v/1.0/mozart#global-elements[global elements] in your project so that they have different settings for each of your environments.
+This will display a window where you can select a name with which to deploy your application and the CloudHub link:/access-management/environments[environment] to which to deploy. When selecting a different environment, you can configure the link:/design-center/v/1.0/flow-designer#global-elements[global elements] in your project so that they have different settings for each of your environments.
 
 image
 
@@ -60,7 +60,7 @@ After deploying, you can go to the Runtime Manager console and link:/runtime-man
 
 The application promotion screen also allows you to set variables that may be specific to a given link:/access-management/environments[environment]
 
-The fields exposed here are those that can be set in the link:/design-center/v/1.0/mozart#global-configurations[Global Configurations]
+The fields exposed here are those that can be set in the link:/design-center/v/1.0/flow-designer#global-configurations[Global Configurations]
 
 This allows you to tweak your application with values that may point to equivalent assets that are in different environments, such as a staging database for your staging deployment, and a production database for your production deployments. This eliminates the need to add property placeholders.
 
