@@ -2,6 +2,17 @@
 :keywords: mozart
 
 
+== Data Types
+
+
+== Custom Data Types
+
+You can define your own data types by:
+
+* Selecting the metadata tab in a connector
+* In a Transform card, opening the custom data type editor
+
+
 how to populate
 
 

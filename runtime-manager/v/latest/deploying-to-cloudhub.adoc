@@ -112,7 +112,7 @@ You can also deploy Mule applications to CloudHub directly from the web-based ed
 
 
 
-link to Mozart  /design-center/v/1.0/
+link:/design-center/v/1.0/deploying-your-project[From the Design Center]
 
 
 When deploying to a different environment, you can set up different global variables for each by directly filling them in on the deployment menu. This is a very convenient feature when passing a deployment from a sandbox environment to production.

@@ -73,6 +73,19 @@ Every flow is triggered and executed independently of each other.
 
 You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately). Many cards also have <<Global Configurations>>, these do allow you to set up all cards of the same type together.
 
+image
+
+Fields can be populated with either a static value, or a reference to another value. Switch between one modality or another by clicking the *expression button*.
+
+image
+
+If the expression mode is enabled, you can either write a link:/mule-user-guide/v/4.0/dataweave[DataWeave] expression, or click the *Map* button to open up an editor window, where you can graphically drag and drop elements from the incoming message and use the full set of features of link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave in flow designer] to build an expression.
+
+image
+
+[TIP]
+When using the expression editor, it's implied that whatever you type into the field is a DataWeave expression. Hence, you don't need to wrap your expression in `#[]`.
+
 
 == Global Configurations
 
@@ -100,7 +113,7 @@ Through the *Transform* element you can powerfully convert data types and data s
 image
 
 
-== View Metadata
+== Dealing With Metadata
 
 Each card displays key information about what it does to the data transitioning through it.
 
@@ -122,6 +135,24 @@ image
 
 [NOTE]
 For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
+
+
+== Debugging
+
+Once you have deployed your project, it's time to test it.
+
+If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *try* button.
+
+image
+
+If any of the flows on your project are triggered by an HTTP listener connector, you can simply open a browser and hit the path where this is exposed. For example if your project name is xxx and the connector is configured to listen on the subpath xxx
+
+You can use tools like postman or curl to send more complete HTTP requests if your application requires them
+
+=== Viewing Log Data
+
+After your flows have been triggered, and actual data has gone through them (not just metadata), you can view this data on each of the elements in the flow. The flow designer keeps a record of the messages on each, you can also open an historic view of the messages that came through an element
+
 
 
 == Export to Studio
