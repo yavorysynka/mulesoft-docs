@@ -253,8 +253,7 @@ For more information about making a contribution, see the link:https://github.co
 
 == See Also
 
-* *NEXT STEP:* link:/getting-started/[Getting Started] gives you an overview of essential Mule concepts.
-* link:/anypoint-studio/v/6/basic-studio-tutorial[Basic Studio Tutorial]
+* *NEXT STEP:* link:/getting-started/[Getting Started] gives you an overview of API and Mule app lifecycles.
 * link:/api-manager/designing-your-api[Designing an API]
-* link:/anypoint-connector-devkit/v/3.8/index[Anypoint Connector DevKit]
+* link:/anypoint-studio/v/6/basic-studio-tutorial[Basic Studio Tutorial]
 * link:https://anypoint.mulesoft.com/login/#/signin?apintent=exchange[Sign into Anypoint Platform]
