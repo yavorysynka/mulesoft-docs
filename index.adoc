@@ -68,7 +68,7 @@ You can use a variety of tools to sync Mule projects, APIs and assets between te
 After Mule applications and APIs have been tested, deploy them locally or to a cloud server.
 
 . Choose a deployment model:
-- *Mule runtime on-prem* (installed in the company's datacenter)
+- *Mule runtime on-prem* (not managed by MuleSoft)
 - *CloudHub* - Mule runtime in MuleSoft's cloud
 - *Other Cloud system* - Mule runtime can be managed through other cloud products, e.g. AWS, Digital Ocean, etc
 - *Mixed* ("hybrid" scenario)
