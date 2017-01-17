@@ -22,9 +22,10 @@ Consider API-led connectivity when connecting assets. APIs allow the developer t
 == How to Get Started
 
 
-The best way to learn is to access the cloud version of Anypoint Platform and walk through the tutorials in the link:/getting-started[Getting Started] section.
+The best way to learn is to access the cloud version of Anypoint Platform, follow one of the getting started checklists, then try out the tutorials in the link:/getting-started[Getting Started with Anypoint Platform] section.
 
-. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account].
+. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account]. 
+. Consider the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/hardware-and-software-requirements[MuleSoft hardware and software requirements]
 . If you are going to work with Mule applications and APIs to connect your digital assets, set up your workstation according to the link:/#dev-checklist[Getting Started Checklist for Developers].
 . If you are going to manage deployments see the link:/#getting-started-deploy[Getting Started Checklist for Deployment]
 . To set up platform permissions or monitor deployed assets see the link:#getting-started-manage[Getting Started Checklist for Administration].
