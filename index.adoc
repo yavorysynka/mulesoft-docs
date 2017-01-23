@@ -12,35 +12,41 @@ toc::[]
 [[mulesoft-do]]
 == What is MuleSoft?
 
-MuleSoft is a cloud software company helping organizations transform existing data and applications to proactively adapt to changing needs in their fields.
+MuleSoft is a cloud software company that helps organizations transform how their data and applications connect, empowering them to proactively adapt to changing needs.
 
-== What is Mule?
+== What is Mule runtime?
 
-Basically, Mule is an engine for processing and orchestrating data. Mule is the layer that allows you to connect diverse systems reliably. Mule is a Java-based enterprise service bus (ESB) based on SEDA (staged-event driven architecture). Using Mule you can build enterprise-grade integration applications called Mule applications. Traditionally it was called Mule ESB, but is now more commonly referred to as Mule runtime.
+Basically, Mule runtime is an engine for processing and orchestrating data. Mule runtime is the layer that allows you to connect diverse systems reliably. More specifically, Mule runtime is a Java-based enterprise service bus (ESB) based on SEDA (staged-event driven architecture). Using Mule runtime you can build enterprise-grade integration applications, called Mule applications. 
 
 [NOTE]
+Mule runtime traditionally used to be called Mule ESB.
+
+[TIP]
 link:/mule-user-guide/v/3.8/downloading-and-starting-mule-esb[Download Mule with Studio] and start building Mule applications.
 
 == What is a Mule application?
 
-A Mule application is a configuration of functional elements in a *Mule flow* to process data in a sequence. Mule runtime passes important data through the Mule app flow using a *Mule message*. It is up to the integration developer to design the flow and configure how its elements operate on this message. Many elements can be configured to hook into existing applications on-premises or in the cloud to perform desired operations on data.
+A Mule application is a collection of functional components that are put together into a sequence and configured to make up one or several *Mule flows*. Data transitions sequantially through a Mule flow in the form of a *Mule message*, this message is transformed as it passes through each of the components in the flow. It is up to the integration developer to design the flows and configure how their elements operate on this message. Many elements can be configured to hook onto existing applications on-premises or in the cloud to perform desired operations on data.
 
-Once a Mule app is deployed on Mule runtime, the app's main flow is ready to be kicked off by the event that triggers it. You can deploy Mule applications to Mule runtime servers anywhere, and configure security and policies for them as well. In Mule apps *you write less custom code, and get more done through reuse.*
+Once a Mule app is deployed to a Mule runtime, the app's flows are ready to be kicked off by the events that trigger it. You can deploy Mule applications to Mule runtime servers anywhere, and configure security and policies for them as well. In Mule apps *you write less custom code, and get more done through reuse.*
 
-[NOTE]
-Consider API-led connectivity when connecting assets. APIs allow the developer to modify assets and redeploy them without having to change the APIs that consume the assets.
+[TIP]
+Consider API-led connectivity when connecting assets. This approach allows developers to modify services without having to change the applications that consume them, as long as the points of contact are kept unchanged.
 
 [[what-is]]
 == What is Anypoint Platform?
 
 Anypoint Platform is MuleSoft's *integration application and API suite*. It comprises a unique toolset that enables organizations to create, integrate, model, build, and deploy services, APIs, and Mule applications.
 
-The Anypoint Platform tools are accessed primarily through a browser but also have command line tools. Through the platform it is possible to control most aspects of integrations applications and APIs through their entire lifecycle.
+The Anypoint Platform tools are accessed primarily through a browser but also have command line tools and APIs. Through the platform it is possible to control most aspects of integration applications and APIs throughout their entire lifecycle. 
+
+[TIP]
+An link:/anypoint-platform-on-premises/[on-premises] offering of the platform also exists, which allows you to keep your entire infrastructure secure within your own servers.
 
 
 == Anypoint Platform Tools
 
-Follow these steps to get an Anypoint Platform account and check out the tools.
+Follow these steps to get an Anypoint Platform account and check out the tools it provides.
 
 *  link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account].
 * Consider the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/hardware-and-software-requirements[MuleSoft hardware and software requirements]
@@ -66,19 +72,19 @@ Follow these steps to get an Anypoint Platform account and check out the tools.
 
 After obtaining access to the Anypoint Platform, you are a few steps away from developing integrations with Mule.
 
-. link:/anypoint-studio/v/6/download-and-launch-anypoint-studio[Download and Install Anypoint Studio with Mule].
+. link:/anypoint-studio/v/6/download-and-launch-anypoint-studio[Download and Install Anypoint Studio].
 . If you are an API developer, ensure you read up on link:/api-manager/[API Manager], accessible from Anypoint Platform, to design, publish and manage APIs.
-. Check out templates, connectors and more from link:/getting-started/anypoint-exchange[Anypoint Exchange], where you can find and publish developer resources. You can use Exchange to publish private repositories.
+. Check out templates, connectors and more from link:/getting-started/anypoint-exchange[Anypoint Exchange], where you can find and publish developer resources. You can use Exchange to publish private repositories too.
 
 [NOTE]
-If working with Mule outside Studio or have an enterprise license see how to link:/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb[Configure Maven] to properly manage dependencies used in your Mule apps.
+If you're working with Mule outside Studio or you have an enterprise license, see how to link:/mule-user-guide/v/3.8/configuring-maven-to-work-with-mule-esb[Configure Maven] to properly manage the dependencies used by your Mule apps.
 
 [[getting-started-deploy]]
 === Deployment Toolkit
 
 For *API deployment*, see link:/api-manager[API Manager], accessible from Anypoint Platform.
 
-For *Mule deployment*, see link:/runtime-manager/deployment-strategies[deployment strategies]. That document explains the standard app-to-runtime deployment workflows and tools.
+For *Mule application deployment*, see link:/runtime-manager/deployment-strategies[deployment strategies]. This document explains the standard app-to-runtime deployment workflows and tools.
 
 ////
 - *Mule runtime on-prem*, a simple installation of runtime on your own systems, not managed
@@ -89,10 +95,8 @@ For *Mule deployment*, see link:/runtime-manager/deployment-strategies[deploymen
 ////
 
 [TIP]
-Find out how to https://docs.mulesoft.com/runtime-manager/managing-servers#add-a-server[Register a Mule runtime instance] with your Anypoint Platform instance.
+See instructions on how to deploy applications to link:/getting-started/deploy-to-cloudhub[CloudHub] or to link:/getting-started/deploy-to-server[local Mule runtime instances] via the Anypoint Platform.
 
-For *Anypoint Platform deployment*, the options are the MuleSoft hosted version, and the containerized
-link:https://docs.mulesoft.com/anypoint-platform-on-premises/v/1.5.0/[Anypoint Platform On-Prem], to deploy the platform to your infrastructure on-premises.
 
 [[getting-started-manage]]
 === Administration Toolkit
@@ -123,7 +127,7 @@ Building an application network is a process that involves:
 [NOTE]
 APIs and apps can be recomposed or changed out as business demands change.
 
-You can run your apps on servers in the *cloud*, *on-premises*, or some *hybridized* version. Manage and monitor legacy or platform APIs. Manage API consumption via auto-generated proxy.
+You can run your apps on servers in the *cloud*, *on-premises*, or some *hybrid* version. Manage and monitor legacy or platform APIs. Manage API consumption via auto-generated proxy.
 
 [[design-develop-apis]]
 === Anypoint Platform for APIs
