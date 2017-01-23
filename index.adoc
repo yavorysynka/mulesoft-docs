@@ -8,27 +8,43 @@
 
 toc::[]
 
-[[what-is]]
-== What is Anypoint Platform?
 
-The Anypoint Platform is an end-to-end resource for digital connectivity. *Anypoint Platform* comprises a complete application and API development suite that you can use to create, integrate, model, build, and deploy services, applications and APIs.
+[[mulesoft-do]]
+== What is MuleSoft?
 
-With the platform tools you can accelerate development and deployment of applications and APIs. You can deploy your Mule integration applications and APIs to servers managed by your organization or those hosted by MuleSoft.
+MuleSoft is a cloud software company helping organizations transform existing data and applications to proactively adapt to changing needs in their fields. Anypoint Platform is MuleSoft's *integration application and API suite*.
+
+== What is Mule?
+
+Basically, Mule is an engine for processing and orchestrating data. Mule is the layer that allows you to connect diverse systems reliably. Mule is a Java-based enterprise service bus (ESB) based on SEDA (staged-event driven architecture). Using Mule you can build enterprise-grade integration applications called Mule applications. Traditionally it was called Mule ESB, but is now more commonly referred to as Mule runtime.
+
+== What is a Mule application?
+
+A Mule application links up functional elements in a *Mule flow* to process data. Mule passes data through the flow inside a *Mule message*. It is up to the integration developer to design the flow and configure how its elements operate on this message. Many elements can be configured to hook into existing applications on-premises or in the cloud to perform desired operations on data.
+
+Once a Mule app is deployed, its main flow is ready to be kicked off by an event that triggers it. You can deploy Mule applications to Mule runtime servers anywhere, and configure security and policies for them as well. In Mule apps *you can avoid having to write custom code*.
 
 [NOTE]
 Consider API-led connectivity when connecting assets. APIs allow the developer to modify assets and redeploy them without having to compromise the APIs that consume the assets.
 
+[[what-is]]
+== What is Anypoint Platform?
 
-== How to Get Started
+Anypoint Platform comprises a unique toolset that enables organizations to create, integrate, model, build, and deploy services, APIs, and Mule applications.
+
+The Anypoint Platform tools are primarily browser-based environments. Through the various user interfaces in the tools you can work on most aspects of integrations applications and APIs through their entire lifecycle.
+
+
+== Anypoint Platform Tools
 
 
 The best way to learn is to access the cloud version of Anypoint Platform, follow one of the getting started checklists, then try out the tutorials in the link:/getting-started[Getting Started with Anypoint Platform] section.
 
-. link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account]. 
-. Consider the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/hardware-and-software-requirements[MuleSoft hardware and software requirements]
-. If you are going to work with Mule applications and APIs to connect your digital assets, set up your workstation according to the link:/#dev-checklist[Getting Started Checklist for Developers].
-. If you are going to manage deployments see the link:/#getting-started-deploy[Getting Started Checklist for Deployment]
-. To set up platform permissions or monitor deployed assets see the link:#getting-started-manage[Getting Started Checklist for Administration].
+*  link:https://anypoint.mulesoft.com/login/#/signup?apintent=exchange[Create an Anypoint Platform account].
+* Consider the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/hardware-and-software-requirements[MuleSoft hardware and software requirements]
+* For development of Mule apps or API design, set up your workstation according to the link:/#dev-checklist[Developer Toolkit].
+* To manage and deploy Mule apps, see the link:/#getting-started-deploy[Deployment Toolkit]
+* To set up platform permissions or monitor deployed assets see the link:#getting-started-manage[Administration Toolkit].
 
 
 [NOTE]
@@ -47,7 +63,7 @@ link:https://docs.mulesoft.com/anypoint-platform-on-premises/v/1.5.0/[Anypoint P
 //image:anypoint-platform-screen.png[anypoint-platform-screen]
 
 [[getting-started-dev]]
-=== Getting Started Checklist for Developers
+=== Developer Toolkit
 
 After obtaining access to the Anypoint Platform, set up your workstation for Mule application development using Studio to develop Mule apps or APIs. Once you create an integration application on Studio, test and run it on an embedded Mule runtime server.
 
@@ -64,7 +80,7 @@ You can use a variety of tools to sync Mule projects, APIs and assets between te
 
 
 [[getting-started-deploy]]
-=== Getting Started Checklist for Deployment
+=== Deployment Toolkit
 
 After Mule applications and APIs have been tested, deploy them locally or to a cloud server.
 
@@ -75,7 +91,7 @@ After Mule applications and APIs have been tested, deploy them locally or to a c
 - *Mixed* ("hybrid" scenario)
 
 [[getting-started-manage]]
-=== Getting Started Checklist for Administration
+=== Administration Toolkit
 
 . Choose a management tool for your apps
 - link:/runtime-manager[Runtime Manager], which is part of the Anypoint Platform
@@ -89,8 +105,10 @@ Also use Runtime Manager to deploy a Mule app to CloudHub.
 [NOTE]
 link:/access-management/external-identity[Set up external identities] to manage users and clients using your organization's external federated identity system.
 
+////
+
 [[app-network]]
-== How to Build an Application Network
+== Application Network - Apps and APIs Together
 
 APIs and applications are the nodes in a network that mediates between your backend/cloud systems and SaaS applications. Read the link:https://www.mulesoft.com/lp/whitepaper/api/application-network[Application Network whitepaper].
 
@@ -107,9 +125,9 @@ APIs and apps can be recomposed or changed out as business demands change.
 You can run your apps on servers in the *cloud*, *on-premises*, or some *hybridized* version. Manage and monitor legacy or platform APIs. Manage API consumption via auto-generated proxy.
 
 [[design-develop-apis]]
-=== Design, Deploy and Implement APIs
+=== Anypoint Platform for APIs
 
-Consider the action word that defines the interaction between two systems or applications. Define these different actions in APIs. Use a proxy application to control access to it.
+Consider the action words that define the interactions between two systems or applications. Define these different actions in APIs. Use a proxy application to control access to them.
 
 After planning your development strategy, you are ready to begin designing APIs to support each piece of the connectivity puzzle for your organization. We recommend using link:http://raml.org/[RAML], the API-modeling language, to describe your APIs. RAML allows you to define the methods and resources of a REST-ful API in a syntax similar to that of *YAML*. The Anypoint Platform even uses RAML to auto-generate interactive API documentation for each API via its own API Portal, and Anypoint Studio uses RAML scaffolded Mule flows to implement APIs.
 
@@ -221,22 +239,12 @@ To better understand how options differ between applications deployed to CloudHu
 
 // this sub section might be redundant, as it's sort of explained already
 
-////
-=== Mule Management Console (MMC)
-
-//image:mmc.png[mmc,width=26]
-
-link:/mule-management-console/v/3.8/[MMC] provides robust runtime management capabilities for on-premises deployments, including high-availability clustering, monitoring features, email alerts, logs, etc.
-
-
-[NOTE]
-MMC is pending full replacement by Runtime Manager, and hence will eventually be deprecated. There is a migration tool for migrating your MMC deployments to Runtime Manager.
-////
-
 
 == How to Use Anypoint Exchange
 
 link:/getting-started/anypoint-exchange[Anypoint Exchange] is a public repository of Anypoint Platform resources but you can create organization-specific repositories called _private exchanges_ to share templates, connectors, examples, RAMLs, and WSDLs throughout your organization.  Whether private or public, Exchange lets you create pages for each item with explanation text, videos of how to use the artifact, and links to documentation. Share these resources to engage your developer community and catalyze innovation.
+
+////
 
 
 == Contribute to the Documentation
