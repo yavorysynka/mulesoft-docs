@@ -78,7 +78,7 @@ If working with Mule outside Studio or have an enterprise license see how to lin
 
 For *API deployment*, see link:/api-manager[API Manager], accessible from Anypoint Platform.
 
-For *Mule deployment*, see link:/runtime-manager/deployment-strategies[deployment strategies]. That document explains the standard app-to-runtime deployment workflows.
+For *Mule deployment*, see link:/runtime-manager/deployment-strategies[deployment strategies]. That document explains the standard app-to-runtime deployment workflows and tools.
 
 ////
 - *Mule runtime on-prem*, a simple installation of runtime on your own systems, not managed
