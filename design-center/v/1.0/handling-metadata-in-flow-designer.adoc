@@ -13,10 +13,24 @@ You can define your own data types by:
 * In a Transform card, opening the custom data type editor
 
 
-how to populate
+== how to populate
+
+how to get to the metadata menu, from transform component and the metadata tab of different elements
+
+what formats supported JSON XML CSV
+
+Sample / schema
+
+=== Custom Data Types
+
+similar to what's in Studio
+
+=== Configure Reader Properties
+
+not confirmed for release....
 
 
-Thanks to the metadata that you make available, the flow designer can also give you intelligent autocomplete suggestions, as well as mapping stuff
+
 
 
 You can view metadata displayed directly on the different cards. This display says what each card is doing to the Mule message (link)
@@ -29,6 +43,6 @@ data type explorer
 
 what else it's for
 
-* autocomplete
+* Thanks to the metadata that you make available, the flow designer can also give you intelligent autocomplete suggestions, as well as mapping stuff
 * smart suggestions
-* DW
+* DataWeave known inputs and required output structure.  The Map button also opens a DW menu where you can pick from the metadata to populate any field

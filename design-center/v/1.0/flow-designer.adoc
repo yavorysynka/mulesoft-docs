@@ -141,7 +141,7 @@ For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must fir
 
 Once you have deployed your project, it's time to test it.
 
-If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *try* button.
+If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *Try* button.
 
 image
 
