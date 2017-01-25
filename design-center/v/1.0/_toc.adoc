@@ -1,6 +1,6 @@
 // TOC File
 
-* link:/design-center/v/1.0/[index]
+* link:/design-center/v/1.0/[Design Center]
 ** link:/design-center/v/1.0/api-designer[API Designer]
 ** link:/design-center/v/1.0/flow-designer[Flow Designer]
 +
