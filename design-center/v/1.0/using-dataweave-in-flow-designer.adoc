@@ -5,7 +5,7 @@
 == Overview
 
 
-In the *Transform* card, you can dynamically generate mappings through DataWeave, MuleSoft's most powerful and versatile tool for transforming data. The Transform card carries out a transformation of your Mule message that follows a transformation script, this script is implicitly built through dragging and dropping elements using a simple interface. You also have access to the edit this script directly, in case you want to link:/mule-user-guide/v/3.8/dataweave-language-introduction[explicitly write in DataWeave code].
+In the *Transform* card, you can dynamically generate mappings through DataWeave, MuleSoft's most powerful and versatile tool for transforming data. The Transform component carries out a transformation of your Mule message that follows a transformation script, this script is implicitly built through dragging and dropping elements using a simple interface. You also have access to edit this script directly, in case you want to link:/mule-user-guide/v/3.8/dataweave-language-introduction[explicitly write in DataWeave code].
 
 image:
 
@@ -20,11 +20,12 @@ If you click on an instance of the *Transform* card in your flow, its propertie
 
 image:[new weave]
 
-In the default view of the propoerties editor there are two main regions:
+In the default view of the properties editor there are two main regions:
 
-* *On the left*: is the graphical UI, which exposes the known input and output structures. The mappings between input and output fields are represented through lines and regions that join both sides. You can easily drag one field onto another to map them together, other ways to interact with this UI are described in <<The Mapping View>>.
-* *On the right*: Is the output preview. Here you can see what your output data would look like after being affected by the card's transformation. This output is constructed based on sample data, which can be obtained from the metadata exposed by other elements on the flow, or can otherwise be manually provided. It's updated in real time as you make changes to your script or to your sample, so that you can be sure of what you'll be getting out of the other end.
+* *On the left*: is the graphical UI, which exposes the known input and output structures. The mappings between input and output fields are represented through tubes and regions that join both sides. You can easily drag one field onto another to map them together, other ways to interact with this UI are described in <<The Mapping View>>.
+* *On the right*: Is the output preview. Here you can see what your output data would look like after being affected by the component's transformation. This output is constructed based on sample data and is updated in real time as you make changes to your script or to your sample, so that you can be sure of what you'll be getting out of the other end.
 
+image:  (showing left and right )
 
 Note that in the lower margin of the editor, there are three tabs you can click to select the view:
 
@@ -42,42 +43,58 @@ This is the default view that is displayed when you open this card. Through this
 Here some of the most common things you can do through the UI:
 
 
-* Drag an element on the input structure over to another on the output structure. This will cast a line that joins them in the UI, representing that when your transformation is executed, the output field takes the value of the input field.
+* Drag an element on the input structure over to another on the output structure. This will cast a tube that joins them in the UI, representing that when your transformation is executed, the output field takes the value of the input field.
 +
 image:
 
 * Drag a high-level object that contains child elements onto another in the output. This mapping is represented by a shaded region, and when your transformation is executed, all child elements in the input are passed on to the output.
 +
-image:[complex object drag]
+image:
 
-* Double click on an output field to edit it. You can assign it a static value, or write a function that might involve one or more of the input fields. To populate a field with a function, just double click on it and write freely. This experience relates to that of using a spreadsheet, where each field might be a direct reference to another, or might be the product of a function that involves such references. When a function or static value exists on a field, this is represented by an `f(x)` icon next to it.
+* Click on the trash-can icon of an existing tube or joining region to remove it.
+
+image:
+
+* Double click on an output field to edit it. You can assign it a static value, or write a function that might involve one or more of the input fields. To populate a field with a function, double click on it and a window will open where you can write freely. This experience relates to that of using a spreadsheet, where each field might be a direct reference to another, or might be the product of a function that involves such references. When a function or static value exists on a field, this is represented by an `f(x)` icon next to it.
 +
 image:[click]
++
+These functions can also be removed by clicking on the trash-can icons on them.
+
+////
 * Filter the views displayed in the input and output structures by typing a name in the search boxes at the top of either, only those fields that match your search are then displayed. This is particularly useful when dealing with large data structures with many nested elements.
+////
 
 
-(not sure last one exists here)
+=== Defining Data Shape
 
-=== Populating Metadata
+The _shape_ of data refres to its *metadata*, this is the representation of the structure of data, regardless of its format.
+
+For example, the metadata of a message may say that the 'user' element has two child elements: 'name' and 'address'; it doesn't matter if the message is of type JSON or XML, the structure is beyond that.
 
 
-Many elements you can use in your projects expose metadata about their input and output to the rest of the flow. For example, when a connector is configured to carry out a specific operation, its output structure is known, and this is expected to be the input received by following component in the flow. When this information is available to the *Transform Message* card,  it is interpreted as the expected input or the required output, depending on where each are placed relative to each other on the flow. This metadata is then displayed in the input or output structures in the UI.
+Many elements you can use in your projects expose the shape of their input and output data to the rest of the flow. For example, when a connector is configured to carry out a specific operation, its output structure is known, and this is expected to be the input received by following component in the flow. When this information is available to the *Transform Message* card,  it is interpreted as the expected input or the required output, depending on where each are placed relative to each other on the flow. This metadata is then displayed in the input or output structures in the UI.
 
-Ideally you should have both the known input and the expected output as already defined before you deal with the Transform card. If the metadata definition is missing for the input or output, a notification on the corresponding section of the Graphical UI will advise you to provide it. There are several ways you can deal with this:
+Ideally you should have both the known input and the expected output as already defined before you deal with the Transform card. If the data shape definition is missing for the input or output, a notification on the corresponding section of the Graphical UI will advise you to provide it.
 
-* Make sure that other elements in the flow are fully configured. For example, a connector can't expose its output structure until a given operation is chosen, as its output might differ depending on this. A link:/mule-user-guide/v/3.8/web-service-consumer[Web Service Consumer] can include a WSDL file that describes the service, or an HTTP connector can include a link:raml.org[RAML] API definition file.
-* You can manually define the output of a Mule component via its *Metadata Tab*.
-* You can manually define the input of the Transform Message component by clicking on the *Define Metadata* link that appears in the notification that warns you about missing input metadata.
+image: (input and output)
+
+
+There are several ways you can deal with this:
+
+* Make sure that other elements in the flow are fully configured. For example, a connector can't expose its output structure until a given operation is chosen, as its output might differ depending on this.
+* You can manually define the output of a Mule component via its link:/design-center/v/1.0/handling-metadata-in-flow-designer[*Metadata Tab*].
+* You can manually define the input of the Transform component by clicking on the *Define Data Shape* link that appears in the notification that warns you about missing input metadata, or by clicking on the target picker above the output section and selecting *Edit Current Data Shape*.
+
+See link:/design-center/v/1.0/handling-metadata-in-flow-designer[Handling Metadata in Flow Designer] for details on how to specify the properties of the metadata in either of the above cases.
 
 
 [NOTE]
 ====
-If you plan to create your transform entirely via the <<The DataWeave Text Editor, text editor section>>, you can skip specifying the metadata definition and reference elements directly. See link:/mule-user-guide/v/4.0/dataweave-language-introduction[DataWeave].
+If you plan to create your transform entirely via the <<The DataWeave Text Editor, text editor section>>, you can skip specifying the metadata definition and reference elements directly via code. See link:/mule-user-guide/v/4.0/dataweave-language-introduction[DataWeave] to get familiar with the scripting language.
+
+Defining metadata is still advisable, as it feeds into the autocomplete options when writing code.
 ====
-
-
-
-
 
 
 
@@ -85,6 +102,8 @@ If you plan to create your transform entirely via the <<The DataWeave Text Edito
 
 
 The sample data view allows you to test out examples of what your input might look like. This sample data is used together with your DataWeave code to produce a sample output in <<The Preview Section>>, which gets updated in real time as you make changes. Through this, you can make sure that your transformation deals well with different use cases, special characters, etc.
+
+This sample data can be obtained from the metadata exposed by other elements on the flow, it can otherwise be manually provided by typing it into the sample data tab.
 
 
 [NOTE]
@@ -95,22 +114,13 @@ image:[sample data]
 
 
 [NOTE]
-When the input is of types JSON, XML, CSV or flat file, the sample input contains plain code in the corresponding format. When the input is of type POJO or DataWeave, the sample input is written in DataWeave for more simplicity. In these cases the sample DataWeave code is merely a way to display the sample data, not a transformation in itself.
+When the input is of types JSON, XML, or CSV, the sample input contains plain code in the corresponding format. When the input is of type POJO, it's expressed in JSON format.
 
-////
-Selecting this option opens a new tab in the input section with an empty scaffolding of your input structure, in which values are populated with the string `????`. You can replace these values with more useful sample values to see how they are mapped out to the preview section.
+Note that the sample data view only displays the contents of one of the parts of the Mule message (eg: the payload, or one of the variables). You can choose to view and edit different parts of the input by clicking on different parts of the input structure to select them.
 
-image:[sample data]
-
+image:
 
 
-[TIP]
-====
-You can always click the *rescafold button* to restore the sample data to its default state. Note that with this you'll loose any sample data you've provided.
-
-image:[rescafold]
-====
-////
 
 
 == The Source View
@@ -127,10 +137,10 @@ By editing the code directly you can leverage the full power of DataWeave syntax
 
 This section, always displayed on the right of the properties editor, presents a sample output, built by taking the sample input you provide in <<The Sample Data View, the sample data view>> and transforming it through the DataWeave transformation. As you make any changes to the transformation or the sample, notice how the output data structure changes in real time.
 
-This panel assures you that the output produced by your transformation is what you expect. This can sometimes get tricky when you're dealing with arrays of objects and such, so it's always good to know your output well.
+This panel assures you that the output produced by your transformation is what you expect. This can sometimes get tricky when you're dealing with arrays of objects and such or with special characters, so it's always good to know your output well.
 
-////
-If your transformer has <<handling multiple outputs, multiple outputs>>, the *Preview* section will display the one corresponding to the currently selected transform.
+[NOTE]
+If your transformer has <<handling multiple outputs, multiple outputs>>, the *Preview* section displays only the one corresponding to the currently selected output target.
 
 image:[preview]
 
@@ -139,40 +149,21 @@ If no sample is provided yet, this section features a shortcut that you can clic
 image:[shortuct]
 
 If you still haven't set up the metadata structure for your input, when clicking on this shortcut you will be first prompted to set up the structure via the <<Defining Input and Output Structure>> window.
-////
+
 
 == Viewing Errors
 
-////
-For your DataWeave code's syntax to be evaluated, you must have the *Preview Section* enabled. With this enabled, any syntax errors are marked. Above your DataWeave code, an additional error notification can be opened to display further detail.
+Any syntax errors on your DataWeave code are marked in red notes over the *Preview Section*.
 
-+
+image:
+
+On the *Source* tab, an additional error notification marks the ammount of errors present.
+
+
 image:[errors]
-If you click this notification, a window opens detailing each error in your code and its cause.
 
-+
-image:[errors]
+
 ////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 == Reader Configuration
 
 As part of the metadata definition of your input structure, DataWeave allows you to set up certain properties of the reader object so that it parses the input differently. This is only available with certain inptut formats, and each one of these has its own specific properties. In Anypoint Studio, there are two ways to set this up:
@@ -197,7 +188,9 @@ For a detailed reference of what properties can be set in the Reader Configurati
 * link:/mule-user-guide/v/3.8/dataweave-formats#xml[XML]
 
 * link:/mule-user-guide/v/3.8/dataweave-formats#flat-file[Flat File]
+////
 
+////
 == Writer Configuration
 
 s part of the metadata definition of your output structure, DataWeave allows you to set up certain properties of the writer object so that it constructs the output differently. This is only available with certain output formats, and each one of these has its own specific properties.
@@ -213,24 +206,47 @@ For a detailed reference of what properties can be set in the Writer Configurati
 * link:/mule-user-guide/v/3.8/dataweave-formats#json[JSON]
 
 * link:/mule-user-guide/v/3.8/dataweave-formats#flat-file[Flat File]
-
+////
 
 == Handling Multiple Outputs
 
-A single Transform Message element can give shape to several different components of the output Mule message. Each of these output components must be defined in a separate `.dwl` file, written out in a separate tab of the Transform section. For example in one tab you may be defining the payload contents, in another those of an outbound property, and these will both be parts of the same output Mule message.
+A single Transform Message element can give shape to several different parts of the output link:/mule-user-guide/v/4.0/mule-message[Mule message]. For example in one tab you may be defining the payload contents, in another those of an variable, and these will both be parts of the same output Mule message.
 
-To add a new output, simply click the *Add new target* button at the top of the DataWeave code section.
+To add a new output, simply:
+
+. Go to the *Mappings* tab
+. Click on the title of the output section
++
+image:
+. In the dropdown menu Select *Add transformation*
+
+image:
 
 
-image:dw_multiple_outputs_first.png[multiple outputs]
-
-Then you must specify where in the output Mule message to place the output of this new DataWeave transform. In case you're creating a new variable or property, you must also set a name for it.
-
-
-image:dw_new_variable.png[new variable]
++
+[TIP]
+From this same menu you can also delete targets, or open specific ones.
 
 
+. Then you must specify where in the output Mule message to place the output of this new DataWeave transform.
 
+
+image:
+
+
+[NOTE]
+====
+In case you're using DW through the Map button, the target is already implicitly the field on which you are editing.
+
+Note that by changing the target, the editor displays a different DataWeave script, and preview section, corresponding to the selected target.
+====
+
+
+
+
+
+////
 You can also change the target of an existing transform by clicking the *Edit Current Target* button, and in that way point the output of your transform to a different element in the outgoing Mule Message.
 
 image:dw_multiple_outputs_edit.png[edit target]
+////
