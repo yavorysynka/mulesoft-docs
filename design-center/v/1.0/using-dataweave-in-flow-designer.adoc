@@ -43,13 +43,14 @@ This is the default view that is displayed when you open this card. Through this
 Here some of the most common things you can do through the UI:
 
 
-* Drag an element on the input structure over to another on the output structure. This will cast a tube that joins them in the UI, representing that when your transformation is executed, the output field takes the value of the input field.
+* Drag an element on the input structure over to another on the output structure. This will cast an arrow that joins them in the UI, representing that when your transformation is executed, the output field takes the value of the input field.
 +
 image:
 
-* Drag a high-level object that contains child elements onto another in the output. This mapping is represented by a shaded region, and when your transformation is executed, all child elements in the input are passed on to the output.
+* Drag a high-level object that contains child elements onto another in the output. This mapping is represented by a shaded region, and when your transformation is executed, all child elements in the input are passed on to the output. If you drag an array, a link:/mule-user-guide/v/4.0/dataweave-operators#map['map'] operation loops through every item in the array.
 +
 image:
+
 
 * Click on the trash-can icon of an existing tube or joining region to remove it.
 
@@ -64,6 +65,8 @@ These functions can also be removed by clicking on the trash-can icons on them.
 ////
 * Filter the views displayed in the input and output structures by typing a name in the search boxes at the top of either, only those fields that match your search are then displayed. This is particularly useful when dealing with large data structures with many nested elements.
 ////
+
+
 
 
 === Defining Data Shape
