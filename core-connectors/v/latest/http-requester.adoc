@@ -1,1 +1,51 @@
 = HTTP Requester
+
+Use cases for the HTTP Requester
+
+=== Send Authenticated Requests
+
+link:/mule-user-guide/v/latest/authentication-in-http-requests[Authenticated Requests], via *Basic Authentication, Digest and OAuth*
+
+=== Send Multipart HTTP Requests
+
+Use an Attachment component from the palette to upload the file in a POST request with `ContentType: multipart/form-data`. Each attachment is sent in parts.
+//TODO how to?
+
+=== Adding Custom Parameters
+
+The HTTP requester allows you to include maps or singles of the following parameter types:
+
+* query params
+* URI params
+* headers
+
+=== Changing Default Behavior for Sending Request Body
+
+
+The message *payload* is the body of the request, except for with methods `GET`, `HEAD` and `OPTIONS`, which mean sending HTTP requests with an empty body (the payload of the Mule message won’t be used at all). If you need to change this default behavior, you can specify in the *Request Builder*.
+//TODO: confirm
+
+Customize the body of the request using the `source` and `target` attributes.
+//TODO how to access now?
+
+==== Additional Custom Parameters
+
+* Send form parameters with your request, included in the Mule message payload
+* Include attachments in your request by adding an Attachment building block to your flow.
+//TODO how else to send attachments?
+* Set headers, URI parameters explicitly or dynamically, using DataWeave language.
+* Send form parameters in `POST` request
+
+[[stream-requester]]
+=== Streaming through the HTTP Requester
+
+To do so, set the attribute *Request streaming mode*. When streaming, request contains `Transfer-Encoding` header and sends body in chunks until stream consumed; it does not contain the `Content-Length` header.
+
+=== Parsing HTTP Response Body
+
+As with the listener, when HTTP responses have a content type of `application/x-www-form-urlencoded` or `multipart/form-data`, the HTTP Requester automatically parses the message. You can disable this parsing functionality.
+
+=== Validating HTTP Responses
+
+You can set an expression to do this from *Response Settings*.
+//TODO how to do this now. Before was done from Success Status Code Validator?

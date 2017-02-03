@@ -34,19 +34,19 @@ The request will return a `MuleMessage` with specific `HttpResponseAttributes`.
 
 * See how to map HTTP Requests to Mule Message in the link:/core-connectors/v/latest/http-requester[HTTP Requester] doc.
 
-=== Load Static HTTP Resource
+=== Load Static Resource
 
-Add the Load Static Resource operation to return to a requester a static HTTP resource, such as .html, CSS, scripts, etc. This gets sent back automatically with the response.
+Add the Load Static Resource connector to return to a requester a static HTTP resource, such as .html, CSS, scripts, etc. This gets sent back automatically with the response.
 
 Put the Load Static Resource component in the flow and define the resource to send, or a default resource in case of failure.
 
-link:/load-static-resource[Load Static Resource]
+link:/core-connectors/v/latest/load-static-resource[Load Static Resource]
 
 === Basic Auth Security Filter
 
 Put a listener and then security filter to secure and authenticate requests to your service.
 
-link:/basic-auth-security-filter[Load Static Resource]
+link:/core-connectors/v/latest/basic-auth-security-filter[Load Static Resource]
 
 
 == Additional Reference

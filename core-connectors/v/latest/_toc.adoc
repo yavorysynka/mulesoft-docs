@@ -9,6 +9,6 @@
 *** link:/core-connectors/v/latest/http-listener[HTTP Listener]
 *** link:/core-connectors/v/latest/http-requester[HTTP Requester]
 *** link:/core-connectors/v/latest/basic-auth-security-filter[Basic Auth Security Filter]
-*** link:/core-connectors/v/latest/load-static-http-resource[Load Static HTTP Resource]
+*** link:/core-connectors/v/latest/load-static-resource[Load Static HTTP Resource]
 ** link:/core-connectors/v/latest/[TCP/UDP Connector]
 ** link:/core-connectors/v/latest/web-service-consumer[Web Service Consumer]
