@@ -1,0 +1,121 @@
+== HTTP Listener Use Cases
+
+=== Route Incoming Requests to HTTP Listeners
+
+* link:/#route-path[Route Requests Based on URI] by setting *Path*.
+* Route based on HTTP method be setting the *Allowed Methods* for each listener, `GET`, `POST`, `UPDATE`, etc.
+
+[IMPORTANT]
+To host your application on CloudHub, set all listeners' *Host* to `0.0.0.0`.
+
+[[route-path]]
+==== Route Requests Based on URI
+
+To route requests to different listeners that trigger different flows, set the *Path* for each listener to a different valid subpath in the domain.
+
+To route to `+http://localhost:8081/employee+` or `+http://localhost:8081/account+`, set up the listeners as follows:
+
+* Set one listener's *Path* to `account` and the other listener's to `employee`
+* Set *Host* to `localhost`
+* Set *Port* to `8081`
+
+
+===== Ways to Set the Path
+
+* Wildcards such as * are accepted in paths, for example a *Path* of `/regions/*/prospects` is valid.
+
+[NOTE]
+====
+Listeners with a more specific path are always given priority in routing.
+
+Given a listener for *Path* `account/\*` and another on `account/*/main-contact`, if a request arrives for `account/mulesoft/main-contact`, it arrives on the listener for `account/*/main-contact`.
+====
+
+* Use a variable for a URI parameter to get the value from a part of a path that may vary depending on the request `accountId`.
+
+Old: `#[message.inboundProperties.'http.uri.params'.accountId]`
+
+
+=== Secure and Authenticate HTTP Requests
+
+Place a Basic Auth Security filter after a listener.
+
+=== Configuring Connection Attributes
+
+Set connection, maximum connection idle time and enable/disable connection persistence and other attributes through the listener configuration.
+
+=== Streaming a File
+
+To stream the file content through the HTTP connection, the `Transfer-Encoding` header is used to send the HTTP message body in chunks, avoiding having to know the body length in advance. Each chunk is separated by a predefined line separator, which contains the length of the particular chunk.
+
+=== Processing Transfer-Encoding:chunked Request Body
+
+* When HTTP request has a `Transfer-Encoding:chunked` header, the listener decodes the body into an `InputStream` automatically.
+* `Transfer-encoding` header is used to send the HTTP message body in chunks, so you do not need to know the body length in advance. Each chunk is separated by a predefined line separator, which contains the length of the particular chunk
+
+=== Parsing HTTP Request Body
+
+The *Parse request* field can be toggled to *true* or set dynamically using an expression.
+
+=== Generating the HTTP Response
+
+Optionally set up the HTTP response so that it contains the desired body, attachment, headers and status. The response body is generated from the Mule message payload.
+
+The only exceptional scenarios are when the payload is a `Map` or there are attachments `multipart/form-data` in the message.
+
+==== Generating the Response Body
+
+.Response properties when payload of type `Map`
+[%header]
+|===
+|Payload |Response Body |Response Header
+|Map |`application/x-www-form-urlencoded` | `Content-Type: application/x-www-form-urlencoded`
+|===
+
+==== Generating Response with Attachments
+
+Message outbound attachments are used. Message payload is not used.
+
+.Response properties when Mule Message has Attachments
+[%header]
+|===
+|Payload |Response Body |Response Header
+|Not used |`multipart/form-data` | link:/#gen-header[Set the header explicitly]
+|===
+
+[[gen-header]]
+==== Generating HTTP Response Headers
+
+Response headers are generated from outbound properties which the exception of an outbound property named "Connection", "Host", or "Transfer-Encoding".
+//TODO
+
+*Other topics*:
+
+* link:/#set-header-ex[Set Header Explicitly using Properties]
+* link:/#disable-headers[Disable outbound properties as headers] in response
+* Set Headers in the Listener Configuration
+//TODO confirm use of properties in Mule 4? Are these set in Configuration?
+
+[[set-header-ex]]
+==== Set Header Explicitly
+
+* Set a header using the Property Transformer `<set-property>`.
+* Use Response Builder to set headers, even dynamically
+* Set the HTTP status code and reason phrase using Property Transformer
+//TODO confirm how to set headers
+
+[[disable-headers]]
+==== Disable Outbound Properties as Headers
+
+In the HTTP Listener properties editor, in the *Response Settings* section.
+//TODO confirm what should be done "Create child?"
+
+==== Other Response Details
+
+Normally, HTTP Listener computes the length of the payload and sets the value of the `Content-Length` header.
+
+* If the payload is an `InputStream`, the HTTP listener adds a `Transfer-Encoding:chunked` header to the response
+** For all other cases, HTTP listener computes the length of the payload and sets the value of the `Content-Length`
+* Override the listener's attempts to set `Content-Length` or `Transfer-Encoding` by setting the *Response streaming mode*.
+
+For streaming options in the HTTP Requester, see link:/#stream-requester[How to Stream through Requester]

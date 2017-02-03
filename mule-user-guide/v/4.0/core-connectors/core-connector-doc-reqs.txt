@@ -1,8 +1,0 @@
-Should follow connector doc template
-
-What the connector is
-
-How to use?
-Configuration reqs - Studio and Mozart considerations?
-Provide link to the core connector Reference
-Place procedures for specific configuration and operation scenarios

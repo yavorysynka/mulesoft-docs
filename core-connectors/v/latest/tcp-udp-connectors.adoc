@@ -76,7 +76,7 @@ For reference doc:
 
 == Configure SSL over TCP
 
-To use SSL over a TCP connection, the only thing that needs to be done is configure a TLS context to the TCP Connection Provider (both listener and requester).
+To use SSL over a TCP connection, the only thing that needs to be done is configure a TLS context.
 
 [source,xml,linenums]
 ----
