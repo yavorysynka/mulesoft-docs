@@ -3,6 +3,8 @@
 
 The flow designer is one of the tools in the link:/design-center[Design Center]. It is a simplified web-based visual design tool that allows you to create and deploy Mule applications very easily. It can be thought of as a subset of link:/anypoint-studio[Anypoint Studio] (the desktop IDE) that is streamlined to require minimum configuration. With a strong focus on usability, the flow designer allows you to get things done with very little effort and without needing to go deep into learning the underlying concepts. It's oriented towards users that, whilst having a general technical background, don't need to understand Java or advanced connectivity concepts.
 
+image:flow-designer-e141b.png[]
+
 The flow designer allows you to build upon reusable assets, enabling anyone who needs to put together an integration to compose applications in a self-serve manner. They can combine both out-of-the-box components and those that have been created by integration specialists in your organization.
 
 The flow designer's editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. You might want to periodically deploy your project to a Dev environment while building and debugging, and then – when ready – simply change the deployment target to the Production environment, all without ever leaving the editor.
@@ -43,35 +45,42 @@ Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an ove
 
 In the flow designer, the components that compose Mule applications are represented by _cards_. Each component receives an input, carries out a specific function and then passes out an output to the next one. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
 
-image:
+image:flow-designer-00e97.png[]
 
 
 Every flow has a trigger that sets it into action, this can either be an endpoint component that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Design Center app project, you're immediately prompted to select the component that will trigger your first flow.
 
-image:
+image:flow-designer-92832.png[]
 
 You can then build up your flow from there, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
 
-image
 
 You add steps to your flow by licking the plus icons that exist in between two existing cards (hover over the arrows in between them to reveal plus icons).
 
-image
+image:flow-designer-c760b.png[]
 
 You can then pick what component to add to your flow from a list. This list includes all the basic components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
 
 [TIP]
 Advanced users can define what assets are made available on the flow designer via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
 
-You can also create a new flow by clicking the plus sign at the top:
+You can create multiple flows in a single project, add a new flow by clicking the plus sign at the top:
 
-image:
+image:flow-designer-78221.png[]
 
 Every flow is triggered and executed independently of each other.
 
+You can also rename and delete existing flows through the menu on the left:
+
+image:flow-designer-748ce.png[]
+
 == Card Configuration
 
-You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately). Many components also have <<Global Configurations>>, these allow you to set certain parameters globally.
+You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately).
+
+image
+
+Many components also have <<Global Configurations>>, these allow you to set certain parameters globally.
 
 image
 
@@ -91,19 +100,32 @@ When using the expression editor, it's implied that whatever you type into the f
 
 By design, Mule applications keep the reusable configurations of connectors separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which exist outside any flow, but that can be referenced by elements in them.
 
-image:
-
-
 In this way, when creating a project that utilizes several instances of a same card, these parameters only need to be provided once and can easily be globally changed.
 
-For example, you could have multiple HTTP connectors in your project, all of them relying on the same host and port and implementing the same SSL certificates, but each triggering a different flow via a different subpath. These would each reference a single global element in the following way:
+For example, you could have multiple HTTP connectors in your project, all of them relying on the same host and port and implementing the same SSL certificates, but each triggering a different flow via a different subpath.
 
-image
+When you create a new card that requires a global configuration, such as an HTTP Listener, note how you're prompted to set up a configuration, and that an error message is displayed until you do.
+
+image:flow-designer-fc8ff.png[]
+
+By clicking on the *Set up* link, you open a new global configuration, which is automatically applied to the currently selected card.
+
+image:flow-designer-52a43.png[]
+
+Once you have provided the necessary fields and clicked *Save*, the global configuration is set. If you create any new cards in your flow, these will automatically reference any existing relevant global elements.
+
+By using the dropdown menu on the top of each card, you can select between different configuration references, or otherwise edit exiting or create new ones by using the links beside it.
+
+image:flow-designer-a44e8.png[]
+
+All global configurations in your project are listed on the menu on the left, by selecting one, you can edit or delete it too.
+
+image:flow-designer-7c7a1.png[]
 
 
-This comes in specially handy when you want to deploy a same project to different environments. When deploying to a different environment, you are prompted to assign a different set of values for these global elements. In this way, you can for example easily point your production deployment to the production database, and your QA deployment to the mock QA database.
+Having global configurations separate from the elements themselves comes in specially handy when you want to deploy a same project to different environments. When deploying to a different environment, you are prompted to assign a different set of values for these global elements. In this way, you can for example easily point your production deployment to the production database, and your QA deployment to the mock QA database.
 
-image:
+image:flow-designer-d69dd.png[]
 
 
 == Transform

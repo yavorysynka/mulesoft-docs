@@ -5,7 +5,7 @@ The Design Center groups two editors that allow you to easily create tailored co
 
 The Design Center is part of the Anypoint Platform, in order to access this tool you need to own an Anypoint Platform account that has permissions that allow you to create and manage APIs and/or applications.
 
-image:[listed apps]
+image:index-5e173.png[]
 
 
 == API Designer (beta)
@@ -26,10 +26,10 @@ the flow designer offers a reduced set of options, tailored to be intuitive and 
 
 To create a new project, both with the flow or the API designer, just click the *Create* button:
 
-image[create]
+image:index-eccb7.png[]
 
 Then name your project and select the type of your project from the dropdown menu in *Project Type*:
 
-image[project type]
+image:index-4cd56.png[]
 
 You must also select the link:/access-managemnet/environments[target environment] for your application (ie: Development, QA, Production). Through the use of multiple environments, you can keep your works-in-progress safely away from the public eye until they're ready to be promoted to production.
