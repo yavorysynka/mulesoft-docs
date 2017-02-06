@@ -41,16 +41,16 @@ All of these things can be accomplished with link:/anypoint-studio[Anypoint Stud
 Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an overview of basic Mule Runtime concepts.
 
 
-In the flow designer, the building blocks that compose Mule applications are called _cards_. Each card receives an input, carries out a specific function and then passes out an output to the next card. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
+In the flow designer, the components that compose Mule applications are represented by _cards_. Each component receives an input, carries out a specific function and then passes out an output to the next one. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
 
 image:
 
 
-Every flow has a trigger that sets it into action, this can either be an endpoint card that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Design Center app project, you're immediately prompted to select the card that will trigger your first flow.
+Every flow has a trigger that sets it into action, this can either be an endpoint component that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Design Center app project, you're immediately prompted to select the component that will trigger your first flow.
 
 image:
 
-You can then build up your flow from there, by adding more cards that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
+You can then build up your flow from there, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
 
 image
 
@@ -58,20 +58,20 @@ You add steps to your flow by licking the plus icons that exist in between two e
 
 image
 
-You can then pick what element to add to your flow from a list. This list includes all the basic connectors and components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
+You can then pick what component to add to your flow from a list. This list includes all the basic components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
 
 [TIP]
 Advanced users can define what assets are made available on the flow designer via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
 
 You can also create a new flow by clicking the plus sign at the top:
 
-image
+image:
 
 Every flow is triggered and executed independently of each other.
 
 == Card Configuration
 
-You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately). Many cards also have <<Global Configurations>>, these do allow you to set up all cards of the same type together.
+You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately). Many components also have <<Global Configurations>>, these allow you to set certain parameters globally.
 
 image
 
@@ -89,9 +89,9 @@ When using the expression editor, it's implied that whatever you type into the f
 
 == Global Configurations
 
-By design, Mule applications keep the reusable configurations of connector cards separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which exist outside any flow, but that can be referenced by elements in them.
+By design, Mule applications keep the reusable configurations of connectors separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which exist outside any flow, but that can be referenced by elements in them.
 
-image
+image:
 
 
 In this way, when creating a project that utilizes several instances of a same card, these parameters only need to be provided once and can easily be globally changed.
@@ -115,15 +115,13 @@ image
 
 == Dealing With Metadata
 
-Each card displays key information about what it does to the data transitioning through it.
+Each card displays key information about what the component does to the data transitioning through it.
 
-
+image:
 
 As your data passes through your flows, you can inspect the expected structure of the data at each given point. This data can be of great help in understanding what your application is doing.
 
 See link:/design-center/handling-metadata-in-flow-designer[Handling Metadata in flow designer] for more on this topic.
-
-image
 
 
 
@@ -131,10 +129,12 @@ image
 
 You can easily deploy your app straight to CloudHub without leaving the editor. Simply click the *Play* button on the top nav bar. See link:/design-center/deploying-your-project[Deploying Your Project] for more details.
 
-image
+image:
 
+////
 [NOTE]
 For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
+////
 
 
 == Debugging
@@ -143,18 +143,23 @@ Once you have deployed your project, it's time to test it.
 
 If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *Try* button.
 
-image
+image:
 
-If any of the flows on your project are triggered by an HTTP listener connector, you can simply open a browser and hit the path where this is exposed. For example if your project name is xxx and the connector is configured to listen on the subpath xxx
+If any of the flows on your project are triggered by an HTTP listener connector, you can simply open a browser and hit the path where this is exposed. For example if your project is deployed to myapp.cloudhub.io and your flow is triggered by an HTTP connector that is configured to listen on the subpath `/helloworld`, then you should be able to activate that flow by pointing your browser to `myapp.cloudhub.io/helloworld`.
 
-You can use tools like postman or curl to send more complete HTTP requests if your application requires them
+For sending more advanced HTTP requests that include a body or headers, you can use tools like postman or curl.
 
 === Viewing Log Data
 
-After your flows have been triggered, and actual data has gone through them (not just metadata), you can view this data on each of the elements in the flow. The flow designer keeps a record of the messages on each, you can also open an historic view of the messages that came through an element
+After your flows have been triggered at least once, and actual data (not just metadata) has gone through them, you can view this data on each of the elements in the flow. The flow designer keeps a record of the messages on each, you can also open an historic view of the messages that came through an element.
+
+image:
+
+[NOTE]
+Note that this data is only shown on flow designer when running in development environments. Once you promote your application to a production environment, flow designer can't access data that flows through it.
 
 
-
+////
 == Export to Studio
 
 If you need to set up more advanced configurations on your Mule project, you can easily export it to link:/anypoint-studio[Anypoint Studio] and open it in this more powerful editor.
@@ -166,3 +171,4 @@ This generates a full-fledged Mule application, packaged as a .zip file. To lear
 
 [NOTE]
 Make sure you configure Anypoint Studio in your machine to be linked to your Anypoint Platform organization    ...do you have to?
+////
