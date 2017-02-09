@@ -1,0 +1,24 @@
+== To View the Connector Structure in Studio
+
+This Anypoint Connector DevKit module includes an Eclipse perspective that displays all of the DevKit classes, properties, methods, processors, and configurable fields from all your connectors inside the selected project.
+
+To configure DevKit View:
+
+. Click the *Add View* icon in the upper right of the screen and click *Other*.
++
+image:ViewButton.png[ViewButton]
++
+. Click *Devkit* and *OK* to open the DevKit Perspective.
++
+image:DevKitView.png[DevKitView]
++
+. Click any item in the *Devkit* perspective to display the code which defines it, for example:
++
+image:DevKitPerspective.png[DevKitPerspective]
+
+The DevKit view lets you:
+
+* Double-click a Configurable field or a method to easily navigate to the line of code where it is defined.
+* Check the name with which your operation is exposed in the XML.
+* Double-click an XSD name to see examples in the sample doc file.
+* Filter to find elements in your connector.

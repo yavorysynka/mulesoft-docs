@@ -1,6 +1,10 @@
-= Configuring Connection Strategies
+= To Define and Add a Configuration
 :keywords: devkit, strategy, connector, oauth, config, connection, authentication
 :imagesdir: ./_images
+:workflow:
+:toc:
+
+toc::[]
 
 Since DevKit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in a "configuration" class and injected into the `@Connector`.
 
@@ -14,7 +18,7 @@ This approach improves the experience for developing a connector and is the easi
 
 This document assumes you are familiar with the link:/anypoint-connector-devkit/v/3.8[Anypoint Connector DevKit] and you are ready to implement authentication on your connector. You should also be familiar with link:/anypoint-connector-devkit/v/3.8/authentication-methods[authentication methods].
 
-== Adding @Config to a @Connector
+== To Add a Configuration Class to a Connector
 
 To add a configuration class and inject it into the connector:
 
@@ -23,7 +27,7 @@ To add a configuration class and inject it into the connector:
 . Develop your authentication logic or connection management.
 . Finally, in the `@Connector` annotated class, reference the connection strategy class by creating a `@Config` field with the reference to the new strategy. The connector operation logic is defined separately from logic for connection with the service.
 
-== Examples
+== To Inject the Configuration into the Connector
 
 The following example shows the `@Connector` injecting the configuration with `@Config`.
 
@@ -48,6 +52,8 @@ public class MyConnector
         ...
 }
 ----
+
+== To Add Connection Management
 
 This code declares the `@ConnectionManagement` block in the configuration file that was injected above:
 
@@ -85,7 +91,7 @@ public class ConnectionManagementStrategy
 }
 ----
 
-== Supporting Multiple Authentication Models in One Connector
+== To Support Multiple Authentication Models in One Connector
 
 Anypoint Connector DevKit supports multiple authentication models in the same connector. The LDAP connector illustrates how to structure the connector code to support this feature.
 

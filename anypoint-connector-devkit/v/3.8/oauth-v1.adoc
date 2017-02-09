@@ -1,5 +1,7 @@
-= OAuth V1
+= Workflow: Supporting OAuth v1
 :keywords: devkit, oauth v1, api, authentication
+:workflow:
+:steps:
 
 This page presents a detailed discussion of DevKit's support for OAuth V1 authentication, and how to implement a connector that uses OAuth V1 to authenticate with your API.
 
@@ -23,7 +25,7 @@ From the service provider's API documentation, obtain the values for the variabl
 
 You must also arrange access to the API. The process is specific to each API provider and the typical steps for this process are described in link:/anypoint-connector-devkit/v/3.8/setting-up-api-access[Setting Up API Access]. 
 
-== @OAuth Annotation
+== To Use the @OAuth Annotation
 
 To implement OAuth V1 authentication on your connector you need to use the `@OAuth` annotation on the `@Connector` class.
 
@@ -49,7 +51,7 @@ The following table describes parameters for the `@OAuth` annotation.
 |`callbackPath` |If the service provider only accepts a known redirect URL. Assign this parameter to the path inside your domain (denoted by the `fullDomain` environment variable) that's registered with the service provider as a redirect URL. If left empty (meaning the service provider accepts any URL as redirect URL), Mule uses a random path. |  |`<random path>`
 |===
 
-=== Maven Project Dependencies
+=== To Add OAuth Maven Project Dependencies
 
 To implement authorization with OAuth 1.0 using DevKit, you must add the following dependency to your Maven `pom.xml` file:
 
@@ -62,7 +64,7 @@ To implement authorization with OAuth 1.0 using DevKit, you must add the followi
 </dependency>
 ----
 
-=== Adding @OAuth Annotation on the @Connector Class 
+=== To Add @OAuth Annotation on the @Connector Class 
 
 NOTE: OAuth V1 cannot be implemented as a connection strategy like the rest of the authentication methods, you can only use the annotation at the `@Connector` class level.
 
@@ -80,7 +82,7 @@ public class MyConnector {
 ----
 
 
-=== @Connector Class Properties
+=== To Configure @Connector Class Properties
 
 Your `@Connector` class needs OAuth-related `@Configurable` instance properties to allow the user to specify their consumer key and secret when using the connector:
 
@@ -101,9 +103,9 @@ It also needs String properties to hold the access token and access token secret
 @OAuthAccessTokenSecret private String accessTokenSecret;
 ----
 
-=== @Processor Method Annotations
+=== To Protect @Processor Methods with OAuth
 
-For any `@Processor` method to be protected, add the @OAuthProtected annotation, as shown:
+For any `@Processor` method to be protected, add the `@OAuthProtected` annotation, as shown:
 
 [source,java,linenums]
 ----
@@ -129,7 +131,7 @@ When invoked, an `@OAuthProtected @Processor` method initiates the following ac
 . The first time a protected resource is accessed, the user is redirected to the authorization URL of the service provider to grant or deny access for the consumer to the protected resource.
 . During subsequent access requests, Mule includes the *access token* and *access token secret* (contained within the parameters annotated with `@OAuthAccessToken` and `@OAuthAccessTokenSecret`) in the request to the service provider. Refer to the link:http://oauth.net/core/1.0/[OAuth 1.0a specification] for more details.
 
-== Including OAuth Headers in a Client Class
+== To Include OAuth Headers in a Client Class
 
 Most OAuth 1.0 implementations use Jersey Client to access a RESTful API; some use a Java client library specific to the application. But whatever client you use, add code at the client class level to send the consumer key, consumer secret, access token, and access token secret along with the request. 
 
@@ -155,11 +157,11 @@ private WebResource addSignHeader(WebResource webResource) {
 
 The connector passes all calls to the Dropbox API through this method to add the authentication headers specified by the OAuth V1 standard. Because this is specific to the use of Jersey client, a detailed walkthrough of this method and how it fits into the client class is not presented here. See the link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a Connector for a RESTful API Using Jersey] for the full details. 
 
-== Using an OAuth V1 Connector
+== To Use an OAuth V1 Connector
 
 After you have your connector built and installed, you can use it in a flow, as described in the following sections.
 
-=== Authorizing the Connector
+=== To Authorize the Connector
 
 Before a consumer can execute any operation that requires authorization, the resource owner must grant access to the protected resource to the connector. When it receives an authorization request, Mule redirects the resource owner's browser to the service provider authorization page. Any subsequent attempts to access a protected resource fills the parameters annotated with `@OAuthAccessToken` and `@OAuthAccessTokenSecret`. Mule includes the access token and token secret in the request to the service provider. In the example below we are using link:https://github.com/mulesoft/linkedin-connector[LinkedIn connector].
 
@@ -173,7 +175,7 @@ Before a consumer can execute any operation that requires authorization, the res
   </flow>
 ----
 
-=== Configuring the Connector in a Flow
+=== To Configure the OAuth Supported Connector in a Flow
 
 . Configure the extension by passing the *consumer key* and *consumer secret* for your application as supplied by the service provider. The code sample below illustrates an example of such configuration:
 +

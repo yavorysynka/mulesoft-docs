@@ -1,0 +1,19 @@
+= Connector Code Templates
+:concept:
+:reference:
+
+Templates are customizable pieces of code that you can add to your connector, and which provide a basic structure for elements you commonly use. Type the name or part of it and press `[ Command | Ctrl ] + space` to insert the template into the current Connector Class.
+
+image:screen23.png[screen23]
+
+=== Available Connector Code Templates
+
+[%autowidth.spread]
+|===
+|`configurable` |Add a configurable field.
+|`datasense` |Add a DataSense operation.
+|`processor` |Add a processor to your connector. There are several options with different templates.
+|`transformer` |Add a transformer method. Transformers convert one input to another.
+|`restconfig` |Add a configurable element to a REST-based connector, such as URI params, query params, or header params.
+|`restprocessor` |*@RestCall processor deprecated from 3.8.0 onward.* REST-based connectors insert the @RestCall parameter when you create an Anypoint Connector Project.
+|===

@@ -1,0 +1,150 @@
+= Anypoint Connector Project Classes
+
+
+
+== DevKit 3.9 Default Connector Project Classes
+
+The following is an example of the starting `@Connector` and `@Configuration` classes that DevKit 3.9 creates:
+
+[source, java, linenums]
+----
+
+package org.mule.modules.newconnector;
+
+import org.mule.api.annotations.Config;
+import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.Processor;
+
+import org.mule.modules.connpom.config.ConnectorConfig;
+
+@Connector(name="connpom", friendlyName="Connpom")
+public class ConnpomConnector {
+
+    @Config
+    ConnectorConfig config;
+
+    /**
+     * Custom processor
+     *
+     * @param friend Name to be used to generate a greeting message.
+     * @return A greeting message
+     */
+    @Processor
+    public String greet(String friend) {
+        /*
+         * MESSAGE PROCESSOR CODE GOES HERE
+         */
+        return config.getGreeting() + " " + friend + ". " + config.getReply();
+    }
+
+    public ConnectorConfig getConfig() {
+        return config;
+    }
+
+    public void setConfig(ConnectorConfig config) {
+        this.config = config;
+    }
+
+}
+----
+
+The DevKit 3.9 `@Configuration` class is as follows:
+
+[source, java, linenums]
+----
+package org.mule.modules.newconnector.config;
+
+import org.mule.api.annotations.components.Configuration;
+import org.mule.api.annotations.Configurable;
+import org.mule.api.annotations.param.Default;
+
+@Configuration(friendlyName = "Configuration")
+public class ConnectorConfig {
+
+    /**
+     * Greeting message
+     */
+    @Configurable
+    @Default("Hello")
+    private String greeting;
+
+    /**
+     * Reply message
+     */
+    @Configurable
+    @Default("How are you?")
+    private String reply;
+
+    /**
+     * Set greeting message
+     *
+     * @param greeting the greeting message
+     */
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
+    }
+
+    /**
+     * Get greeting message
+     */
+    public String getGreeting() {
+        return this.greeting;
+    }
+
+    /**
+     * Set reply
+     *
+     * @param reply the reply
+     */
+    public void setReply(String reply) {
+        this.reply = reply;
+    }
+
+    /**
+     * Get reply
+     */
+    public String getReply() {
+        return this.reply;
+    }
+
+}
+----
+
+=== DevKit 3.9 Default pom.xml
+
+The `pom.xml` file for a DevKit 3.9 project. The `<parent>` section shows DevKit's group ID `org.mule.tools.devkit`.
+
+
+[source,xml,linenums]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>newconnector-connector</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>mule-module</packaging>
+    <name>Mule Newconnector Anypoint Connector</name>
+
+    <parent>
+        <groupId>org.mule.tools.devkit</groupId>
+        <artifactId>mule-devkit-parent</artifactId>
+        <version>3.9.0</version>
+    </parent>
+
+    <properties>
+        <category>Community</category>
+        <licensePath>LICENSE.md</licensePath>
+        <devkit.studio.package.skip>false</devkit.studio.package.skip>
+    </properties>
+    <repositories>
+        <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
+            <url>http://repository.mulesoft.org/releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+</project>
+----

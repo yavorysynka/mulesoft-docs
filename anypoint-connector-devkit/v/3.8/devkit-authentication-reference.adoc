@@ -1,0 +1,17 @@
+== DevKit Authentication Methods Reference
+:reference:
+
+Reference for authentication methods to use.
+
+[%header,cols="2*"]
+|===
+|Method |More Information
+|Basic Authentication |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
+|OAuth 1.0 |link:/anypoint-connector-devkit/v/3.8/oauth-v1[OAuth V1]
+|OAuth 2.0 |link:/anypoint-connector-devkit/v/3.8/oauth-v2[OAuth V2]
+|HTTP Basic Authentication |link:/anypoint-connector-devkit/v/3.8/http-basic-authentication[HTTP Basic Authentication]
+|SAML |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
+|Kerberos |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
+|NTLM |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
+|LDAP |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
+|===

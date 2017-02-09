@@ -1,0 +1,64 @@
+= Using your OAuth2 Authenticated Connector
+:example:
+:concept:
+
+
+=== Authorizing the Connector
+
+Before a consumer can execute any operation that requires authorization, the resource owner must grant access to the connector to access the protected resource. When it receives an authorization request, Mule redirects the resource owner's browser to the service provider authorization page. Any subsequent attempts to access a protected resource fills the parameters annotated with `@OAuthAccessToken`. Mule includes the access token in the request to the service provider: +
+
+[source,xml,linenums]
+----
+<connector:config-oauth name="oauth2" consumerKey="[ckey]" consumerSecret="[csec]"/>
+...
+<flow name="authorize">
+  <http:listener config-ref="config" path="/authorize">
+  <connector:authorize config-ref="oauth2"/>
+</flow>
+----
+
+=== Configuring your Connector
+
+Configure the connector by passing the `apiKey` consumer key and `apiSecret` consumer secret for your application as supplied by the service provider:
+
+[source,xml,linenums]
+----
+...
+<oauth2module:config apiKey="${api.key}" apiSecret="${api.secret}"/>
+...
+----
+
+=== Customizing the Callback
+
+When a user grants access to the protected resource, the service provider makes an HTTP callback.
+
+The callback passes an authorization code that Mule uses later to obtain the access token. To handle the callback, Mule dynamically creates an HTTP inbound endpoint, then passes the endpoint's URL to the service provider. Thus, you do not need to complete any specific configuration to make an HTTP callback.
+
+By default, Mule uses a host and port (determined by the `fullDomain` environment variable and the `http.port`) to construct a URL to send to the service provider. Where you need to use non-default values for host and port, add the configuration: +
+
+[source,xml,linenums]
+----
+<connector:config-oauth name="oauth2" consumerKey="[ckey]" consumerSecret="[csec]">
+  <connector:oauth-callback-config domain="SOME_DOMAIN" localPort="SOME_PORT" path="SOME_PATH"/>
+</connector:config-oauth>
+----
+
+
+=== Adding Secure Socket Layer (SSL)
+
+When Mule automatically launches an HTTP listener request to handle the OAuth callback, it uses the HTTP connector by default. Where the service provider requires *HTTPS*, you can configure Mule to pass your own HTTPS connector: +
+
+[source,xml,linenums]
+----
+...
+<http:listener-config name="configuration" protocol="HTTPS"
+  host="localhost" port="8081">
+  <https:tls-key-store path="keystore.jks" keyPassword="mule2015"
+    storePassword="mule2015"/>
+</http:listener-config>
+...
+<connector:config-oauth name="oauth2" apiKey="${api.key}" apiSecret="${api.secret}">
+  <connector:oauth-callback-config domain="localhost" localPort="${http.port}" remotePort="${http.port}" async="true" connector-ref="httpsConnector"/>
+</connector:config-oauth>
+...
+----

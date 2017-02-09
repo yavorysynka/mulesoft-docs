@@ -1,5 +1,7 @@
-= Authentication Methods
+= Background on Authentication Methods
 :keywords: devkit, authentication, oauth, saml, kerberos, ntlm, ldap
+:concept:
+:guide:
 //todo: give note for each method and which devkit connector-building strategies are supported
 
 There are several common authentication protocols that APIs generally use. In most cases, you can implement at least one authentication method in your Anypoint Connector.  To help you understand the differences between these methods, this document offers a brief description of each of the most popular ones.
@@ -50,20 +52,7 @@ Strictly speaking, authentication takes place between the entity to which you co
 
 Usernames and passwords are stored in a database on an LDAP server, not by the service provider. The exact authentication method varies. There are several methods available, including using certificates and encryption with Transport Layer Security (TLS).
 
-== DevKit Authentication Methods
-
-[%header,cols="2*"]
-|===
-|Method |More Information
-|Basic Authentication |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
-|OAuth 1.0 |link:/anypoint-connector-devkit/v/3.8/oauth-v1[OAuth V1]
-|OAuth 2.0 |link:/anypoint-connector-devkit/v/3.8/oauth-v2[OAuth V2]
-|HTTP Basic Authentication |link:/anypoint-connector-devkit/v/3.8/http-basic-authentication[HTTP Basic Authentication]
-|SAML |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
-|Kerberos |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
-|NTLM |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
-|LDAP |link:/anypoint-connector-devkit/v/3.8/connection-management[Connection Management]
-|===
+include::devkit-authentication-reference.adoc[]
 
 == See Also
 
