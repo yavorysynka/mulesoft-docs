@@ -10,7 +10,12 @@ The flow designer allows you to build upon reusable assets, enabling anyone who 
 The flow designer's editor allows you to directly deploy your applications to CloudHub without ever leaving the screen. You might want to periodically deploy your project to a Dev environment while building and debugging, and then – when ready – simply change the deployment target to the Production environment, all without ever leaving the editor.
 
 [TIP]
+====
 In future releases, applications built in the flow designer will also be exportable to Anypoint Studio (the desktop IDE) for configuring advanced settings. With that feature, you could have a workflow where the desired overall functionality is drafted by line-of-business users on Design Center, and then the project can be exported to Anypoint Studio, where additional details that bring robustness to the application are implemented by specialized integration developers.
+====
+
+[NOTE]
+To use the flow designer, your Anypoint organization needs to have at least one CloudHub sandbox link:/access-management/environments[environment] in it. This is required to deploy and test applications as you develop them, before they're ready to promote to a production environment.
 
 == Build Basic Mule Applications
 

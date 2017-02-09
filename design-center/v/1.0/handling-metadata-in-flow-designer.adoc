@@ -2,47 +2,84 @@
 :keywords: mozart
 
 
-== Data Types
+== Overview
+
+When building an integration application, one of the biggest challenges is to know what data is available at every step of the way and how to reference it – is what I need available as a simple string or is it an item on an array? is it deep within the structure of an object? what parent elements do I need to reference to reach it? In flow designer, you don't need to guess the answers to any of these questions, as _metadata_ about the data that flows through your application is easily available to you while you build it.
+
+Every component has an input and an output. The actual contents of these may be unknown once the application is deployed and dealing with real data, but what you can know is the _shape_ of this data. Some components, such as a Salesforce connector, speak for themselves, as their mere presence in your flow already implies that their input and output need to have a certain shape. Other components that are more versatile, such as an HTTP request connector, could have inputs and outputs of any shape. In these cases, you can tell flow designer what metadata to expect and this information becomes available to the rest of your flow.
+
+Once flow designer knows what the shape of your data is and how it changes as it transitions through the flow, it can aid you in the following ways:
+
+* The cards in the flow visibly display the metadata
++
+image:
+
+* You get contextual autocomplete suggestions while you type, based on the available metadata
++
+image:
+
+* The link:/design-center/v/1.0/using-dataweave-in-flow-designer[Transform] card visually displays the shapes of the input and output next to each other, and allows you to simply drag and drop any element to map the two. You can also perform link:/mule-user-guide/v/4.0/dataweave[DataWeave] operations on the input to manipulate it in any way you choose.
+
+image:
+
+* When clicking the *Map* button next to most fields, you open a link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave] widget that allows you to populate the field from any element on the input, or performing any operation with it.
+
+image:
 
 
-== Custom Data Types
 
-You can define your own data types by:
+== Metadata in the Transform Card
 
-* Selecting the metadata tab in a connector
-* In a Transform card, opening the custom data type editor
+To use the drag and drop UI of the link:/design-center/v/1.0/using-dataweave-in-flow-designer[Transform Card], your flow must have metadata for both the input and the output of the card, that way it knows what's available and where it can be mapped to.
+
+image:
+
+There are several ways you can provide this required metadata:
+
+* Make sure that other elements in the flow are fully configured. For example, a connector can't expose its output structure until a given operation is chosen, as its output might differ depending on this.
+* You can manually define the output of a Mule component via its <<The Metadata Tab, *Metadata Tab*>>.
+* You can manually define the input of the Transform component by clicking on the *Define Data Shape* link that appears in the notification that warns you about missing input metadata, or by clicking on the target picker above the output section and selecting *Edit Current Data Shape*.
 
 
-== how to populate
+== The Metadata Tab
 
-how to get to the metadata menu, from transform component and the metadata tab of different elements
+Virtually all cards include a *Metadata Tab* that you can select on the left margin:
 
-what formats supported JSON XML CSV
+image:handling-metadata-in-flow-designer-c8c00.png[]
+
+This tab lets you describe the shape of the data that both enters and leaves the component, by referencing each element in the Mule Event: the payload, its properties or variables. See link:/mule-user-guide/v/4.0/mule-concepts[Mule Concepts] for more details about this.
+
+image:
+
+You can select existing or create custom....
+
+
+
+
+
+
+
+
+
+[NOTE]
+For the beta release of Design Center, only JSON, XML and CSV formats are supported for providing metadata. More will be added in future releases.
+
+=== Custom Data Types
 
 Sample / schema
 
-=== Custom Data Types
+
+
+
 
 similar to what's in Studio
 
 === Configure Reader Properties
 
+
+
+
+
+
+
 not confirmed for release....
-
-
-
-
-
-You can view metadata displayed directly on the different cards. This display says what each card is doing to the Mule message (link)
-
-
-how to view
-
-data type explorer
-
-
-what else it's for
-
-* Thanks to the metadata that you make available, the flow designer can also give you intelligent autocomplete suggestions, as well as mapping stuff
-* smart suggestions
-* DataWeave known inputs and required output structure.  The Map button also opens a DW menu where you can pick from the metadata to populate any field
