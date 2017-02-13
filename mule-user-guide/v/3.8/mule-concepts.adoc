@@ -41,7 +41,6 @@ include::_sources/mule-concepts.xml[]
 ....
 ------
 
-<<<<<<< HEAD
 
 // == Batch Jobs
 //
@@ -53,8 +52,6 @@ include::_sources/mule-concepts.xml[]
 //
 // A batch job executes when triggered by a *batch executor* in a Mule flow or a **message source **in a batch-accepting input; when triggered, Mule creates a new *batch job instance*. Once every record has passed through all batch steps, the batch job instance ends and the *batch job result* can be summarized in a report to indicate which records succeeded and which failed.
 //
-=======
->>>>>>> runtimeManager-21jan
 
 == Message Sources
 
