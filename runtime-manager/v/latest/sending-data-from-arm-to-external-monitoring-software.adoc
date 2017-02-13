@@ -26,7 +26,7 @@ Future releases will also feature integration with other third party systems.
 The goal of this document to enable you to integrate Runtime Manager with a third party tool such as Splunk or ELK.
 
 [TIP]
-Wether you're using the link:https://anypoint.mulesoft.com[cloud based] or the on-premise edition of the Anypoint Platform, the features described in this page work identically in both. If you’re interested in requesting the Anypoint Platform on-Premises Edition, please contact your sales representative.
+Whether you're using the link:https://anypoint.mulesoft.com[cloud based] or the on-premise edition of the Anypoint Platform, the features described in this page work identically in both. If you’re interested in requesting the Anypoint Platform on-Premises Edition, please contact your sales representative.
 
 == Basic Architecture
 
@@ -44,7 +44,7 @@ Applications deployed on Cloud can either use Insights (MuleSoft’s Analytics &
 ////
 
 
-You have the ability to leverage both options to monitor business events, custom business events, logs, and – in the case of apps deployed to an link:/api-gateway-runtime-archive[API Gateway] Runtime – API Analytics and governance.
+You have the ability to leverage both options to monitor business events, custom business events, logs, and – in the case of apps deployed to an link:/api-manager/api-gateway-runtime-archive[API Gateway] Runtime – API Analytics and governance.
 
 image:arm_big_picture.png[image]
 
@@ -544,7 +544,7 @@ In the case that you decide to change the master password or you omitted it when
 
 * link:/runtime-manager/managing-servers[Managing Servers]
 * link:/runtime-manager/monitoring[Monitoring Applications]
-* Learn how to first link:/runtime-manager/deployed-to-your-own-servers[Deploy Applications to your Own Servers]
+* Learn how to first link:/runtime-manager/deploying-to-your-own-servers[Deploy Applications to your Own Servers]
 * link:/runtime-manager/managing-deployed-applications[Managing Deployed Applications] contains more information on how to manage your application once deployed
 * link:/runtime-manager/managing-applications-on-your-own-servers[Managing Applications on Your Own Servers] contains more information specific to on-premise deployments
 * A link:/runtime-manager/runtime-manager-api[REST APIs] is also available for deployment to your servers.
