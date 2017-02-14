@@ -32,22 +32,26 @@ image:
 
 To use the drag and drop UI of the link:/design-center/v/1.0/using-dataweave-in-flow-designer[Transform Card], your flow must have metadata for both the input and the output of the card, that way it knows what's available and where it can be mapped to.
 
-image:
-
 There are several ways you can provide this required metadata:
 
 * Make sure that other elements in the flow are fully configured. For example, a connector can't expose its output structure until a given operation is chosen, as its output might differ depending on this.
 * You can manually define the output of a Mule component via its <<The Metadata Tab, *Metadata Tab*>>.
 * You can manually define the input of the Transform component by clicking on the *Define Data Shape* link that appears in the notification that warns you about missing input metadata, or by clicking on the target picker above the output section and selecting *Edit Current Data Shape*.
 
+image:handling-metadata-in-flow-designer-0412e.png[]
 
-== The Metadata Tab
+Note that for the input, you can define data shape separately for the message payload, for its attributes and for each of the variables.
 
-Virtually all cards include a *Metadata Tab* that you can select on the left margin:
+== The Data Types Tab
 
-image:handling-metadata-in-flow-designer-c8c00.png[]
+Virtually all cards include a *Data Types Tab* that you can select on the left margin:
 
-This tab lets you describe the shape of the data that both enters and leaves the component, by referencing each element in the Mule Event: the payload, its properties or variables. See link:/mule-user-guide/v/4.0/mule-concepts[Mule Concepts] for more details about this.
+
+image:handling-metadata-in-flow-designer-d2f64.png[]
+
+This tab lets you describe the shape of the data that both enters and leaves the component, by referencing each element in the Mule Event: the payload, its properties or variables. See link:/mule-user-guide/v/4.0/mule-concepts[Mule Concepts] for more details about how this works on the backend.
+
+
 
 image:
 
