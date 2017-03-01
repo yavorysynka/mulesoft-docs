@@ -7,11 +7,15 @@ The flow designer allows you to easily deploy applications straight from the edi
 == Deploying to Sandbox
 
 
-The flow designer automatically deploys your application to a sandbox environment on link:/runtime-manager/cloudhub[CloudHub] as soon as its error-free, without needing to go through the the link:/runtime-manager[Runtime Manager console].
+The flow designer allows you to deploy your application to a sandbox environment on link:/runtime-manager/cloudhub[CloudHub] as soon as its error-free, without needing to go through the the link:/runtime-manager[Runtime Manager console]. Just click the *Run* button on the navbar:
+
+image:deploying-your-project-51b3a.png[]
+
+
+Each application that you develop in Design Center is linked to a CloudHub worker, which is by default registered with the same name with which your Design Center project. Once deployed it becomes reachable through a URL that follows the structure *appName.cloudhub.io*.
 
 image:deploying-your-project-a8499.png[]
 
-Each application that you develop in Design Center is linked to a CloudHub worker, which is by default registered with the same name with which your Design Center project. Once deployed it becomes reachable through a URL that follows the structure *appName.cloudhub.io*.
 
 ////
 You can change this default name by opening <<The Deployment Panel>>, this also changes the deployment URL.
@@ -72,8 +76,7 @@ This creates a copy of your application and passes it to Runtime Manager to depl
 
 After deploying, you can go to the Runtime Manager console and link:/runtime-manager/managing-deployed-applciations[manage your application] in the same way as any other.
 
-image:
-
+image:deploying-your-project-e2ffa.png[]
 
 
 
