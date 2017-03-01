@@ -90,30 +90,6 @@ Many components also have <<Global Configurations>>, these allow you to set cert
 
 image:flow-designer-e68a4.png[]
 
-Fields can be populated with either a static value, or an expression. Switch between one modality or another by clicking the *expression button:
-
-image:flow-designer-88d35.png[]
-
-If the expression mode is enabled, you can either write a link:/mule-user-guide/v/4.0/dataweave[DataWeave] expression. This can consist of a simple reference to an element in the component's input, or may also involve link:/mule-user-guide/v/4.0/dataweave-operations[operations] to manipulate these values.
-
-
-[TIP]
-When using the expression editor, it's implied that whatever you type into the field is a DataWeave expression. Hence, you don't need to wrap your expression in `#[]`.
-
-Some fields also include a *Map button*:
-
-image:flow-designer-4fb52.png[]
-
-When you click this button, it opens an editor window, where you can graphically drag and drop elements from the incoming message and use the full set of features of link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave in flow designer] to build an expression.
-
-
-
-
-image
-
-
-
-
 
 == Global Configurations
 
@@ -147,6 +123,39 @@ Having global configurations separate from the elements themselves comes in spec
 image:flow-designer-d69dd.png[]
 
 
+== Populating Fields
+
+Fields can be populated with either a static value, or an expression. Switch between one modality or another by clicking the *expression button*:
+
+image:flow-designer-88d35.png[]
+
+If the expression mode is enabled on a field, you can write a link:/mule-user-guide/v/4.0/dataweave[DataWeave] expression. This can consist of a simple reference to a part of the element's input (such as 'payload'), or may also involve link:/mule-user-guide/v/4.0/dataweave-operations[operations] to manipulate incoming values into something else.
+
+
+[TIP]
+When using the expression editor, anything you type into the field is considered a DataWeave expression. Hence, you shouldn't wrap your expression in `#[]`, as this is already implied.
+
+When writing into the expression editor, if you enclose your expression in `{}` curly brackets, this automatically opens up the dictionary editor. This editor lets you set up the keys and values of an object as a simple table, which makes it more easily readable and less error-prone.
+
+image
+
+If you prefer, you can always switch back to a code view of the same expression, and define the keys and values through DataWeave syntax (which is a lot like JSON).
+
+image
+
+
+Some fields also include a *Map button*:
+
+image:flow-designer-4fb52.png[]
+
+When you click this button, it opens an editor window, where you can graphically drag and drop elements from the incoming message and use the full set of features of link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave in flow designer] to build an expression.
+
+
+
+
+image
+
+
 == Transform
 
 Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-flow-designer[Using DataWeave in the Flow Designer].
@@ -158,7 +167,7 @@ image
 
 Each card displays key information about what the component does to the data transitioning through it.
 
-image: 
+image:
 
 
 
