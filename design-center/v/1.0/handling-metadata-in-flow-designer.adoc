@@ -11,73 +11,91 @@ Every component has an input and an output. The actual contents of these may be 
 Once flow designer knows what the shape of your data is and how it changes as it transitions through the flow, it can aid you in the following ways:
 
 * The cards in the flow visibly display the metadata
-+
-image:
 
 * You get contextual autocomplete suggestions while you type, based on the available metadata
-+
-image:
 
 * The link:/design-center/v/1.0/using-dataweave-in-flow-designer[Transform] card visually displays the shapes of the input and output next to each other, and allows you to simply drag and drop any element to map the two. You can also perform link:/mule-user-guide/v/4.0/dataweave[DataWeave] operations on the input to manipulate it in any way you choose.
 
-image:
+image:handling-metadata-in-flow-designer-5ba8e.png[]
 
 * When clicking the *Map* button next to most fields, you open a link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave] widget that allows you to populate the field from any element on the input, or performing any operation with it.
 
-image:
+image:flow-designer-92092.png[]
 
 
+[NOTE]
+The handling of metadata in Flow Designer relies on having an available CloudHub worker to process backend requirements. If your Anypoint Platform account doesn't have an available sandbox CloudHub worker, then this functionality won't work.
 
-== Metadata in the Transform Card
+== Metadata Visualization
+
+As data transitions through the components of a flow, its transformed. When information is available to the flow designer about what is changed, this is displayed on every card.
+
+image:handling-metadata-in-flow-designer-79c3c.png[]
+
+The elements that make up the Mule Event are displayed on each card, the Payload, its Attributes and each of the Variables. In each component of the flow, these elements can be created, deleted, edited or kept unchanged. This is indicated via the following icons:
+
+* *+* : created
+
+* triangle icon: edited
+
+* *-* : deleted
+
+* nothing: unchanged
+
+== Data Types in the Transform Card
 
 To use the drag and drop UI of the link:/design-center/v/1.0/using-dataweave-in-flow-designer[Transform Card], your flow must have metadata for both the input and the output of the card, that way it knows what's available and where it can be mapped to.
 
 There are several ways you can provide this required metadata:
 
 * Make sure that other elements in the flow are fully configured. For example, a connector can't expose its output structure until a given operation is chosen, as its output might differ depending on this.
-* You can manually define the output of a Mule component via its <<The Metadata Tab, *Metadata Tab*>>.
-* You can manually define the input of the Transform component by clicking on the *Define Data Shape* link that appears in the notification that warns you about missing input metadata, or by clicking on the target picker above the output section and selecting *Edit Current Data Shape*.
+* You can manually define the output of a previous component in the flow via its <<Data Types tab, *Data Types Tab*>>. That information is propagated forward and transformed as it transitions through other components.
++
+image:handling-metadata-in-flow-designer-dec1d.png[]
 
-image:handling-metadata-in-flow-designer-0412e.png[]
+* You can manually define the input and output of the Transform component by clicking on the *Define Data Shape* link that appears in the notification that warns you about missing input metadata, or by opening the dropdown menu next to the *Output* label, and selecting *Edit Current Data Shape*.
+
+image:handling-metadata-in-flow-designer-e87b6.png[]
 
 Note that for the input, you can define data shape separately for the message payload, for its attributes and for each of the variables.
+
+By default, the transformation is set to output a new message payload, but you can change this by selecting the dropdown menu next to the *Output* label and selecting *Add Transformation*. You can then pick an attribute or variable to output to.
+
+image:handling-metadata-in-flow-designer-8cc99.png[]
 
 == The Data Types Tab
 
 Virtually all cards include a *Data Types Tab* that you can select on the left margin:
 
 
-image:handling-metadata-in-flow-designer-d2f64.png[]
+image:handling-metadata-in-flow-designer-89c6a.png[]
 
 This tab lets you describe the shape of the data that both enters and leaves the component, by referencing each element in the Mule Event: the payload, its properties or variables. See link:/mule-user-guide/v/4.0/mule-concepts[Mule Concepts] for more details about how this works on the backend.
 
+In this tab, you can select data types for each of these elements of the Mule Event, for both the inputs and outputs of the component. In each case, you can either create a <<Custom Data Types, custom data type>>, or select an existing one from those that you have already created in your project.
 
-
-image:
-
-You can select existing or create custom....
-
+You can add as many variables as you want, every time you click the *Add* button next to variables you're prompted to provide a variable name and a data type for it.
 
 
 
 
+=== Custom Data Types
 
+Through <<The Data Types Tab>>, you can add new data types. Once defined, these types are made available to use anywhere in your project.
 
-
+image:handling-metadata-in-flow-designer-b50f7.png[]
 
 [NOTE]
 For the beta release of Design Center, only JSON, XML and CSV formats are supported for providing metadata. More will be added in future releases.
 
-=== Custom Data Types
+Depending on the selected format, you can define your custom type by providing a data sample or a schema. After selecting one of the two options, simply paste a sample or schema in the input box below, the preview section on the right should display the resulting tree.
 
-Sample / schema
+image:handling-metadata-in-flow-designer-8e17e.png[]
+
+When you're happy with your new data type, simply click *Save*.
 
 
-
-
-
-similar to what's in Studio
-
+////
 === Configure Reader Properties
 
 
@@ -87,3 +105,4 @@ similar to what's in Studio
 
 
 not confirmed for release....
+////

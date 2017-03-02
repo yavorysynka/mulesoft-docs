@@ -27,7 +27,7 @@ In spite of being simple, the flow designer is still quite powerful, you can bui
 * Send automatic emails.
 * Can powerfully map fields through link:/mule-user-guide/v/4.0/dataweave[DataWeave] transformations to make virtually any two data formats compatible
 
-Just like with link:/anypoint-studio[Anypoint Studio], the resulting application of editing in the flow designer is built for running in a Mule Runtime, either in link:/runtime-manager/deploying-to-cloudhub[CloudHub] or in a link:/runtime-manager/deploying-to-your-own-servers[customer-managed server].
+Just like with link:/anypoint-studio[Anypoint Studio], the resulting application is meant for deploying to a Mule Runtime, either in link:/runtime-manager/deploying-to-cloudhub[CloudHub] or in a link:/runtime-manager/deploying-to-your-own-servers[customer-managed server].
 
 [NOTE]
 ====
@@ -48,42 +48,42 @@ All of these things can be accomplished with link:/anypoint-studio[Anypoint Stud
 Refer to link:/mule-user-guide/v/3.8/mule-concepts[Mule Key Concepts] for an overview of basic Mule Runtime concepts.
 
 
-In the flow designer, the components that compose Mule applications are represented by _cards_. Each component receives an input, carries out a specific function and then passes out an output to the next one. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
+In the flow designer, the components that compose Mule applications are represented as _cards_. Each component receives an input, carries out a specific function and then passes out an output to the next one. These are chained together into link:/mule-user-guide/v/3.8/mule-concepts#flows[flows].
 
 image:flow-designer-00e97.png[]
 
+You can have several flows in a single project. Each flow is executed independently of each other. Every flow has a trigger that sets it into action, this can either be a connector that is externally called, or a poll which actions your flow at a given time or interval.
 
-Every flow has a trigger that sets it into action, this can either be an endpoint component that is externally called, or a poll which actions your flow at a given time or interval. When you create a new Design Center app project, you're immediately prompted to select the component that will trigger your first flow.
+When you create a new Design Center app project, you're immediately prompted to select the component that will trigger your first flow.
 
-image:flow-designer-92832.png[]
+image:flow-designer-6c883.png[]
 
-You can then build up your flow from there, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
+You can then build up the rest of your flow, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
 
 
-You add steps to your flow by licking the plus icons that exist in between two existing cards (hover over the arrows in between them to reveal plus icons).
+You add steps to a flow by clicking the plus icons that exist in between two existing cards (hover over the arrows in between them to reveal plus icons).
 
 image:flow-designer-c760b.png[]
 
-You can then pick what component to add to your flow from a list. This list includes all the basic components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
+This opens a list of eligible components, from which you can pick which to add in that position of the flow. This list includes all the basic components, as well as APIs taken directly from your organization's link:/mule-fundamentals/v/3.8/anypoint-exchange2[Exchange], exposing content that's created by integration specialists in your organization.
 
 [TIP]
-Advanced users can define what assets are made available on the flow designer via Exchange. For example, if you have a custom API for Salesforce and don't want people in your organization to instead use the regular Salesforce connector, you can restrict its use.
+Advanced users can define what assets are made available on the flow designer via Exchange. For example, if you have a custom API for Salesforce and want everyone in your organization to use that instead of the regular Salesforce connector, you can restrict the regular connector's use.
 
 You can create multiple flows in a single project, add a new flow by clicking the plus sign at the top:
 
-image:flow-designer-78221.png[]
+image:flow-designer-05528.png[]
 
-Every flow is triggered and executed independently of each other.
 
 You can also rename and delete existing flows through the menu on the left:
 
-image:flow-designer-748ce.png[]
+image:flow-designer-d095a.png[]
 
 == Card Configuration
 
 You can click on any card to open its settings panel. There, you'll find specific settings that pertain to that element in your flow (if your project includes multiple instances of the same type of card, each is configured separately).
 
-image:flow-designer-1075d.png[]
+image:flow-designer-2765a.png[]
 
 
 Many components also have <<Global Configurations>>, these allow you to set certain parameters globally. If the card requires one, it will notify you with an error message on the top margin, which includes a link that automatically creates a new global message instance.
@@ -101,7 +101,7 @@ For example, you could have multiple HTTP connectors in your project, all of the
 
 When you create a new card that requires a global configuration, such as an HTTP Listener, note how you're prompted to set up a configuration, and that an error message is displayed until you do.
 
-image:flow-designer-fc8ff.png[]
+image:flow-designer-30203.png[]
 
 By clicking on the *Set up* link, you open a new global configuration, which is automatically applied to the currently selected card.
 
@@ -109,13 +109,14 @@ image:flow-designer-52a43.png[]
 
 Once you have provided the necessary fields and clicked *Save*, the global configuration is set. If you create any new cards in your flow, these will automatically reference any existing relevant global elements.
 
-By using the dropdown menu on the top of each card, you can select between different configuration references, or otherwise edit exiting or create new ones by using the links beside it.
+Once the component has an assigned global configuration you can click the *Change* link on the component's top bar to then, select a different configuration, or edit the existing one.
 
-image:flow-designer-a44e8.png[]
 
-All global configurations in your project are listed on the menu on the left, by selecting one, you can edit or delete it too.
+image:flow-designer-51852.png[]
 
-image:flow-designer-7c7a1.png[]
+All global configurations in your project are listed on the menu on the left, under *Connectors & Modules*. You can edit or delete these directly from this menu.
+
+image:flow-designer-7b549.png[]
 
 
 Having global configurations separate from the elements themselves comes in specially handy when you want to deploy a same project to different environments. When deploying to a different environment, you are prompted to assign a different set of values for these global elements. In this way, you can for example easily point your production deployment to the production database, and your QA deployment to the mock QA database.
@@ -135,7 +136,16 @@ If the expression mode is enabled on a field, you can write a link:/mule-user-gu
 [TIP]
 When using the expression editor, anything you type into the field is considered a DataWeave expression. Hence, you shouldn't wrap your expression in `#[]`, as this is already implied.
 
-When writing into the expression editor, if you enclose your expression in `{}` curly brackets, this automatically opens up the dictionary editor. This editor lets you set up the keys and values of an object as a simple table, which makes it more easily readable and less error-prone.
+
+
+
+
+
+
+
+
+
+When writing into the expression editor, if you enclose your expression in `{}` curly brackets, this automatically opens up the dictionary editor. This editor lets you set up the keys and values of an object as a simple table, which makes it more readable and less error-prone.
 
 image
 
@@ -146,7 +156,7 @@ image
 
 Some fields also include a *Map button*:
 
-image:flow-designer-4fb52.png[]
+image:flow-designer-92092.png[]
 
 When you click this button, it opens an editor window, where you can graphically drag and drop elements from the incoming message and use the full set of features of link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave in flow designer] to build an expression.
 
@@ -160,7 +170,7 @@ image
 
 Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-flow-designer[Using DataWeave in the Flow Designer].
 
-image
+image:flow-designer-5ba8e.png[]
 
 
 == Dealing With Metadata
@@ -191,27 +201,36 @@ image:flow-designer-e48ff.png[]
 For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
 ////
 
-////
+
 == Debugging
 
-Once you have deployed your project, it's time to test it.
+Once your project is running on a sandbox server, it's time to try it out. You can verify that it's correctly deployed to the sandbox environment by looking at its status in the nav bar, it should show a green marker and read *Running*.
+
+You can obtain the URL that your project is deployed to by clicking on the dropdown menu next to the status marker and selecting *Copy Link*.
+
+
+image:flow-designer-25c8a.png[]
+
+
+////
+=== Try button
 
 If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *Try* button.
 
 image:
 
+////
 
 
+=== Sending Mock Requests
 
 If any of the flows on your project are triggered by an HTTP listener connector, you can simply open a browser and hit the path where this is exposed. For example if your project is deployed to myapp.cloudhub.io and your flow is triggered by an HTTP connector that is configured to listen on the subpath `/helloworld`, then you should be able to activate that flow by pointing your browser to `myapp.cloudhub.io/helloworld`.
 
 For sending more advanced HTTP requests that include a body or headers, you can use tools like postman or curl.
-////
 
-////
 === Viewing Log Data
 
-After your flows have been triggered at least once, and actual data (not just metadata) has gone through them, you can view this data on each of the elements in the flow. The flow designer keeps a record of the messages on each, you can also open an historic view of the messages that came through an element.
+After your flows have been triggered at least once, and actual data has transitioned through them, you can view records of this data as it went through each of the elements in the flow. You can also open an historic view of the messages that came through an element.
 
 image:
 
@@ -221,9 +240,8 @@ image:
 
 [NOTE]
 Note that this data is only shown on flow designer when running in development environments. Once you promote your application to a production environment, flow designer can't access data that flows through it.
+
 ////
-
-
 == Export to Studio
 
 If you need to set up more advanced configurations on your Mule project, you can easily export it to link:/anypoint-studio[Anypoint Studio] and open it in this more powerful editor.
@@ -234,7 +252,7 @@ image:flow-designer-dd7df.png[]
 
 This generates a full-fledged Mule application, packaged as a .zip file. To learn how to import this file into Anypoint Studio, see link:/anypoint-studio/v/6/importing-and-exporting-in-studio#impoting-projects-into-studio[Importing and Exporting in Studio]
 
-////
+
 [NOTE]
 Make sure you configure Anypoint Studio in your machine to be linked to your Anypoint Platform organization    ...do you have to?
 ////
