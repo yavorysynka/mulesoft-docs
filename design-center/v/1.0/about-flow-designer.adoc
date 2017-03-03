@@ -1,4 +1,4 @@
-= Flow Designer
+= About Flow Designer
 :keywords: mozart
 
 == Overview
@@ -60,7 +60,7 @@ When you create a new Design Center app project, you're immediately prompted to 
 
 image:flow-designer-6c883.png[]
 
-You can then build up the rest of your flow, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/handling-metadata-in-flow-designer[handling metadata in the flow designer].
+You can then build up the rest of your flow, by adding more components that are executed after the first one is triggered. The order in which they are placed matters, as information flows through them from left to right. To view the metadata that describes this information at every point of the way, see link:/design-center/v/1.0/about-metadata[About Metadata].
 
 
 You add steps to a flow by clicking the plus icons that exist in between two existing cards (hover over the arrows in between them to reveal plus icons).
@@ -87,15 +87,16 @@ You can click on any card to open its settings panel. There, you'll find specifi
 
 image:flow-designer-2765a.png[]
 
-
-Many components also have <<Global Configurations>>, these allow you to set certain parameters globally. If the card requires one, it will notify you with an error message on the top margin, which includes a link that automatically creates a new global message instance.
-
-image:flow-designer-e68a4.png[]
-
+[TIP]
+See link:/design-center/v/1.0/to-populate-fields[To Populate Fields] for details on how the Flow Designer UI can make this easier.
 
 == Global Configurations
 
 By design, Mule applications keep the reusable configurations of connectors separate from the definition of individual instances of them. This is achieved through link:/mule-user-guide/v/4.0/global-elements[Global Elements], which exist outside any flow, but that can be referenced by elements in them.
+
+Many components require that you reference one of these global configurations. If the card requires one, it will notify you with an error message on the top margin, which includes a link that automatically creates a new global message instance.
+
+image:about-flow-designer-6a4c6.png[]
 
 In this way, when creating a project that utilizes several instances of a same card, these parameters only need to be provided once and can easily be globally changed.
 
@@ -120,115 +121,9 @@ All global configurations in your project are listed on the menu on the left, un
 
 image:flow-designer-7b549.png[]
 
-
-== Populating Fields
-
-Fields can be populated with either a static value, or an expression. Switch between one modality or another by clicking the *expression button*:
-
-image:flow-designer-88d35.png[]
-
-If the expression mode is enabled on a field, you can write a link:/mule-user-guide/v/4.0/dataweave[DataWeave] expression. This can consist of a simple reference to a part of the element's input (such as 'payload'), or may also involve link:/mule-user-guide/v/4.0/dataweave-operations[operations] to manipulate incoming values into something else.
-
-
 [TIP]
-When using the expression editor, anything you type into the field is considered a DataWeave expression. Hence, you shouldn't wrap your expression in `#[]`, as this is already implied.
+See link:/design-center/v/1.0/to-populate-fields[To Populate Fields] for details on how the Flow Designer UI can make this easier.
 
-
-
-
-
-
-
-
-
-
-When writing into the expression editor, if you enclose your expression in `{}` curly brackets, this automatically opens up the dictionary editor. This editor lets you set up the keys and values of an object as a simple table, which makes it more readable and less error-prone.
-
-image
-
-If you prefer, you can always switch back to a code view of the same expression, and define the keys and values through DataWeave syntax (which is a lot like JSON).
-
-image
-
-
-Some fields also include a *Map button*:
-
-image:flow-designer-92092.png[]
-
-When you click this button, it opens an editor window, where you can graphically drag and drop elements from the incoming message and use the full set of features of link:/design-center/v/1.0/using-dataweave-in-flow-designer[DataWeave in flow designer] to build an expression.
-
-image:flow-designer-ac169.png[]
-
-
-== Transform
-
-Through the *Transform* element you can powerfully convert data types and data structures, perform aggregations, filters and much more. See link:/design-center/using-dataweave-in-flow-designer[Using DataWeave in the Flow Designer].
-
-image:flow-designer-5ba8e.png[]
-
-
-== Dealing With Metadata
-
-Each card displays key information about what the component does to the data transitioning through it.
-
-image:flow-designer-79c3c.png[]
-
-As your data passes through your flows, you can inspect the expected structure of the data at each given point. This data can be of great help in understanding what your application is doing.
-
-See link:/design-center/handling-metadata-in-flow-designer[Handling Metadata in flow designer] for more on this topic.
-
-
-
-== Deploy Your Project
-
-You can easily deploy your app straight to CloudHub without leaving the editor. Simply click the *Play* button on the top nav bar. See link:/design-center/deploying-your-project[Deploying Your Project] for more details.
-
-image:flow-designer-e48ff.png[]
-
-////
-[NOTE]
-For deploying to customer-managed Mule runtimes (ie: not CloudHub), you must first import your project to Anypoint Studio and export a .zip deployable archive from there.
-////
-
-
-== Debugging
-
-Once your project is running on a sandbox server, it's time to try it out. You can verify that it's correctly deployed to the sandbox environment by looking at its status in the nav bar, it should show a green marker and read *Running*.
-
-You can obtain the URL that your project is deployed to by clicking on the dropdown menu next to the status marker and selecting *Copy Link*.
-
-
-image:flow-designer-25c8a.png[]
-
-
-////
-=== Try button
-
-If any of the flows on your project are triggered by a link:/mule-user-guide/v/3.8/poll-reference[Poll] element, then you can trigger that flow manually by clicking on the *Try* button.
-
-image:
-
-////
-
-
-=== Sending Mock Requests
-
-If any of the flows on your project are triggered by an HTTP listener connector, you can simply open a browser and hit the path where this is exposed. For example if your project is deployed to myapp.cloudhub.io and your flow is triggered by an HTTP connector that is configured to listen on the subpath `/helloworld`, then you should be able to activate that flow by pointing your browser to `myapp.cloudhub.io/helloworld`.
-
-For sending more advanced HTTP requests that include a body or headers, you can use tools like postman or curl.
-
-=== Viewing Log Data
-
-After your flows have been triggered at least once, and actual data has transitioned through them, you can view records of this data as it went through each of the elements in the flow. You can also open an historic view of the messages that came through an element.
-
-image:
-
-
-
-
-
-[NOTE]
-Note that this data is only shown on flow designer when running in development environments. Once you promote your application to a production environment, flow designer can't access data that flows through it.
 
 ////
 == Export to Studio

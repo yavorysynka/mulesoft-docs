@@ -1,4 +1,4 @@
-= Design Center
+= About Design Center
 :keywords: mozart
 
 The Design Center groups two editors that allow you to easily create tailored connectivity solutions. Both editors are designed to keep you focused on a high-level view of what you're creating, leveraging custom reusable components or leaving backend complexities for a later step.
@@ -25,15 +25,3 @@ From the RAML definition you can also automatically generate interactive documen
 The flow designer lets you create fully functional Mule applications, functioning as an on-line simplified alternative to link:/anypoint-studio[Anypoint Studio].
 
 the flow designer offers a reduced set of options, tailored to be intuitive and to the point. If you find that you require going deeper into more advanced configuration, you can always export your resulting Mule application into link:/anypoint-studio[Anypoint Studio], the desktop IDE.
-
-== Create New
-
-To create a new project, both with the flow or the API designer, just click the *Create* button:
-
-image:index-eccb7.png[]
-
-Then name your project and select the type of your project from the dropdown menu in *Project Type*:
-
-image:index-4cd56.png[]
-
-You must also select the link:/access-managemnet/environments[target environment] for your application (ie: Development, QA, Production). Through the use of multiple environments, you can keep your works-in-progress safely away from the public eye until they're ready to be promoted to production.
