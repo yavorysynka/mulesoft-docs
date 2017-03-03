@@ -1,11 +1,13 @@
 // TOC File
 
 * link:/design-center/v/1.0/[Design Center]
++
+////
 ** link:/design-center/v/1.0/api-designer[API Designer]
+////
 ** link:/design-center/v/1.0/flow-designer[Flow Designer]
 +
 ////
-*** link:/design-center/v/1.0/creating-new-project[Create a New Project]
 *** link:/design-center/v/1.0/importing-and-exporting[Importing and Exporting]
 ////
 *** link:/design-center/v/1.0/deploying-your-project[Deploying your Project]
