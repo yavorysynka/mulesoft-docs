@@ -70,10 +70,12 @@ For Maven dependency management, include this XML snippet in your pom.xml file.
 </dependency>
 ----
 
-== To Configure With Anypoint Studio Visual Editor
+== To Configure With Anypoint Studio
 
 
-To configure the Rosetta Net connector, supply the following values:
+To configure the Rosetta Net connector, supply the following values. If you are using
+the Visual Editor, configure the required values in the *Field* column of the table.
+If you are using the XML Editor, configure the required *XML parameter* values.
 
 [%header%autowidth.spread]
 |===
