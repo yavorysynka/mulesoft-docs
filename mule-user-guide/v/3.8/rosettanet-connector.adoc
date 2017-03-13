@@ -6,7 +6,6 @@
 
 toc::[]
 
-== Overview
 
 The Rosetta Net connector provides B2B functionality using the Rosetta Net Information Framework (RNIF) for information 
 exchange of Rosetta Partner Interface Process (PIP) messages.
@@ -15,7 +14,7 @@ Read through this user guide to understand how to set up and configure a basic f
 
 MuleSoft maintains this connector under the Community support policy.
 
-== Important Concepts
+== About Important Concepts
 
 This document assumes that you are familiar with Mule,
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
@@ -26,13 +25,13 @@ link:/mule-user-guide/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow],
 and link:/mule-user-guide/v/3.8/global-elements[Global Elements]. 
 See also link:https://www.mulesoft.com/exchange#!/?types=connector&sortBy=name[Anypoint Exchange Connectors].
 
-== Hardware and Software Requirements
+== About Hardware and Software Requirements
 
 For hardware and software requirements, 
 see link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements].
 
 
-== Connector Namespace and Schema
+== About Connector Namespace and Schema
 
 When designing your application in Studio, drag the connector from the palette to the Anypoint Studio canvas. This automatically populates the XML code with the connector namespace and schema location.
 
@@ -57,7 +56,7 @@ TIP: If you are manually coding the Mule application in Studio’s XML editor or
 </mule>
 ----
 
-== Maven Dependency Information
+== About Maven Dependency Information
 
 For Maven dependency management, include this XML snippet in your pom.xml file.
 
@@ -222,7 +221,7 @@ http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/m
 </mule>
 ----
 
-== Specify an Operation
+== To Specify an Operation
 
 To choose an operation:
 
@@ -257,7 +256,7 @@ Workflow:
 . Configure the RosettaNet Connectors properly for the purchase order request and the purchase order confirmation.
 . Test that the applications work as intended.
 
-=== Purchase Order Example
+=== About the Purchase Order Example
 
 In this example, you build two Mule applications to mimic the following diagram. You can download the link:*COMING*[buyer app] and the link:*COMING*[seller app].
 
@@ -267,7 +266,7 @@ The following shows the relationships between the buyer and seller applications:
 
 image:rosettanet-state-diagram.png[rosettanet-state-diagram]
 
-=== Buyer Application
+=== To Configure the Buyer Application
 
 The buyer application performs these actions:
 
@@ -287,7 +286,7 @@ Configuration settings for the buyer application:
 
 image:rosettanet-buyer-gep.png[rosettanet-buyer-gep]
 
-=== Seller Application
+=== To Configure the Seller Application
 
 The seller app performs these actions:
 
@@ -303,7 +302,7 @@ Configuration in Studio:
 
 image:rosettanet-seller-visual-flow.png[rosettanet-seller-visual-flow]
 
-==== Seller App Configuration
+==== About the Seller App Configuration
 
 In the Seller App, the following configurations are required:
 
@@ -318,7 +317,7 @@ Configuration settings for the seller application:
 
 image:rosettanet-seller-gep.png[rosettanet-seller-gep]
 
-=== Sending a Purchase Order Request
+=== To Send a Purchase Order Request
 
 Once you run the Buyer and Seller apps, please go to the Buyer app to send a purchase order. You can find a sample purchase order request under `po-out`, and drag and drop it to `po-in`. As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order request (xml), and sends it to the seller:
 
@@ -417,21 +416,21 @@ In the Studio console for the Seller application, you can find that the purchase
  ...
 ----
 
-=== Sending a Purchase Order Confirmation
+=== To Send a Purchase Order Confirmation
 
 In the Seller app, You can find a sample purchase order confirmation under “confirm-out,” and drag and drop it to “confirm-in.” As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order confirmation(xml), and sends it to the buyer.
 
 [source,xml,linenums]
 ----
-&#45;----=_Part_3_683610040.1489172163654
+&#45;-----=_Part_3_683610040.1489172163654
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-1; 
   boundary="----=_Part_2_210462054.1489172163654"
 
-&#45;----=_Part_2_210462054.1489172163654
+&#45;-----=_Part_2_210462054.1489172163654
 Content-Type: multipart/related; 
   boundary="----=_Part_0_799920953.1489172163420"
 
-&#45;----=_Part_0_799920953.1489172163420
+&#45;-----=_Part_0_799920953.1489172163420
 MIME-Version: 1.0
 Content-Type: application/xml; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
@@ -449,7 +448,7 @@ ityCode>
     <VersionIdentifier>V02.00</VersionIdentifier>
   </standardVersion>
 </Preamble>
-&#45;----=_Part_0_799920953.1489172163420
+&#45;-----=_Part_0_799920953.1489172163420
 MIME-Version: 1.0
 Content-Type: application/xml; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
@@ -518,7 +517,7 @@ In the Studio console for Buyer app, you can find that the purchase order confir
  ...
 ----
 
-== Resources
+== About Other Resources
 
 * link:https://resources.gs1us.org/RosettaNet[GS1 RosettaNet Standard]
 * link:https://en.wikipedia.org/wiki/RosettaNet[Wikipedia RosettaNet topic]
