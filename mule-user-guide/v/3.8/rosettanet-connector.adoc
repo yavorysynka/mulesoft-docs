@@ -1,4 +1,4 @@
-= Rosetta Net Connector
+= RosettaNet Connector
 :keywords: add_keywords_separated_by_commas
 :imagesdir: ./_images
 :toc: macro
@@ -7,12 +7,24 @@
 toc::[]
 
 
-The Rosetta Net connector provides B2B functionality using the Rosetta Net Information Framework (RNIF) for information 
+The RosettaNet connector provides B2B functionality using the RosettaNet Information Framework (RNIF) for information 
 exchange of Rosetta Partner Interface Process (PIP) messages.
 
 Read through this user guide to understand how to set up and configure a basic flow using the connector. 
 
 MuleSoft maintains this connector under the Community support policy.
+
+The RosettaNet Connector supports RNIF 2.0 and later.
+
+These PIPs are supported:
+
+* 3A4MG1 v02.02
+* 3A4MG2 v02.02
+* 3A6MG1 v02.00, v02.02, v02.03
+* 3B2MG1 v01.00
+* 3C3MG1 v01.01
+
+The RosettaNet Connector always uses PIP 0A1 v02.00 for all Failure Notification messages.
 
 == About Important Concepts
 
@@ -35,10 +47,12 @@ see link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and 
 
 When designing your application in Studio, drag the connector from the palette to the Anypoint Studio canvas. This automatically populates the XML code with the connector namespace and schema location.
 
-*Namespace:* http://www.mulesoft.org/schema/mule/connector +
-*Schema Location:* http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd
+*Namespace:* `+http://www.mulesoft.org/schema/mule/connector+` +
+*Schema Location:* `+http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd+`
 
-TIP: If you are manually coding the Mule application in Studio’s XML editor or other text editor, define the namespace and schema location in the header of your Configuration XML, inside the `<mule>` tag.
+TIP: If you manually code the Mule application in Studio’s XML editor or other text editor, you can define the namespace and schema location in the header of your Configuration XML, inside the `<mule>` tag.
+
+For example:
 
 [source,xml,linenums]
 ----
@@ -58,7 +72,7 @@ TIP: If you are manually coding the Mule application in Studio’s XML editor or
 
 == About Maven Dependency Information
 
-For Maven dependency management, include this XML snippet in your pom.xml file.
+For Maven dependency management, include this XML snippet in your pom.xml file:
 
 [source,xml,linenums]
 ----
@@ -71,12 +85,11 @@ For Maven dependency management, include this XML snippet in your pom.xml file.
 
 == To Configure With Anypoint Studio
 
-
-To configure the Rosetta Net connector, supply the following values. If you are using
+To configure the RosettaNet connector, supply the following values. If you are using
 the Visual Editor, configure the required values in the *Field* column of the table.
 If you are using the XML Editor, configure the required *XML parameter* values.
 
-[%header%autowidth.spread]
+[%header,cols="30s,70a"]
 |===
 |Field |Description
 |Name |Configuration name by default is `RosettaNet_Configuration`
@@ -126,11 +139,13 @@ Require Secure Transport |Indicate whether or not an HTTPS connection is require
 *Type*: boolean +
 *Required*: no +
 *Default*: `false`
-|Global Usage Code |Specify the operational state:
+|Global Usage Code |
 
-* Production - 
-* Test - 
-* Unchecked - 
+Specify the operational state:
+
+* Production
+* Test
+* Unchecked
 
 *XML parameter:* `globalUsageCode` +
 *Type*: string +
@@ -193,7 +208,6 @@ Pip Role |Role in PIP usage.
 
 The following example illustrates all the RosettaNet fields. 
 
-
 [source,xml,linenums]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
@@ -225,17 +239,13 @@ http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/m
 
 To choose an operation:
 
-. From *Operations*, select one of the following:
-+
-[%header%autowidth.spread]
-|===
-|Operation |Description
-|Send action message |???
-|Send failure message |???
-|Set metadata for received action |???
-|Set metadata for received failure |???
-|Set metadata for received signal |???
-|===
+From *Operations*, select one of the following:
+
+* Send action message
+* Send failure message
+* Set metadata for received action
+* Set metadata for received failure
+* Set metadata for received signal
 
 Additional fields:
 
@@ -243,7 +253,7 @@ Additional fields:
 |===
 |Field |Description
 |Input Reference |Specify a MEL expression such as `&#x0023;[payload]` for the message value.
-|Service endpoint | ??
+|Service endpoint | Endpoint
 |===
 
 == About Use Case Examples
@@ -258,7 +268,7 @@ Workflow:
 
 === About the Purchase Order Example
 
-In this example, you build two Mule applications to mimic the following diagram. You can download the link:*COMING*[buyer app] and the link:*COMING*[seller app].
+In this example, you build two Mule applications to mimic the following diagram. You can download the link:_attachments/rosettanet-buyer.zip[buyer application] and the link:_attachments/rosettanet-seller.zip[seller application].
 
 You can run these two applications in the link:/mule-user-guide/v/3.8/shared-resources[shared domain] in Studio, but to show the logged messages clearly, the example uses two Studio applications, one for the buyer app and the other for the seller app.
 
@@ -278,6 +288,13 @@ The buyer application performs these actions:
 . Receives a purchase order confirmation from the seller.
 . Sends a signal to the seller. This is handled by the RosettaNet Connector automatically.
 
+Topics:
+
+* <<Buyer Application Visual Studio Editor>>
+* <<Buyer Application XML Studio Editor or Standalone>>
+
+=== Buyer Application Visual Studio Editor
+
 Configuration in Anypoint Studio using the visual editor:
 
 image:rosettanet-buyer-visual-flow.png[rosettanet-buyer-visual-flow]
@@ -285,6 +302,60 @@ image:rosettanet-buyer-visual-flow.png[rosettanet-buyer-visual-flow]
 Configuration settings for the buyer application:
 
 image:rosettanet-buyer-gep.png[rosettanet-buyer-gep]
+
+=== Buyer Application XML Studio Editor or Standalone
+
+Create your flow using this code:
+
+[source,xml,linenums]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:rosetta-net="http://www.mulesoft.org/schema/mule/rosetta-net" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:spring="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/mule/rosetta-net/current/mule-rosetta-net.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+    <http:listener-config name="LocalEndpointListener_Buyer"  host="0.0.0.0" port="8082" basePath="/rnif" doc:name="RosettaNet Endpoint Configuration"/>
+    <http:request-config name="LocalEndpointRequest_Seller"  host="0.0.0.0" port="8081" basePath="/rnif" doc:name="RosettaNet Partner Endpoint Configuration"/>
+    <rosetta-net:config name="PO_InitiatorConfig_Buyer" httpListenerRef="LocalEndpointListener_Buyer" httpRequestRef="LocalEndpointRequest_Seller" keystorePath="/partner1.jks" keystorePass="nosecret" privatePass="partner1" globalUsageCode="Test" selfBusinessIdentifier="123456789" selfLocationId="partner1" partnerBusinessIdentifier="123456788" partnerLocationId="partner2" pipRole="INITIATOR" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration"/>
+    <flow name="Send-Purchase-Order-Request">
+        <file:inbound-endpoint path="po-in" moveToDirectory="po-out" responseTimeout="10000" doc:name="File"/>
+        <rosetta-net:send-action config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
+    </flow>
+    <flow name="Receive-Purchase-Order-Confirmation">
+        <rosetta-net:action-source config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet (Streaming)"/>
+        <rosetta-net:set-action-metadata config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="Receive-ACK-Signal">
+        <rosetta-net:signal-source config-ref="PO_InitiatorConfig_Buyer" signalType="ACKNOWLEDGE" doc:name="RosettaNet"/>
+        <rosetta-net:set-signal-metadata config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger level="INFO" doc:name="Logger" message="ACK-Signal:  #[payload]"/>
+    </flow>
+      <flow name="Receive-Exception-Signal">
+        <rosetta-net:signal-source config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet (Streaming)" signalType="EXCEPTION"/>
+        <rosetta-net:set-signal-metadata config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger level="INFO" doc:name="Logger" message="Exception-Signal:  #[payload]"/>
+    </flow>
+    <flow name="Receive-Send-Failure-Signal">
+        <rosetta-net:failure-source config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet (Streaming)"/>
+        <rosetta-net:set-failure-metadata config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger level="INFO" doc:name="Logger" message="Send-Failure-Signal:  #[payload]"/>
+    </flow>
+</mule>
+----
+
 
 === To Configure the Seller Application
 
@@ -297,6 +368,13 @@ The seller app performs these actions:
 ** `ACKNOWLEDGE`: This signal means the purchase order confirmation is received by the buyer.
 ** `EXCEPTION`: This signal means the purchase order notification is sent to the buyer, but the buyer sends an exception. Among many reasons, one would be an invalid purchase order confirmation.
 ** `SEND_FAILURE`: This signal means the RosettaNet Connector fails to send the purchase order confirmation. Each PIP message has the number of retrials and the connector tries to resend the message up to the specified number. If it fails, SEND_FAILURE signal would be generated.
+
+Topics:
+
+* <<Seller Application Visual Studio Editor>>
+* <<Seller Application XML Studio Editor or Standalone>>
+
+=== Seller Application Visual Studio Editor
 
 Configuration in Studio:
 
@@ -311,15 +389,68 @@ In the Seller App, the following configurations are required:
 ** Host: localhost
 ** Port: 8081
 * RosettaNet Connector Configuration:
-** Keystore(partner2.jks) which includes partner2(seller) private key and certificate, partner1 (buyer) certificate is located under `src/main/resources`.
+** Keystore(partner2.jks) which includes partner2 (seller) private key and certificate, partner1 (buyer) certificate is located under `src/main/resources`.
 
 Configuration settings for the seller application:
 
 image:rosettanet-seller-gep.png[rosettanet-seller-gep]
 
+=== Seller Application XML Studio Editor or Standalone
+
+Create your flow using this code:
+
+[source,xml,linenums]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:apachekafka="http://www.mulesoft.org/schema/mule/apachekafka" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:rosetta-net="http://www.mulesoft.org/schema/mule/rosetta-net" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:spring="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/mule/rosetta-net/current/mule-rosetta-net.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/apachekafka http://www.mulesoft.org/schema/mule/apachekafka/current/mule-apachekafka.xsd">
+    <http:listener-config name="LocalEndpointListener_Seller"  host="0.0.0.0" port="8081" basePath="/rnif" doc:name="RosettaNet Endpoint Configuration"/>
+    <http:request-config name="LocalEndpointRequest_Buyer"  host="0.0.0.0" port="8082" basePath="/rnif" doc:name="RosettaNet Partner Endpoint Configuration"/>
+    <rosetta-net:config name="PO_ResponderConfig" httpListenerRef="LocalEndpointListener_Seller" httpRequestRef="LocalEndpointRequest_Buyer" keystorePath="/partner2.jks" keystorePass="nosecret" privatePass="partner2" globalUsageCode="Test" selfBusinessIdentifier="123456788" selfLocationId="partner2" partnerBusinessIdentifier="123456789" partnerLocationId="partner1" pipRole="RESPONDER" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration"/>
+    <flow name="Receive-Purchase-Order-Request">
+        <rosetta-net:action-source config-ref="PO_ResponderConfig" doc:name="RosettaNet (Streaming)"/>
+        <rosetta-net:set-action-metadata config-ref="PO_ResponderConfig" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="Send-Purchase-Order-Confirmation">
+        <file:inbound-endpoint path="confirm-in" moveToDirectory="confirm-out" responseTimeout="10000" doc:name="File"/>
+        <rosetta-net:send-action config-ref="PO_ResponderConfig" inReplyActionId="1234" inReplyNessageId="1234" pipInstanceId="1234" doc:name="RosettaNet"/>
+    </flow>
+    <flow name="Receive-ACK-Signal">
+        <rosetta-net:signal-source config-ref="PO_ResponderConfig" signalType="ACKNOWLEDGE" doc:name="RosettaNet (Streaming)"/>
+        <rosetta-net:set-signal-metadata config-ref="PO_ResponderConfig" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger message="ACK-Signal:  #[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="Receive-Exception-Signal">
+        <rosetta-net:signal-source config-ref="PO_ResponderConfig" doc:name="RosettaNet (Streaming)" signalType="EXCEPTION"/>
+        <rosetta-net:set-signal-metadata config-ref="PO_ResponderConfig" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger level="INFO" doc:name="Logger" message="Exception-Signal:  #[payload]"/>
+    </flow>
+    <flow name="Receive-Send-Failure-Signal">
+        <rosetta-net:signal-source config-ref="PO_ResponderConfig" signalType="SEND_FAILURE" doc:name="RosettaNet (Streaming)"/>
+        <rosetta-net:set-signal-metadata config-ref="PO_ResponderConfig" doc:name="RosettaNet"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger message="Send-Failure-Signal:  #[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+</mule>
+----
+
 === To Send a Purchase Order Request
 
-Once you run the Buyer and Seller apps, please go to the Buyer app to send a purchase order. You can find a sample purchase order request under `po-out`, and drag and drop it to `po-in`. As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order request (xml), and sends it to the seller:
+After you run the Buyer and Seller apps, go to the Buyer app to send a purchase order. You can find a sample purchase order request under `po-out`, and drag and drop it to `po-in`. As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order request (xml), and sends it to the seller:
 
 [source,xml,linenums]
 ----
@@ -418,7 +549,7 @@ In the Studio console for the Seller application, you can find that the purchase
 
 === To Send a Purchase Order Confirmation
 
-In the Seller app, You can find a sample purchase order confirmation under “confirm-out,” and drag and drop it to “confirm-in.” As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order confirmation(xml), and sends it to the buyer.
+In the Seller app, you can find a sample purchase order confirmation under `confirm-out`. Drag and drop it to `confirm-in`. As you can see in your Studio console, the RosettaNet Connector generates a RosettaNet message based on the same purchase order confirmation(xml), and sends it to the buyer.
 
 [source,xml,linenums]
 ----
