@@ -254,16 +254,16 @@ In order for the Anypoint Platform CLI to recognize your target servers, each se
 [%header,cols="35a,65a"]
 |===
 |Command |Description
-|<<runtime-mgr hybrid-applications artifact>> | Downloads application artifact binary
-|<<runtime-mgr hybrid-applications deploy>> | Deploys a new application to an on-premises server, server group or cluster
-|<<runtime-mgr hybrid-applications describe-json>> | Shows a raw on-premises application JSON response
-|<<runtime-mgr hybrid-applications modify>> | Changes an on-premises application artifact
-|<<runtime-mgr hybrid-applications start>> | Starts an on-premises application
-|<<runtime-mgr hybrid-applications delete>> | Deletes an on-premises application
-|<<runtime-mgr hybrid-applications describe>> | Shows detailed info of an on-premises application
-|<<runtime-mgr hybrid-applications list>> | Lists all applications in the environment
-|<<runtime-mgr hybrid-applications restart>> | Restarts an on-premises application
-|<<runtime-mgr hybrid-applications stop>> | Stops an on-premises application
+|<<runtime-mgr standalone-applications artifact>> | Downloads application artifact binary
+|<<runtime-mgr standalone-applications deploy>> | Deploys a new application to an on-premises server, server group or cluster
+|<<runtime-mgr standalone-applications describe-json>> | Shows a raw on-premises application JSON response
+|<<runtime-mgr standalone-applications modify>> | Changes an on-premises application artifact
+|<<runtime-mgr standalone-applications start>> | Starts an on-premises application
+|<<runtime-mgr standalone-applications delete>> | Deletes an on-premises application
+|<<runtime-mgr standalone-applications describe>> | Shows detailed info of an on-premises application
+|<<runtime-mgr standalone-applications list>> | Lists all applications in the environment
+|<<runtime-mgr standalone-applications restart>> | Restarts an on-premises application
+|<<runtime-mgr standalone-applications stop>> | Stops an on-premises application
 |===
 
 === Commands for Managing Your Local PCF Deployed Applications
@@ -330,10 +330,10 @@ In order for the Anypoint Platform CLI to recognize your target servers, each se
 [%header,cols="35a,65a"]
 |===
 |Command |Description
-|<<runtime-mgr hybrid-alert describe>> | Describes an alert
-|<<runtime-mgr hybrid-alert create>> | Creates new hybrid alert
-|<<runtime-mgr hybrid-alert modify>> | Modifies hybrid alert
-|<<runtime-mgr hybrid-alert list>> | Lists all hybrid alerts in the environment
+|<<runtime-mgr standalone-alert describe>> | Describes an alert
+|<<runtime-mgr standalone-alert create>> | Creates new alert for standalone runtime
+|<<runtime-mgr standalone-alert modify>> | Modifies alert for standalone runtime
+|<<runtime-mgr standalone-alert list>> | Lists all alerts for standalone runtimes in the environment
 |===
 
 === Commands for Mananging your CloudHub Dedicated Load balancer
@@ -1279,61 +1279,61 @@ Besides the `--version` option, this command also takes the default `--help`, `-
 This command downgrades the runtime version of the application passed in `name` to the previous runtime version. If the `-v`/`--version` option is used to specify a specific runtime version, this command updates the application's runtime to that version. +
 Besides the `--version` option, this command also takes the default `--help`, `-f`/`--fields` and `-o`/`--output` options.
 
-=== runtime-mgr hybrid-applications artifact
+=== runtime-mgr standalone-applications artifact
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications artifact [options] <appId> <directory>
+> runtime-mgr standalone-applications artifact [options] <appId> <directory>
 ----
 
 This command downloads the application artifact of the `appId` application, to the directory passed in `directory`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications deploy
+=== runtime-mgr standalone-applications deploy
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications deploy [options] <targetId> <name> <zipfile>
+> runtime-mgr standalone-applications deploy [options] <targetId> <name> <zipfile>
 ----
 
 This command deploys the application passed as a zip file in the path `zipfile` to the environment passed in `targetId`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications describe-json
+=== runtime-mgr standalone-applications describe-json
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications describe-json [options] <appId>
+> runtime-mgr standalone-applications describe-json [options] <appId>
 ----
 
 This command describes the application passed in `appId` as a raw JSON response. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications modify
+=== runtime-mgr standalone-applications modify
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications modify [options] <appId> <zipfile>
+> runtime-mgr standalone-applications modify [options] <appId> <zipfile>
 ----
 
 This command modifies the on-premises application passed in `appId` with the zip file application passed in `zipfile` as a path. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications start
+=== runtime-mgr standalone-applications start
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications start [options] <appId>
+> runtime-mgr standalone-applications start [options] <appId>
 ----
 
 This command starts the application passed in `appId`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications delete
+=== runtime-mgr standalone-applications delete
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications delete [options] <appId>
+> runtime-mgr standalone-applications delete [options] <appId>
 ----
 
 This command deletes the application passed in `appId`. +
@@ -1342,41 +1342,41 @@ This command does not take any options, except for the default ones: `--help`, `
 [WARNING]
 This command does not prompt twice before deleting. If you send a delete instruction, it does not ask for confirmation.
 
-=== runtime-mgr hybrid-applications describe
+=== runtime-mgr standalone-applications describe
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications describe [options] <appId>
+> runtime-mgr standalone-applications describe [options] <appId>
 ----
 
 This command describes the on-premises application passed in `appId`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications list
+=== runtime-mgr standalone-applications list
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications list [options]
+> runtime-mgr standalone-applications list [options]
 ----
 
 This command lists all on-premises applications. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications restart
+=== runtime-mgr standalone-applications restart
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications restart [options] <appId>
+> runtime-mgr standalone-applications restart [options] <appId>
 ----
 
 This command restarts the application passed in `appId`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-applications stop
+=== runtime-mgr standalone-applications stop
 
 [source,Example]
 ----
-> runtime-mgr hybrid-applications stop [options] <appId>
+> runtime-mgr standalone-applications stop [options] <appId>
 ----
 
 This command stops the on-premises application passed in `appId`. +
@@ -1734,24 +1734,24 @@ Besides the `--name` option, this command also takes the default `--help`, `-f`/
 
 
 
-=== runtime-mgr hybrid-alert describe
+=== runtime-mgr standalone-alert describe
 
 [source,Example]
 ----
-> runtime-mgr hybrid-alert describe [options] <alertId>
+> runtime-mgr standalone-alert describe [options] <alertId>
 ----
 
 This command describes the alert passed in `alertId`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr hybrid-alert create
+=== runtime-mgr standalone-alert create
 
 [source,Example]
 ----
-> runtime-mgr hybrid-alert create [options] <name>
+> runtime-mgr standalone-alert create [options] <name>
 ----
 
-This command creates a new hybrid alert with the id passed in `name`.
+This command creates a new alert for a standalone runtime with the id passed in `name`.
 
 Besides the default `--help`, `-f`/`--fields` and `-o`/`--output` options, this command also takes:
 
@@ -1771,14 +1771,14 @@ Besides the default `--help`, `-f`/`--fields` and `-o`/`--output` options, this 
 | --email [emailAddress] | Email to send alert notification to. Can be used multiple times to specify multiple emails.
 |===
 
-=== runtime-mgr hybrid-alert modify
+=== runtime-mgr standalone-alert modify
 
 [source,Example]
 ----
-> runtime-mgr hybrid-alert modify [options] <alertId>
+> runtime-mgr standalone-alert modify [options] <alertId>
 ----
 
-This command modifies the hybrid alert passed in `alertId`.
+This command modifies the alert passed in `alertId`.
 
 Besides the default `--help`, `-f`/`--fields` and `-o`/`--output` options, this command also takes:
 
@@ -1799,14 +1799,14 @@ Besides the default `--help`, `-f`/`--fields` and `-o`/`--output` options, this 
 | --email [emailAddress] | Email to send alert notification to. Can be used multiple times to specify multiple emails.
 |===
 
-=== runtime-mgr hybrid-alert list
+=== runtime-mgr standalone-alert list
 
 [source,Example]
 ----
-> runtime-mgr hybrid-alert list [options]
+> runtime-mgr standalone-alert list [options]
 ----
 
-This command lists all hybrid alerts in the current environment. +
+This command lists all alerts for standalone runtimes in the current environment. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
 
