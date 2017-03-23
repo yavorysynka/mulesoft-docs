@@ -669,10 +669,13 @@ You can create a tier using the <<api-mgr tiers add>> command.
 
 [source,Example]
 ----
-> api-mgr definition copy [options] <apiName> <version> <targetApiName> <targetVersion>
+> api-mgr definition copy [options] <source> <target>
 ----
 
-This command copies the definition of the API passed in `apiName` with version passed in `version` to the API passed in `targetApiName` and version passed in `targetVersion`. +
+This command copies the definition of the API passed in `source` to the API passed in `target`. Both arguments must follow the format `[<org>/]<api/version>`.
+
+
+
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
 === api-mgr definition download
@@ -778,10 +781,10 @@ You can use the <<api-mgr policy describe>> option to check the default field na
 
 [source,Example]
 ----
-> api-mgr policy copy [options] <sourceApiName> <sourceApiVersion> <targetApiName> <targetApiVersion>
+> api-mgr policy copy [options] <source> <target>
 ----
 
-This command copies the policy from the `sourceApiName` and `sourceApiVersion` to the API and version specified in `targetApiName` and `targetApiVersion` respectively. +
+This command copies the policy from the API passed in `source` to the API passed in `target`. Both arguments must follow the format `[<org>/]<api/version>`.
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
 === api-mgr policy describe
@@ -894,10 +897,11 @@ This command does not take any options, except for the default ones: `--help`, `
 
 [source,Example]
 ----
-> api-mgr portal copy [options] <apiName> <version> <targetApiName> <targetVersion>
+> api-mgr portal copy [options] <source> <target>
 ----
 
-This command copies the API Portal from the API and version passed in `apiName` and `version` respectively to the `targeApiName` and `targetVersion`. +
+This command copies the API Portal from the API passed in `source` to the API passed in `target`. Both arguments must follow the format `[<org>/]<api/version>`.
+
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
 
@@ -966,9 +970,10 @@ E.g. `-l true,100,sec -l false,20,min`
 
 [source,Example]
 ----
-> api-mgr tiers copy [options] <sourceApiName> <sourceApiVersion> <targetApiName> <targetApiVersion>
+> api-mgr tiers copy [options] <source> <target>
 ----
-This command copies the SLA tier from the `sourceApiName` and `sourceApiVersion` to the API and version specified in `targetApiName` and `targetApiVersion` respectively. +
+This command copies the SLA tier from the API passed in `source` to the API passed in `target`. Both arguments must follow the format `[<org>/]<api/version>`.
+
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
 
