@@ -26,7 +26,7 @@ This document assumes that you are familiar with our link:/api-manager/tutorials
 First, you need to make sure you have the node.js runtime environment installed on your machine. Along with it, you'll need to use node's default package manager (npm) to be able to install Anypoint-CLI.
 Following the steps in the link:https://docs.npmjs.com/getting-started/installing-node[node documentation] will help you get both resources.
 
-You will also need to install the Git version management system on your computer. Installation instructions and links to downloads for your particular Operating System are availabel at link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[here]. 
+You will also need to install the Git version management system on your computer. Installation instructions and links to downloads for your particular Operating System are availabel at link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[here].
 
 After you have installed node.js (with npm) and git, you can install Anypoint-CLI using node's default package manager by typing in your console
 
@@ -228,22 +228,22 @@ Supported values are `table`, `text`, and `json`. Defaults to `text` for non-int
 [%header,cols="35a,65a"]
 |===
 |Command |Description
-|<<runtime-mgr alert list>>| Lists all alerts in the environment
-|<<runtime-mgr alert-history describe>>| Describes the history of the alarm
-|<<runtime-mgr application list>>| Lists all applications in the environment
-|<<runtime-mgr application describe>>| Show application details
-|<<runtime-mgr application describe-json>>| Show raw application JSON response
-|<<runtime-mgr application stop>>| Stop a running application
-|<<runtime-mgr application start>>| Start an application
-|<<runtime-mgr application restart>>| Restart a running application
-|<<runtime-mgr application delete>>| Delete an application
-|<<runtime-mgr application deploy>>| Deploy a new application
-|<<runtime-mgr application modify>>| Modify an existing application, optionally updating the zip file
+|<<runtime-mgr cloudhub-alert list>>| Lists all alerts in the environment
+|<<runtime-mgr cloudhub-alert-history describe>>| Describes the history of the alarm
+|<<runtime-mgr cloudhub-application list>>| Lists all applications in the environment
+|<<runtime-mgr cloudhub-application describe>>| Show application details
+|<<runtime-mgr cloudhub-application describe-json>>| Show raw application JSON response
+|<<runtime-mgr cloudhub-application stop>>| Stop a running application
+|<<runtime-mgr cloudhub-application start>>| Start an application
+|<<runtime-mgr cloudhub-application restart>>| Restart a running application
+|<<runtime-mgr cloudhub-application delete>>| Delete an application
+|<<runtime-mgr cloudhub-application deploy>>| Deploy a new application
+|<<runtime-mgr cloudhub-application modify>>| Modify an existing application, optionally updating the zip file
 // |<<runtime-mgr application revert-runtime>>| Reverts application to its previous runtime
-|<<runtime-mgr application download-logs>>| Download application logs to specified directory
-|<<runtime-mgr application tail-logs>>| Tail application logs
-|<<runtime-mgr application upgrade-runtime>>| Upgrades application runtime to the latest patch version or if a version if specified, to that version.
-|<<runtime-mgr application downgrade-runtime>>| Downgrades application runtime to the previous runtime version or if a version is specified, to that version.
+|<<runtime-mgr cloudhub-application download-logs>>| Download application logs to specified directory
+|<<runtime-mgr cloudhub-application tail-logs>>| Tail application logs
+|<<runtime-mgr cloudhub-application upgrade-runtime>>| Upgrades application runtime to the latest patch version or if a version if specified, to that version.
+|<<runtime-mgr cloudhub-application downgrade-runtime>>| Downgrades application runtime to the previous runtime version or if a version is specified, to that version.
 |===
 
 === Commands for Managing your Locally Deployed Applications Managed by Runtime Manager
@@ -1069,41 +1069,41 @@ Besides the default `--help`, `-f`/`--fields` and `-o`/`--output` options, this 
 This command reactivates the SLA tier passed in `tierId` for the API and version passed in `apiName` and `apiVersion`. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr alert list
+=== runtime-mgr cloudhub-alert list
 
 [source,Example]
 ----
-> runtime-mgr alert list [options]
+> runtime-mgr cloudhub-alert list [options]
 ----
 This command lists all alerts associated with your current environment
 
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr alert-history describe
+=== runtime-mgr cloudhub-alert-history describe
 
 [source,Example]
 ----
-> runtime-mgr alert-history describe [options] <name>
+> runtime-mgr cloudhub-alert-history describe [options] <name>
 ----
 This command describes the history of the alarm passed in <name>.
 
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application list
+=== runtime-mgr cloudhub-application list
 
 [source,Example]
 ----
-> runtime-mgr application list [options]
+> runtime-mgr cloudhub-application list [options]
 ----
 
 This command lists all applications available in your Anypoint-CLI. It returns your application name, its status, the amount of vCores assigned and the last time it was updated. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application describe
+=== runtime-mgr cloudhub-application describe
 
 [source,Example]
 ----
-> runtime-mgr application describe [options] <name>
+> runtime-mgr cloudhub-application describe [options] <name>
 ----
 
 This command displays information on the application you pass in <name>. +
@@ -1111,55 +1111,55 @@ You can start typing your application's name and hit `tab` for Anypoint-CLI to a
 It will return data such as the application's domain, its status, last time it was updated, the Runtime version, the .zip file name, the region, monitoring, and Workers; as well as 'TRUE' or 'FALSE' information for persistent queues and static IPs enablement. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application describe-json
+=== runtime-mgr cloudhub-application describe-json
 
 [source,Example]
 ----
-> runtime-mgr application describe-json  [options] <name>
+> runtime-mgr cloudhub-application describe-json  [options] <name>
 ----
 
 This command returns the raw JSON response of the application you specify in <name>. +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application stop
+=== runtime-mgr cloudhub-application stop
 
 [source,Example]
 ----
-> runtime-mgr application stop  [options] <name>
+> runtime-mgr cloudhub-application stop  [options] <name>
 ----
 
 This command stops the running application you specify in <name> +
 You can start typing your application's name and hit `tab` for Anypoint-ClI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application start
+=== runtime-mgr cloudhub-application start
 
 [source,Example]
 ----
-> runtime-mgr application start [options] <name>
+> runtime-mgr cloudhub-application start [options] <name>
 ----
 
 This command starts the running application you specify in <name> +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application restart
+=== runtime-mgr cloudhub-application restart
 
 [source,Example]
 ----
-> runtime-mgr application restart  [options] <name>
+> runtime-mgr cloudhub-application restart  [options] <name>
 ----
 
 This command restarts the running application you specify in <name> +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application delete
+=== runtime-mgr cloudhub-application delete
 
 [source,Example]
 ----
-> runtime-mgr application delete [options] <name>
+> runtime-mgr cloudhub-application delete [options] <name>
 ----
 
 This command deletes the running application you specify in <name>
@@ -1169,11 +1169,11 @@ This command does not prompt twice before deleting. If you send a delete instruc
 
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application deploy
+=== runtime-mgr cloudhub-application deploy
 
 [source,Example]
 ----
-> runtime-mgr application deploy  [options] <name> <zipfile>
+> runtime-mgr cloudhub-application deploy  [options] <name> <zipfile>
 ----
 
 This command deploys the Mule deployable archive .zip file that you specify in <zipfile> using the name you set in <name>. +
@@ -1216,11 +1216,11 @@ Lists all possible runtimes you can select.
 If you deploy without using any options, your application will deploy using all your default values.
 ====
 
-=== runtime-mgr application modify
+=== runtime-mgr cloudhub-application modify
 
 [source,Example]
 ----
-> runtime-mgr application modify  [options] <name> [zipfile]
+> runtime-mgr cloudhub-application modify  [options] <name> [zipfile]
 ----
 This command updates the settings of an existing application. Optionally you can update it by uploading a new .zip file. +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass.
@@ -1239,42 +1239,42 @@ You can also start typing your option and hit `tab` for Autocomplete-CLI to auto
 // You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 // This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application download-logs
+=== runtime-mgr cloudhub-application download-logs
 
 [source,Example]
 ----
-> runtime-mgr application download-logs [options] <name> <directory>
+> runtime-mgr cloudhub-application download-logs [options] <name> <directory>
 ----
 This command downloads logs the for application specified in <name> to the specified directory. +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 Keep in mind that contrarily to what you see in the UI, the logs you download from the CLI won't separate system logs from worker logs.
 
-=== runtime-mgr application tail-logs
+=== runtime-mgr cloudhub-application tail-logs
 
 [source,Example]
 ----
-> runtime-mgr application tail-logs [options] <name>
+> runtime-mgr cloudhub-application tail-logs [options] <name>
 ----
 
 This command tails application logs. +
 You can start typing your application's name and hit `tab` for Anypoint-CLI to autocomplete it, or you can double tap `tab` for a full list of all the values you can pass. +
 This command does not take any options, except for the default ones: `--help`, `-f`/`--fields` and `-o`/`--output`.
 
-=== runtime-mgr application upgrade-runtime
+=== runtime-mgr cloudhub-application upgrade-runtime
 
 [source,Example]
 ----
-> runtime-mgr application upgrade-runtime [options] <name>
+> runtime-mgr cloudhub-application upgrade-runtime [options] <name>
 ----
 
 This command upgrades the runtime version of the application passed in `name` to the latest patch version. If the `-v`/`--version` option is used to specify a specific runtime version, this command updates the application's runtime to that version. +
 Besides the `--version` option, this command also takes the default `--help`, `-f`/`--fields` and `-o`/`--output` options.
 
-=== runtime-mgr application downgrade-runtime
+=== runtime-mgr cloudhub-application downgrade-runtime
 
 [source,Example]
 ----
-> runtime-mgr application downgrade-runtime [options] <name>
+> runtime-mgr cloudhub-application downgrade-runtime [options] <name>
 ----
 This command downgrades the runtime version of the application passed in `name` to the previous runtime version. If the `-v`/`--version` option is used to specify a specific runtime version, this command updates the application's runtime to that version. +
 Besides the `--version` option, this command also takes the default `--help`, `-f`/`--fields` and `-o`/`--output` options.
