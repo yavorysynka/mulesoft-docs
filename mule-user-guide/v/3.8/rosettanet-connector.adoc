@@ -14,7 +14,7 @@ Read through this user guide to understand how to set up and configure a basic f
 
 MuleSoft maintains this connector under the Community support policy.
 
-The RosettaNet Connector supports RNIF 2.0 and later.
+The RosettaNet Connector supports RNIF 2.0.
 
 These PIPs are supported:
 
@@ -22,7 +22,7 @@ These PIPs are supported:
 * 3A4MG2 v02.02
 * 3A6MG1 v02.00, v02.02, v02.03
 * 3B2MG1 v01.00
-* 3C3MG1 v01.01
+* 3C3MG1 v01.00, v01.11
 
 The RosettaNet Connector always uses PIP 0A1 v02.00 for all Failure Notification messages.
 
