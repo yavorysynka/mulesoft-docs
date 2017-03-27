@@ -92,27 +92,30 @@ If you are using the XML Editor, configure the required *XML parameter* values.
 [%header,cols="30s,70a"]
 |===
 |Field |Description
-|Name |Configuration name by default is `RosettaNet_Configuration`
+|Basic Settings: +
+Name |Configuration name by default is `RosettaNet_Configuration`
 
 *XML parameter:* `name` +
 *Type*: string +
 *Required*: no +
 *Default*: none
-|Basic Settings: +
-Global HTTP Listener Reference |Name of global HTTP listener for this organization's endpoint.
 
-*XML parameter:* `httpEndpointRef` +
-*Type*: string +
-*Required*: no +
-*Default*: none
-|Service endpoint path |Path to this organization's service endpoint.
+|Endpoints: +
+Global HTTP Listener Reference |Name of global HTTP listener connector configuration for this organization's endpoint. For example, you can use the `HTTP_Listener_Configuration` value.
 
-*XML parameter:* `servicePath` +
+*XML parameter:* `httpListenerRef` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
 
-|Keystore: +
+|Global HTTP Request Reference |Name of global HTTP request connector configuration for this organization's endpoint. For example, you can use the `HTTP_Request_Configuration` value.
+
+*XML parameter:* `httpRequestRef` +
+*Type*: string +
+*Required*: yes +
+*Default*: none
+
+|Security: +
 Keystore Path |Path for keystore, which contains trusted partner certificates and this organization's private
 signing key and certificate. The certificate needs to be in Java Key Store (JKS) format.
 
@@ -120,18 +123,21 @@ signing key and certificate. The certificate needs to be in Java Key Store (JKS)
 *Type*: string +
 *Required*: yes +
 *Default*: none
+
 |Keystore Pass |Keystore access password.
 
 *XML parameter:* `keystorePass` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
+
 |Private Pass |Private signing key password.
 
 *XML parameter:* `privatePass` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
+
 |Operational: +
 Require Secure Transport |Indicate whether or not an HTTPS connection is required for messages. 
 
@@ -139,9 +145,18 @@ Require Secure Transport |Indicate whether or not an HTTPS connection is require
 *Type*: boolean +
 *Required*: no +
 *Default*: `false`
-|Global Usage Code |
 
-Specify the operational state:
+|Force Signed Messages |Force signing for messages. If `true`, forces
+signing even when not required by the PIP definition.
+
+*XML parameter:* `forceSignedMessages` +
+*Type*: boolean +
+*Required*: no +
+*Default*: `false`
+
+|Global Usage Code |Choose what mode to run this connector. 
+
+Possible values:
 
 * Production
 * Test
@@ -151,6 +166,14 @@ Specify the operational state:
 *Type*: string +
 *Required*: no +
 *Default*: none
+
+|Object Store Ref |Provides HTTP error information.
+
+*XML parameter:* `objectStoreRef` +
+*Type*: string +
+*Required*: no  +
+*Default*: none
+
 |Self information: +
 Self Business Identifier |Dun & Bradstreet Universal Numbering System (DUNS) ID for this organization.
 
@@ -158,12 +181,14 @@ Self Business Identifier |Dun & Bradstreet Universal Numbering System (DUNS) ID 
 *Type*: string +
 *Required*: yes +
 *Default*: none
-|Self Location Id |Location ID for this organization.
+
+|Self Location Id |Location ID of your organization.
 
 *XML parameter:* `selfLocationId` +
 *Type*: string +
 *Required*: no +
 *Default*: none
+
 |Partner information: +
 Partner Business Identifier |DUNS ID for the partner organization.
 
@@ -171,18 +196,21 @@ Partner Business Identifier |DUNS ID for the partner organization.
 *Type*: string +
 *Required*: yes +
 *Default*: none
+
 |Partner Location Id |Expected location ID for partner organization.
 
 *XML parameter:* `partnerLocationId` +
 *Type*: string +
 *Required*: no +
 *Default*: none
+
 |Partner Path |Partner server endpoint.
 
 *XML parameter:* `partnerPath` +
 *Type*: string +
 *Required*: no +
 *Default*: none
+
 |PIP: +
 Pip Role |Role in PIP usage.
 
@@ -190,15 +218,10 @@ Pip Role |Role in PIP usage.
 *Type*: string +
 *Required*: no +
 *Default*: none
+
 |Pip File |PIP file path.
 
 *XML parameter:* `pipFile` +
-*Type*: string +
-*Required*: no +
-*Default*: none
-|Pip Instance Id |PIP instance identifier by initiating partner.
-
-*XML parameter:* `pipInstanceId` +
 *Type*: string +
 *Required*: no +
 *Default*: none
@@ -213,24 +236,34 @@ The following example illustrates all the RosettaNet fields.
 <?xml version="1.0" encoding="UTF-8"?>
 
 <mule xmlns:rosetta-net="http://www.mulesoft.org/schema/mule/rosetta-net" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+    xmlns:spring="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/mule/rosetta-net/current/mule-rosetta-net.xsd">
-    <rosetta-net:config name="RosettaNet__Configuration" httpEndpointRef="globalhttp" 
-    servicePath="serviceendptpath" keystorePath="keystorepath" 
-    keystorePass="keystorepass" privatePass="privatepass" 
-    selfBusinessIdentifier="424242" selfLocationId="selflocationid" 
-    partnerBusinessIdentifier="545454" partnerLocationId="partnerlocationid" 
-    partnerPath="partnerpath" pipRole="piprole" pipFile="pipfile" 
-    pipInstanceId="pipinstanceid" doc:name="RosettaNet: Configuration" 
-    globalUsageCode="Unchecked" requireSecureTransport="true"/>
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
-    <flow name="rosettaFlow">
+    <http:request-config name="HTTP_Request_Configuration" host="0.0.0.0" port="8082" doc:name="HTTP Request Configuration"/>
+    <rosetta-net:config name="RosettaNet__Configuration" 
+        httpListenerRef="HTTP_Listener_Configuration" 
+        httpRequestRef="HTTP_Request_Configuration" 
+        doc:name="RosettaNet: Configuration" 
+        keystorePass="*************" 
+        keystorePath="/partner2.jks" 
+        partnerBusinessIdentifier="1234567890" 
+        partnerLocationId="partner1" 
+        pipFile="/PIP3A4/V02_02.xml" 
+        pipRole="RESPONDER" 
+        privatePass="*************" 
+        selfBusinessIdentifier="123456789" 
+        selfLocationId="partner2" 
+        forceSignedMessages="true" 
+        objectStoreRef="woof" 
+        requireSecureTransport="true"/>
+    <flow name="xFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
-        <rosetta-net:send-action config-ref="RosettaNet__Configuration" doc:name="RosettaNet" serviceEndpoint="serviceendpt"/>
+        <rosetta-net:send-action config-ref="RosettaNet__Configuration" doc:name="RosettaNet"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/req" method="GET" doc:name="HTTP"/>
     </flow>
 </mule>
 ----
