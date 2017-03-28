@@ -18,11 +18,15 @@ The RosettaNet Connector supports RNIF 2.0.
 
 These PIPs are supported:
 
-* 3A4MG1 v02.02
-* 3A4MG2 v02.02
-* 3A6MG1 v02.00, v02.02, v02.03
-* 3B2MG1 v01.00
-* 3C3MG1 v01.00, v01.11
+[%header,cols="10s,20a,70a"]
+|===
+|PIP |Version |Purpose
+|3A4 |3A4MG1 v02.02 |Request Purchase Order
+|3A4 |3A4MG2 v02.02 |Request Purchase Order
+|3A6 |3A6MG1 v02.00, v02.02, v02.03 |Distribute Order Status
+|3B2 |3B2MG1 v01.00 |Notify of Advance Shipment
+|3C3 |3C3MG1 v01.00, v01.11 |Notify of Invoice
+|===
 
 The RosettaNet Connector always uses PIP 0A1 v02.00 for all Failure Notification messages.
 
@@ -99,7 +103,6 @@ Name |Configuration name by default is `RosettaNet_Configuration`
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |Endpoints: +
 Global HTTP Listener Reference |Name of global HTTP listener connector configuration for this organization's endpoint. For example, you can use the `HTTP_Listener_Configuration` value.
 
@@ -107,14 +110,12 @@ Global HTTP Listener Reference |Name of global HTTP listener connector configura
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Global HTTP Request Reference |Name of global HTTP request connector configuration for this organization's endpoint. For example, you can use the `HTTP_Request_Configuration` value.
 
 *XML parameter:* `httpRequestRef` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Security: +
 Keystore Path |Path for keystore, which contains trusted partner certificates and this organization's private
 signing key and certificate. The certificate needs to be in Java Key Store (JKS) format.
@@ -123,21 +124,18 @@ signing key and certificate. The certificate needs to be in Java Key Store (JKS)
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Keystore Pass |Keystore access password.
 
 *XML parameter:* `keystorePass` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Private Pass |Private signing key password.
 
 *XML parameter:* `privatePass` +
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Operational: +
 Require Secure Transport |Indicate whether or not an HTTPS connection is required for messages. 
 
@@ -145,7 +143,6 @@ Require Secure Transport |Indicate whether or not an HTTPS connection is require
 *Type*: boolean +
 *Required*: no +
 *Default*: `false`
-
 |Force Signed Messages |Force signing for messages. If `true`, forces
 signing even when not required by the PIP definition.
 
@@ -153,7 +150,6 @@ signing even when not required by the PIP definition.
 *Type*: boolean +
 *Required*: no +
 *Default*: `false`
-
 |Global Usage Code |Choose what mode to run this connector. 
 
 Possible values:
@@ -166,14 +162,12 @@ Possible values:
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |Object Store Ref |Provides HTTP error information.
 
 *XML parameter:* `objectStoreRef` +
 *Type*: string +
 *Required*: no  +
 *Default*: none
-
 |Self information: +
 Self Business Identifier |Dun & Bradstreet Universal Numbering System (DUNS) ID for this organization.
 
@@ -181,14 +175,12 @@ Self Business Identifier |Dun & Bradstreet Universal Numbering System (DUNS) ID 
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Self Location Id |Location ID of your organization.
 
 *XML parameter:* `selfLocationId` +
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |Partner information: +
 Partner Business Identifier |DUNS ID for the partner organization.
 
@@ -196,29 +188,25 @@ Partner Business Identifier |DUNS ID for the partner organization.
 *Type*: string +
 *Required*: yes +
 *Default*: none
-
 |Partner Location Id |Expected location ID for partner organization.
 
 *XML parameter:* `partnerLocationId` +
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |Partner Path |Partner server endpoint.
 
 *XML parameter:* `partnerPath` +
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |PIP: +
-Pip Role |Role in PIP usage.
+Pip Role |Role in Partner Interface Process (PIP) usage.
 
 *XML parameter:* `pipRole` +
 *Type*: string +
 *Required*: no +
 *Default*: none
-
 |Pip File |PIP file path.
 
 *XML parameter:* `pipFile` +
