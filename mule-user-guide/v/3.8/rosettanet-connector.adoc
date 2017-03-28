@@ -144,7 +144,8 @@ Require Secure Transport |Indicate whether or not an HTTPS connection is require
 *Required*: no +
 *Default*: `false`
 |Force Signed Messages |Force signing for messages. If `true`, forces
-signing even when not required by the PIP definition.
+signing even when not required by the PIP definition. If `false`, the connector
+follows the PIP definition.
 
 *XML parameter:* `forceSignedMessages` +
 *Type*: boolean +
