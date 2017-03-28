@@ -164,7 +164,7 @@ Possible values:
 *Type*: string +
 *Required*: no +
 *Default*: none
-|Object Store Ref |Reference to an object store bean. For more information, see 
+|Object Store Ref |Object store configuration reference. If not set, the connector always uses the default persistent object store to retain sent messages waiting for acknowledgments or retries. If set, the referenced bean must be an object store configuration to be used instead. See also: 
 link:https://forums.mulesoft.com/questions/38011/what-is-an-object-store-bean.html[What is an object store bean?]
 
 *XML parameter:* `objectStoreRef` +
