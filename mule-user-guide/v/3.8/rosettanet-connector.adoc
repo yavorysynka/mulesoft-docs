@@ -145,7 +145,8 @@ Require Secure Transport |Indicate whether or not an HTTPS connection is require
 *Default*: `false`
 |Force Signed Messages |Force signing for messages. If `true`, forces
 signing even when not required by the PIP definition. If `false`, the connector
-follows the PIP definition.
+follows the PIP definition. A RosettaNet object can have a digital signature or not.
+If set to `true`, a signature always occurs.
 
 *XML parameter:* `forceSignedMessages` +
 *Type*: boolean +
@@ -163,7 +164,8 @@ Possible values:
 *Type*: string +
 *Required*: no +
 *Default*: none
-|Object Store Ref |Provides HTTP error information.
+|Object Store Ref |Reference to an object store bean. For more information, see 
+link:https://forums.mulesoft.com/questions/38011/what-is-an-object-store-bean.html[What is an object store bean?]
 
 *XML parameter:* `objectStoreRef` +
 *Type*: string +
