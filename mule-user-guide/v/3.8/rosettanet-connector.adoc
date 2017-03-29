@@ -343,6 +343,31 @@ You can use the following to disable the default object store for testing and de
 
 You can either plug this directly into the XML and reference it from the RosettaNet configuration (using the name "objectStore") or create it through Global Elements > Create >Beans > Bean.
 
+== To Create a Custom PIP
+
+Creating a custom PIP requires a DTD and an XSD file. You can load
+the DTD into software that creates the XSD. Information is available
+on the web on how to create both files. 
+
+To create a custom PIP:
+
+. In Studio, install the RosettaNet connector.
+. Open the RosettaNet folder in Package Explorer.
+. Right-click the rosetta-net-connector-1.0.0.jar file and click *Copy* -- this gets you the path to the JAR file.
+. Copy the JAR file to a new location such as your Documents folder:
++
+[source]
+----
+cp /Users/me/AnypointStudio/rnifseller/.mule/plugins-tmp/org.mule.tooling.ui.contribution.rosetta-net.3.5.0_1.0.0.201703240549/__contributionDependenciesLibs__/rosetta-net-connector-1.0.0-SNAPSHOT.jar ~/Documents
+----
++
+. Open the JAR. For a Mac, you can use Archive Utility, or for Windows, use a program such as link:http://www.7-zip.org/[7-Zip].
+. Add your DTD and XSD files to the PIP folder you want to add
+to. For example, to create a custom purchase order as a 3A4 PIP, 
+add your custom files to the PIP3A4 folder.
+. Recompile your files back into a JAR.
+. Replace the old Rosetta JAR with your new one.
+
 == About Use Case Examples
 
 In the following example, you can build a simplified Mule application for 
