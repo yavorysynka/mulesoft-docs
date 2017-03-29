@@ -389,7 +389,7 @@ image:rosettanet-buyer-visual-flow.png[rosettanet-buyer-visual-flow]
 
 Configuration settings for the buyer application:
 
-image:rosettanet-buyer-gep.png[rosettanet-buyer-gep]
+image:rosettanet-buyer-config.png[rosettanet-buyer-config]
 
 === Buyer Application XML Studio Editor or Standalone
 
@@ -410,9 +410,9 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
-    <http:listener-config name="LocalEndpointListener_Buyer"  host="0.0.0.0" port="8082" basePath="/rnif" doc:name="RosettaNet Endpoint Configuration"/>
-    <http:request-config name="LocalEndpointRequest_Seller"  host="0.0.0.0" port="8081" basePath="/rnif" doc:name="RosettaNet Partner Endpoint Configuration"/>
-    <rosetta-net:config name="PO_InitiatorConfig_Buyer" httpListenerRef="LocalEndpointListener_Buyer" httpRequestRef="LocalEndpointRequest_Seller" keystorePath="/partner1.jks" keystorePass="nosecret" privatePass="partner1" globalUsageCode="Test" selfBusinessIdentifier="123456789" selfLocationId="partner1" partnerBusinessIdentifier="123456788" partnerLocationId="partner2" pipRole="INITIATOR" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration"/>
+    <http:listener-config name="LocalEndpointListener_Buyer" host="0.0.0.0" port="8082" basePath="/rnif" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="LocalEndpointRequest_Seller" host="0.0.0.0" port="8081" basePath="/rnif/partner1" doc:name="HTTP Request Configuration"/>
+    <rosetta-net:config name="PO_InitiatorConfig_Buyer" httpListener-ref="LocalEndpointListener_Buyer" servicePath="/partner2" httpRequest-ref="LocalEndpointRequest_Seller" keystorePath="/partner1.jks" keystorePass="nosecret" privatePass="partner1" globalUsageCode="Test" selfBusinessIdentifier="123456789" selfLocationId="partner1" partnerBusinessIdentifier="123456788" partnerLocationId="partner2" pipRole="INITIATOR" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration"/>
     <flow name="Send-Purchase-Order-Request">
         <file:inbound-endpoint path="po-in" moveToDirectory="po-out" responseTimeout="10000" doc:name="File"/>
         <rosetta-net:send-action config-ref="PO_InitiatorConfig_Buyer" doc:name="RosettaNet"/>
@@ -481,7 +481,7 @@ In the Seller App, the following configurations are required:
 
 Configuration settings for the seller application:
 
-image:rosettanet-seller-gep.png[rosettanet-seller-gep]
+image:rosettanet-seller-config.png[rosettanet-seller-config]
 
 === Seller Application XML Studio Editor or Standalone
 
@@ -491,7 +491,7 @@ Create your flow using this code:
 ----
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:apachekafka="http://www.mulesoft.org/schema/mule/apachekafka" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:rosetta-net="http://www.mulesoft.org/schema/mule/rosetta-net" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:rosetta-net="http://www.mulesoft.org/schema/mule/rosetta-net" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
   xmlns:spring="http://www.springframework.org/schema/beans" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
@@ -502,9 +502,10 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/apachekafka http://www.mulesoft.org/schema/mule/apachekafka/current/mule-apachekafka.xsd">
-    <http:listener-config name="LocalEndpointListener_Seller"  host="0.0.0.0" port="8081" basePath="/rnif" doc:name="RosettaNet Endpoint Configuration"/>
-    <http:request-config name="LocalEndpointRequest_Buyer"  host="0.0.0.0" port="8082" basePath="/rnif" doc:name="RosettaNet Partner Endpoint Configuration"/>
-    <rosetta-net:config name="PO_ResponderConfig" httpListenerRef="LocalEndpointListener_Seller" httpRequestRef="LocalEndpointRequest_Buyer" keystorePath="/partner2.jks" keystorePass="nosecret" privatePass="partner2" globalUsageCode="Test" selfBusinessIdentifier="123456788" selfLocationId="partner2" partnerBusinessIdentifier="123456789" partnerLocationId="partner1" pipRole="RESPONDER" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration"/>
+    <http:listener-config name="LocalEndpointListener_Seller"  host="0.0.0.0" port="8081" basePath="/rnif" doc:name="RosettaNet Endpoint Configuration" />
+    <http:request-config name="LocalEndpointRequest_Buyer"  host="0.0.0.0" port="8082" basePath="/rnif/partner2" doc:name="RosettaNet Partner Endpoint Configuration" />
+    <rosetta-net:config name="PO_ResponderConfig" httpListener-ref="LocalEndpointListener_Seller" httpRequest-ref="LocalEndpointRequest_Buyer" keystorePath="/partner2.jks" keystorePass="nosecret" privatePass="partner2" globalUsageCode="Test" selfBusinessIdentifier="123456788" selfLocationId="partner2" partnerBusinessIdentifier="123456789" partnerLocationId="partner1" pipRole="RESPONDER" pipFile="/PIP3A4/V02_02.xml" doc:name="RosettaNet: Configuration" servicePath="/partner1" />
+
     <flow name="Receive-Purchase-Order-Request">
         <rosetta-net:action-source config-ref="PO_ResponderConfig" doc:name="RosettaNet (Streaming)"/>
         <rosetta-net:set-action-metadata config-ref="PO_ResponderConfig" doc:name="RosettaNet"/>
