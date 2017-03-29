@@ -365,7 +365,8 @@ cp /Users/me/AnypointStudio/rnifseller/.mule/plugins-tmp/org.mule.tooling.ui.con
 . Add your DTD and XSD files to the PIP folder you want to add
 to. For example, to create a custom purchase order as a 3A4 PIP, 
 add your custom files to the PIP3A4 folder.
-. Recompile your files back into a JAR.
+. Recompile your files back into a JAR. For more information, 
+see link:http://stackoverflow.com/questions/3350545/how-do-you-recompile-a-jar-file[How do you recompile a jar file?] at StackOverflow.
 . Replace the old Rosetta JAR with your new one.
 
 == About Use Case Examples
