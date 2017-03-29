@@ -218,7 +218,7 @@ Pip Role |Role in Partner Interface Process (PIP) usage.
 *Default*: none
 |===
 
-== To Configure With Anypoint Studio XML Editor
+== To Configure With the Anypoint Studio XML Editor
 
 The following example illustrates all the RosettaNet fields. 
 
@@ -249,7 +249,7 @@ http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/m
         selfBusinessIdentifier="123456789" 
         selfLocationId="partner2" 
         forceSignedMessages="true" 
-        objectStoreRef="woof" 
+        objectStoreRef="best" 
         requireSecureTransport="true"/>
     <flow name="xFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
@@ -259,7 +259,7 @@ http://www.mulesoft.org/schema/mule/rosetta-net http://www.mulesoft.org/schema/m
 </mule>
 ----
 
-== To Specify an Operation
+== About Specifying an Operation
 
 To choose an operation:
 
@@ -280,10 +280,74 @@ Additional fields:
 |Service endpoint | Endpoint
 |===
 
+== About Buyer and Seller Configurations
+
+To configure a Mule flow for a buyer:
+
+image:rosettanet-buyer-config.png[rosettanet-buyer-config]
+
+[source,xml,linenums]
+----
+<rosetta-net:config name="PO_InitiatorConfig_Buyer"
+httpListener-ref="LocalEndpointListener_Buyer"
+servicePath="/partner2"
+httpRequest-ref="LocalEndpointRequest_Seller"
+keystorePath="/partner1.jks"
+keystorePass="nosecret" 
+privatePass="partner1" 
+globalUsageCode="Test"
+selfBusinessIdentifier="123456789" 
+selfLocationId="partner1"
+partnerBusinessIdentifier="123456788" 
+partnerLocationId="partner2" 
+pipRole="INITIATOR" 
+pipFile="/PIP3A4/V02_02.xml" 
+doc:name="RosettaNet: Configuration"/>
+----
+
+To configure a Mule flow for a seller:
+
+image:rosettanet-seller-config.png[rosettanet-seller-config]
+
+[source,xml,linenums]
+----
+<rosetta-net:config name="PO_ResponderConfig"
+httpListener-ref="LocalEndpointListener_Seller"
+servicePath="/partner1"
+httpRequest-ref="LocalEndpointRequest_Buyer"
+keystorePath="/partner2.jks"
+keystorePass="nosecret"
+privatePass="partner2"
+globalUsageCode="Test"
+selfBusinessIdentifier="123456788"
+selfLocationId="partner2"
+partnerBusinessIdentifier="123456789"
+partnerLocationId="partner1"
+pipRole="RESPONDER"
+pipFile="/PIP3A4/V02_02.xml"
+doc:name="RosettaNet: Configuration"/>
+----
+
+== About Object Store
+
+The default object store uses the Mule default persistent object store, which means that sent messages may accumulate if not acknowledged, and which may cause retransmissions when you try running again. 
+
+You can use the following to disable the default object store for testing and debugging, and as a simple example of using the object store configuration.
+
+[source,xml,linenums]  
+----
+<spring:beans>
+      <spring:bean id="objectStore" class="org.mule.util.store.SimpleMemoryObjectStore" />
+</spring:beans>
+----
+
+You can either plug this directly into the XML and reference it from the RosettaNet configuration (using the name "objectStore") or create it through Global Elements > Create >Beans > Bean.
+
 == About Use Case Examples
 
-In the following example, you can build a simplified Mule application for a buyer and seller in 
-Anypoint Studio. This application sends and receives a purchase order request and a purchase order confirmation.
+In the following example, you can build a simplified Mule application for 
+a buyer and seller in Anypoint Studio. This application sends and receives 
+a purchase order request and a purchase order confirmation.
 
 Workflow:
 
