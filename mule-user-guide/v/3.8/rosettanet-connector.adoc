@@ -341,15 +341,22 @@ You can use the following to disable the default object store for testing and de
 </spring:beans>
 ----
 
-You can either plug this directly into the XML and reference it from the RosettaNet configuration (using the name "objectStore") or create it through Global Elements > Create >Beans > Bean.
+You can either plug this directly into the XML and reference it from the RosettaNet configuration (using the name "objectStore") or create it through Global Elements > Create > Beans > Bean.
 
-== To Create a Custom PIP
 
-Creating a custom PIP requires a DTD and an XSD file. You can load
-the DTD into software that creates the XSD. Information is available
-on the web on how to create both files. 
 
-To create a custom PIP:
+== To Customize a PIP
+
+Customizing a PIP comprises two paths:
+
+* Parameters: Change settings within a PIP version's XML file.
+* Advanced: Create a custom DTD from which you create an XSD file. 
+
+For both paths, put the new or changed files in your Studio 
+project's src/main/resources folder. When you are ready for production, you can copy the updated XML file or the new 
+DTD and XSD files into the PIP's JAR file.
+
+To customize parameters in a PIP:
 
 . In Studio, install the RosettaNet connector.
 . Open the RosettaNet folder in Package Explorer.
@@ -362,23 +369,36 @@ cp /Users/me/AnypointStudio/rnifseller/.mule/plugins-tmp/org.mule.tooling.ui.con
 ----
 +
 . Open the JAR. For a Mac, you can use Archive Utility, or for Windows, use a program such as link:http://www.7-zip.org/[7-Zip].
-. Add your DTD and XSD files to the PIP folder you want to add
-to. For example, to create a custom purchase order as a 3A4 PIP, 
-add your custom files to the PIP3A4 folder.
-. Recompile your files back into a JAR. For more information, 
-see link:http://stackoverflow.com/questions/3350545/how-do-you-recompile-a-jar-file[How do you recompile a jar file?] at StackOverflow.
-. Replace the old Rosetta JAR with your new one.
+. Change parameters in the version XML file as needed.
++
+For example, you could change the retry count as shown in this example from the PIP 3A4 version 02.02 file:
++
+[source,xml]
+----
+<retryCount>3</retryCount>
+----
++
+Make your changes and copy the version XML file to the src/main/resources folder.
 
-== About Use Case Examples
+== About an Example Use Case
 
-In the following example, you can build a simplified Mule application for 
-a buyer and seller in Anypoint Studio. This application sends and receives 
-a purchase order request and a purchase order confirmation.
+In the following example, a buyer sends a purchase order request. The seller receives the request and sends a purchase order confirmation.
 
 Workflow:
 
 . Configure the RosettaNet Connectors properly for the purchase order request and the purchase order confirmation.
 . Test that the applications work as intended.
+
+=== About Keystores
+
+RosettaNet uses X.509 certificates to authenticate messages. RosettaNet connector currently only supports storing certificates (and the private keys used for signing) in JKS-format keystores. You can use various tools such as Portecle for working with keystores and creating keys and certificates.
+
+For example, partner1.jks, used in the Buyer App example, includes a certificate for partner2 and the private key for partner1 which is used for signing. Keystore aliases have the form {Partner Business Identifier}[:{Partner Location ID}], where the curly braces surround values and the square brackets show the optional part only used when Partner Location ID is defined.
+
+In the example that follows, the keystores are:
+
+* 123456788:partner2
+* 123456789:partner1
 
 === About the Purchase Order Example
 
