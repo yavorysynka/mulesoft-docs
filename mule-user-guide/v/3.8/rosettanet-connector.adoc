@@ -353,8 +353,7 @@ Customizing a PIP comprises two paths:
 * Advanced: Create a custom DTD from which you create an XSD file. 
 
 For both paths, put the new or changed files in your Studio 
-project's src/main/resources folder. When you are ready for production, you can copy the updated XML file or the new 
-DTD and XSD files into the PIP's JAR file.
+project's src/main/resources folder. When you are ready for production, you can create a new JAR with the updated XML file.
 
 To customize parameters in a PIP:
 
@@ -378,7 +377,23 @@ For example, you could change the retry count as shown in this example from the 
 <retryCount>3</retryCount>
 ----
 +
-Make your changes and copy the version XML file to the src/main/resources folder.
+. Make your changes and copy the PIP files to src/main/resources with a new folder name, for example:
++
+[source,xml,linenums]
+----
+src/main/resources:
+   PIP3A4-Custom (new folder)
+       3A4_MS_V02_02_PurchaseOrderConfirmation.dtd
+       3A4_MS_V02_02_PurchaseOrderConfirmation.xsd
+       3A4_MS_V02_02_PurchaseOrderRequest.dtd
+       3A4_MS_V02_02_PurchaseOrderRequest.xsd
+       V02_02.xml
+       xml.xsd
+----
++
+. Edit the RosettaNet connector's properties and set these values:
+.. Pip Role: `INITIATOR`
+.. Pip File: `/PIP3A4-Custom/V02_02.xml`
 
 == About an Example Use Case
 
