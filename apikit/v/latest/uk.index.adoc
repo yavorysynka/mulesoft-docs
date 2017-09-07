@@ -43,3 +43,4 @@ In API Gateway Runtime 2.x and earlier, to build out security for an API that ma
 === APIkit Console Limitations
 
 APIkit Console does not support the Client Credentials and Resource Owner Password Credentials grant types in the embedded APIkit Console. To use these grant types, access the APIkit Console from a web browser. APIkit Console does not support link:/api-manager/oauth2-provider-configuration#configuring-scopes[scopes].
+
