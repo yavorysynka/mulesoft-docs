@@ -12,7 +12,7 @@ The best practice for API design with APIkit is first to design the RAML or WSDL
 
 After designing an API to the RAML specification using APIkit, you can link:/api-manager/using-policies[apply policies] to the API in Anypoint Platform.
 
-== Limitations
+== Einschränkungen
 
 The following limitations apply:
 
